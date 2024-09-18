@@ -316,6 +316,5 @@ DB 03 00 00 00 05 00 72 00 ...
 
 ... y así sucesivamente.
 ```
-
 * __Archivo Binario de Programación de Sistemas__: es muy eficiente en términos de espacio y acceso, pero carece de estructura legible y requiere un programa específico para la lectura y manipulación de los datos.
 * __Archivo .dbf de DBASE III/FoxPro__: utiliza un formato binario para almacenar datos de manera estructurada con metadatos incluidos en la cabecera, permitiendo acceso rápido a registros, pero depende de software específico para manipulación.
