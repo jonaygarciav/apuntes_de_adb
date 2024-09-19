@@ -221,6 +221,51 @@ Nodo derecho:
 
 Permiten acceder directamente a cualquier registro en el archivo sin tener que leer secuencialmente desde el inicio. Utilizan un esquema de direccionamiento basado en posiciones de registros. Se utilizan en aplicaciones donde se necesita acceso aleatorio a los datos, como sistemas de gestión de inventarios.
 
+A continuación, se muestra un diagrama de la estructura interna de un archivo DBF:
+
+```
++---------------------------+
+|      Cabecera DBF         |
++---------------------------+
+|  Información de Campos    |
++---------------------------+
+|   Registro de Datos 1     |
++---------------------------+
+|   Registro de Datos 2     |
++---------------------------+
+|          ...              |
++---------------------------+
+|   Registro de Datos N     |
++---------------------------+
+|        Fin de Archivo     |
++---------------------------+
+```
+
+* __Cabecera DBF__: Contiene la información básica del archivo, como el tipo de archivo, la fecha de creación, el número de registros, el tamaño del encabezado, y el tamaño de cada registro.
+Esta sección es crucial para que cualquier software que lea DBF sepa cómo manejar el archivo.
+* __Información de Campos__: define los metadatos para cada campo de la tabla, es decir, los nombres de los campos (id, nombre, correo, fecha_reg), el tipo de datos (número, texto, fecha), y la longitud de cada campo. Cada campo se describe con una estructura de 32 bytes que incluye el nombre del campo, tipo, longitud, y decimales (si aplica).
+* __Registro de Datos__: cada registro de datos contiene los valores reales correspondientes a los campos definidos anteriormente. Para tu ejemplo, un registro contendría: 1 | Juan Pérez | juan.perez@mail.com | 2024-09-15. Los datos se almacenan en formato secuencial y cada registro tiene un tamaño fijo.
+* __Fin de Archivo__: marca el final del archivo con un byte especial (0x1A), que indica al sistema lector que no hay más datos.
+
+Por ejemplo, para el registro:
+
+```
+{"id": 1, "nombre": "Juan Pérez", "correo": "juan.perez@mail.com", "fecha_reg": "2024-09-15"}
+```
+
+Internamente se vería algo como:
+
+```
+| 01  | Juan Pérez               | juan.perez@mail.com         | 20240915 |
+```
+
+Los campos serían del siguiente tipo:
+
+* id N(5,0): Un número entero de hasta 5 dígitos.
+* nombre C(50): Un campo de texto con hasta 50 caracteres.
+* correo C(50): Otro campo de texto con hasta 50 caracteres.
+* fecha_reg D: Fecha en formato AAAAMMDD.
+
 Ventajas:
 
 * __Acceso Aleatorio Rápido__: permiten acceder directamente a cualquier registro en el archivo utilizando un identificador o una posición conocida, sin necesidad de leer todos los registros previos. Esto es especialmente útil en aplicaciones que necesitan recuperar registros específicos con rapidez, como bases de datos simples, sistemas de inventario o gestión de archivos.
