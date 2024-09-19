@@ -132,6 +132,8 @@ id,nombre,correo,fecha_registro
 5,Luis Fernández,luis.fernandez@mail.com,2024-09-19
 ```
 
+> __Nota__: los archivos con extensión .csv se pueden abrir con _LibreOffice Calc_.
+
 * __.txt__: formato libre y simple, usado para almacenar datos de manera legible sin una estructura estricta. Es fácil de leer y editar manualmente.
 * __.csv__: estandarizado para ser importado y exportado por muchas aplicaciones (como Excel), ideal para tablas de datos con delimitadores claros (comas).
 * __.log__: usado principalmente para seguimiento de eventos o auditoría, puede incluir información adicional como timestamps o niveles de registro (INFO, ERROR).
@@ -238,7 +240,60 @@ Desventajas:
 * __No Adecuados para Todos los Tipos de Consultas__: no son eficientes para consultas secuenciales o para operaciones que requieren procesar todos los registros del archivo, ya que no optimizan el acceso ordenado. El acceso aleatorio no ofrece beneficios en situaciones donde se necesita recorrer todo el archivo o realizar análisis de datos completos.
 * __Riesgo de Inconsistencias__: los cambios no coordinados en los registros pueden llevar a inconsistencias, especialmente si no se implementan correctamente mecanismos de bloqueo o control de concurrencia. Sin un manejo adecuado, las actualizaciones simultáneas de varios usuarios pueden causar corrupción de los datos.
 
-Ejemplos: Archivos binarios utilizados en programación de sistemas, bases de datos antiguas (DBASE III, FoxPro).
+Ejemplos: Archivos binarios utilizados en programación de sistemas, bases de datos antiguas (DBASE III, FoxPro), ficheros .dbf.
+
+Ejemplo de script en Python que genera un fichero en formato CSV con los registros de la tabla de ejemplo:
+
+```
+$ sudo apt install python3-pip
+
+$ pip3 install dbf
+```
+
+```python
+import dbf
+from datetime import datetime
+
+# Crear la estructura de la tabla DBF con nombres de campos más cortos y definir la codificación
+tabla = dbf.Table('clientes.dbf', 'id N(5,0); nombre C(50); correo C(50); fecha_reg D', codepage='utf8')
+
+# Crear la tabla y abrirla en modo READ_WRITE
+tabla.open(dbf.READ_WRITE)
+
+# Definir los registros
+registros = [
+    {"id": 1, "nombre": "Juan Pérez", "correo": "juan.perez@mail.com", "fecha_reg": "2024-09-15"},
+    {"id": 2, "nombre": "María García", "correo": "maria.garcia@mail.com", "fecha_reg": "2024-09-16"},
+    {"id": 3, "nombre": "Carlos Sánchez", "correo": "carlos.sanchez@mail.com", "fecha_reg": "2024-09-17"},
+    {"id": 4, "nombre": "Ana López", "correo": "ana.lopez@mail.com", "fecha_reg": "2024-09-18"},
+    {"id": 5, "nombre": "Luis Fernández", "correo": "luis.fernandez@mail.com", "fecha_reg": "2024-09-19"}
+]
+
+# Convertir las fechas en objetos datetime.date
+for registro in registros:
+    registro['fecha_reg'] = datetime.strptime(registro['fecha_reg'], "%Y-%m-%d").date()
+
+# Añadir los registros a la tabla DBF
+for registro in registros:
+    tabla.append((registro['id'], registro['nombre'], registro['correo'], registro['fecha_reg']))
+
+# Cerrar la tabla
+tabla.close()
+
+print("Archivo 'clientes.dbf' creado y registros insertados correctamente.")
+```
+
+Para ejecutar el script:
+
+```bash
+$ python3 crear_dbf.py 
+Archivo 'clientes.dbf' creado y registros insertados correctamente.
+
+$ cat clientes.dbf
+     1Juan Pérez                                       juan.perez@mail.com                               20240915     2María García                                    maria.garcia@mail.com                             20240916     3Carlos Sánchez                                   carlos.sanchez@mail.com                           20240917     4Ana López                                        ana.lopez@mail.com                                20240918     5Luis Fernández                                   luis.fernandez@mail.com                           20240919
+```
+
+> __Nota__: los archivos con extensión .dbf se pueden abrir con _LibreOffice Calc_.
 
 __Archivo Binario utilizado en Programación__
 
