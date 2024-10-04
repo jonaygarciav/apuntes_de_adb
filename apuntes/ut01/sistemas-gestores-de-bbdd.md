@@ -381,21 +381,109 @@ Cada sistema de bases de datos tiene sus fortalezas y aplicaciones específicas,
 
 ## Sistemas Gestores de Bases de Datos NoSQL
 
-MongoDB
+### MongoDB
 
 ![][08]
 
-Redis
+__MongoDB__ es un sistema de base de datos NoSQL orientado a documentos. A diferencia de las bases de datos relacionales (SQL), MongoDB utiliza un modelo de datos flexible basado en documentos JSON (llamados BSON en MongoDB) en lugar de tablas y registros.
+Al ser NoSQL, permite una estructura de datos más flexible, lo que es ideal para manejar grandes volúmenes de datos que pueden no seguir un esquema rígido.
+
+Principales características:
+* __NoSQL (No Relacional)__: MongoDB no sigue el esquema clásico de tablas, columnas y filas. En lugar de ello, los datos se almacenan en colecciones de documentos, lo que da mayor flexibilidad.
+* __Documentos BSON (Binary JSON)__: los documentos de MongoDB se almacenan en un formato binario basado en JSON. Esto permite almacenar estructuras de datos complejas y tipos de datos avanzados.
+* __Esquema flexible__: A diferencia de las bases de datos SQL, MongoDB no requiere que todos los documentos en una colección tengan la misma estructura, lo que facilita la evolución de la base de datos.
+* __Escalabilidad horizontal__: MongoDB está diseñado para escalar horizontalmente mediante particionamiento (sharding). Esto significa que grandes volúmenes de datos pueden distribuirse en varios servidores.
+* __Alta disponibilidad__: utiliza la replicación mediante conjuntos de réplicas para garantizar que los datos estén disponibles incluso en caso de fallos.
+
+Estructura de MongoDB:
+* __Base de Datos__: es un conjunto de colecciones. Cada base de datos tiene su propio conjunto de archivos en el sistema de archivos.
+* __Colección__: es un grupo de documentos relacionados. En términos SQL, podría compararse con una tabla.
+* __Documento__: es la unidad básica de datos en MongoDB. Se representa en formato JSON o BSON. Contiene pares de clave-valor, y puede incluir anidaciones (documentos dentro de documentos).
+* __Campos__: Cada documento tiene múltiples campos, que son el equivalente a las columnas en SQL.
+1. Consultas en MongoDB
+Las consultas en MongoDB se hacen a través de métodos y operadores basados en JSON.
+
+Ejemplo de consulta en la consola del SGBD de MongoDB en una consulta:
+
+```
+> use miBaseDeDatos
+switched to db miBaseDeDatos
+
+> db.clientes.find().pretty()
+{
+  "_id": 1,
+  "nombre": "Juan Pérez",
+  "correo": "juan.perez@mail.com",
+  "fechaRegistro": "2024-09-15"
+}
+{
+  "_id": 2,
+  "nombre": "María García",
+  "correo": "maria.garcia@mail.com",
+  "fechaRegistro": "2024-09-16"
+}
+{
+  "_id": 3,
+  "nombre": "Carlos Sánchez",
+  "correo": "carlos.sanchez@mail.com",
+  "fechaRegistro": "2024-09-17"
+}
+{
+  "_id": 4,
+  "nombre": "Ana López",
+  "correo": "ana.lopez@mail.com",
+  "fechaRegistro": "2024-09-18"
+}
+{
+  "_id": 5,
+  "nombre": "Luis Fernández",
+  "correo": "luis.fernandez@mail.com",
+  "fechaRegistro": "2024-09-19"
+}
+```
+
+Descripción de los comandos:
+* __db.clientes.find().pretty()__: este comando muestra todos los documentos de la colección clientes de una manera legible (pretty format). Cada objeto representa un registro de cliente con un identificador único (_id), un nombre, un correo y la fecha de registro.
+
+Los índices en MongoDB mejoran la eficiencia de las consultas. Se pueden crear índices de cualquier campo de los documentos.
+
+```
+db.clientes.createIndex({ _id: 1 });
+```
+
+Ventajas de MongoDB: 
+* __Escalabilidad__: ideal para aplicaciones que requieren escalabilidad horizontal y grandes volúmenes de datos.
+* __Flexibilidad de esquema__: permite añadir, modificar o eliminar campos en los documentos sin afectar otros documentos.
+* __Alta disponibilidad__: a través de la replicación y la partición, MongoDB garantiza la disponibilidad y recuperación rápida ante fallos.
+* __Velocidad en lecturas y escrituras__: especialmente cuando se usan índices adecuados, MongoDB es eficiente para operaciones de lectura/escritura.
+
+> __Nota__: el escalado horizontal (también conocido como escalado a lo ancho) es una estrategia para mejorar la capacidad y el rendimiento de un sistema añadiendo más instancias o nodos en paralelo, en lugar de aumentar la capacidad de los recursos existentes. En lugar de mejorar la capacidad de un solo servidor (como agregar más CPU o memoria), se agregan más servidores o nodos al sistema. Cada nueva instancia ayuda a distribuir la carga de trabajo, lo que mejora el rendimiento general del sistema y su capacidad para manejar más usuarios o transacciones.
+
+### Redis
 
 ![][09]
 
-## Ofertas de Empleo 1
+__Redis__ (_Remote Dictionary Server_) es un sistema de gestión de bases de datos NoSQL en memoria, que se utiliza principalmente como base de datos, caché y broker de mensajes. Almacena los datos en clave-valor y es altamente eficiente debido a que los datos se gestionan principalmente en memoria RAM, lo que le proporciona un rendimiento extremadamente rápido.
 
-oferta empleo 1
+Redis soporta estructuras de datos como cadenas, listas, conjuntos, conjuntos ordenados y hashes, lo que lo diferencia de otros sistemas de bases de datos clave-valor más simples.
 
-oferta empleo 2
+Principales características:
+* __Almacenamiento en memoria__: Redis almacena todos sus datos en memoria, lo que permite operaciones de lectura y escritura extremadamente rápidas, pero también puede persistir los datos en disco si es necesario.
+* __Estructuras de datos complejas__: Redis no solo maneja claves y valores simples, sino también tipos de datos más complejos como listas, conjuntos, hashes, y más.
+* __Persistencia opcional__: Aunque es una base de datos en memoria, Redis ofrece opciones para persistir datos en disco para garantizar la durabilidad.
+* __Operaciones atómicas__: Todas las operaciones en Redis son atómicas, lo que significa que se completan completamente o no se completan en absoluto.
+* __Replicación maestro-esclavo__: Redis permite replicar los datos de un servidor maestro a múltiples réplicas esclavas, lo que mejora la disponibilidad y el rendimiento.
 
-oferta empleo 3
+Estructura de Redis:
+* __Clave-Valor__: la estructura principal de Redis se basa en el almacenamiento de datos en pares clave-valor. Cada clave en Redis está asociada con uno de los varios tipos de datos soportados.
+
+Tipos de Datos:
+* __Strings__: tipo de dato básico, almacena cadenas de texto o datos binarios.
+* __Lists__ (_Listas_): listas de cadenas ordenadas por inserción.
+* __Sets__ (_Conjuntos_): colecciones de cadenas únicas sin orden.
+* __Sorted Sets__ (_Conjuntos ordenados_): similar a los conjuntos, pero cada elemento tiene una puntuación asociada que determina el orden.
+
+Redis se usa comúnmente para almacenar en caché datos que se acceden frecuentemente, mejorando así el rendimiento de las aplicaciones.
 
 [01]: ../img/ut01/db-engines.png "01"
 [02]: ../img/ut01/mysql-logo.png "02"
