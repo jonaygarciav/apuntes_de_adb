@@ -60,7 +60,7 @@ Desventajas:
 * Menor consistencia y soporte limitado para transacciones complejas.
 * Curva de aprendizaje mayor para administrar modelos de datos no convencionales.
 
-Ejemplo JSON para un SGBD MongoDB:
+Ejemplo para Bases de Datos NoSQL basadas en ficheros JSON:
 
 ```JSON
 [
@@ -103,50 +103,6 @@ Explicación del JSON:
 * __nombre__: almacena el nombre del cliente.
 * __correo__: guarda la dirección de correo electrónico.
 * __fechaRegistro__: almacena la fecha de registro en formato YYYY-MM-DD.
-
-Ejemplo de consulta en la consola del SGBD de MongoDB en una consulta:
-
-```
-> use miBaseDeDatos
-switched to db miBaseDeDatos
-
-> db.clientes.find().pretty()
-{
-  "_id": 1,
-  "nombre": "Juan Pérez",
-  "correo": "juan.perez@mail.com",
-  "fechaRegistro": "2024-09-15"
-}
-{
-  "_id": 2,
-  "nombre": "María García",
-  "correo": "maria.garcia@mail.com",
-  "fechaRegistro": "2024-09-16"
-}
-{
-  "_id": 3,
-  "nombre": "Carlos Sánchez",
-  "correo": "carlos.sanchez@mail.com",
-  "fechaRegistro": "2024-09-17"
-}
-{
-  "_id": 4,
-  "nombre": "Ana López",
-  "correo": "ana.lopez@mail.com",
-  "fechaRegistro": "2024-09-18"
-}
-{
-  "_id": 5,
-  "nombre": "Luis Fernández",
-  "correo": "luis.fernandez@mail.com",
-  "fechaRegistro": "2024-09-19"
-}
-```
-
-Descripción de los comandos:
-* __db.clientes.find().pretty()__: este comando muestra todos los documentos de la colección clientes de una manera legible (pretty format). Cada objeto representa un registro de cliente con un identificador único (_id), un nombre, un correo y la fecha de registro.
-
-> __Nota__: el escalado horizontal (también conocido como escalado a lo ancho) es una estrategia para mejorar la capacidad y el rendimiento de un sistema añadiendo más instancias o nodos en paralelo, en lugar de aumentar la capacidad de los recursos existentes. En lugar de mejorar la capacidad de un solo servidor (como agregar más CPU o memoria), se agregan más servidores o nodos al sistema. Cada nueva instancia ayuda a distribuir la carga de trabajo, lo que mejora el rendimiento general del sistema y su capacidad para manejar más usuarios o transacciones.
 
 ## Bases de Datos Orientadas a Objetos
 

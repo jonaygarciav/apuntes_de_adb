@@ -8,7 +8,6 @@ A continuación, se muestra una imagen donde se muestran los Sistemas Gestores d
 
 ![][01]
 
-
 ## Sistemas Gestores de Bases de Datos Relacionales
 
 ### MySQL
