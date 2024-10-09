@@ -12,3 +12,6 @@ UT01: Sistemas de almacenamiento de la información
 * [Bases de datos](./apuntes/ut01/bases-de-datos.md)
 * [Sistemas Gestores de Bases de datos](./apuntes/ut01/sistemas-gestores-de-bbdd.md)
 * [EJERCICIOS](./apuntes/ejercicios/ut01.md)
+
+UT02: Diseño lógico de una BBDD
+* [Diseño Lógico de una BBDD: modelo Entidad/Relación, modelo relacional y normalización](./apuntes/ut02/diseno-logico-de-bbdd.md)
