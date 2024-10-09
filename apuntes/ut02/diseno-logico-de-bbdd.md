@@ -5,7 +5,7 @@
          * Fase de Análisis
          * Modelo Entidad/Relación
 
-# Introducción
+## Introducción
 
 En este tema, abordaremos cómo realizar tanto el diseño conceptual como el diseño lógico de una base de datos. Comenzaremos elaborando un modelo conceptual utilizando diagramas Entidad-Relación (E/R) y versiones extendidas de estos diagramas. Este tipo de diseño es de alto nivel y se encuentra más cerca de la perspectiva del usuario final, alejándose aún del diseño físico de la base de datos. Luego, a partir del modelo Entidad-Relación, procederemos a generar el modelo relacional, que está más próximo a la implementación física de la base de datos. Veremos las reglas de transformación necesarias para convertir el modelo conceptual en el relacional. Finalmente, será importante llevar a cabo la normalización de las tablas generadas, con el fin de evitar redundancias y optimizar la base de datos. En resumen, los dos tipos de modelos lógicos que analizaremos en este tema, ordenados de mayor a menor nivel de abstracción, son:
 
@@ -24,7 +24,7 @@ Una vez identificados los datos clave, se procede a construir los modelos adecua
 
 Antes de comenzar el diseño de una base de datos, es fundamental tener una idea clara de qué es lo que se pretende lograr. Para ello, es común que los desarrolladores o analistas se reúnan con los usuarios futuros del sistema para recopilar la información necesaria. A menudo, esto comienza con una reunión inicial para conocer el alcance general del proyecto. Posteriormente, se elabora una serie de preguntas que serán utilizadas en entrevistas con los usuarios finales, en reuniones posteriores, para obtener información más detallada. El resultado de estas entrevistas es un documento clave, conocido como Especificación de Requisitos del Software (E.R.S.), que contiene toda la información necesaria para la modelización de los datos. Este documento será la base para todas las fases posteriores del diseño.
 
-#### Fase 1 del Diseño: Diseño Conceptual – Modelo Entidad/Relación (E/R)
+### Fase 1 del Diseño: Diseño Conceptual – Modelo Entidad/Relación (E/R)
 
 La modelización de datos en esta fase suele estar a cargo de un analista que no necesariamente es un experto en el dominio específico del problema que se está resolviendo (puede ser medicina, contabilidad, gestión de reservas, etc.). Por ello, es crucial contar con la colaboración de un experto en el área que sí conozca a fondo el funcionamiento del negocio o sistema en cuestión. Este experto, a su vez, puede no tener conocimientos en informática, pero su experiencia es vital para asegurar que el sistema diseñado cumpla con las expectativas del usuario final.
 
