@@ -67,6 +67,8 @@ Existen principalmente dos tipos de entidades:
 
 Las _entidades_ están definidas por una serie de __atributos__, también conocidos como _propiedades_ o _campos_. Estos atributos son las características que permiten distinguir una entidad de otra y proporcionan los detalles específicos sobre la entidad que representan. Cada atributo puede tomar un valor específico de un conjunto predeterminado de valores permitidos, llamado dominio del atributo. Al asignar valores a los atributos, obtenemos las diferentes instancias u ocurrencias de una entidad, lo que nos permite diferenciar entre ellas.
 
+![][04]
+
 Tipos de atributos:
 * __Atributos identificadores o identificativos__: son aquellos cuyo valor no se repite entre diferentes instancias de una misma entidad o relación, permitiendo identificar de manera inequívoca cada ocurrencia. Estos atributos son fundamentales en la estructura de una base de datos y actúan como claves primarias. Un ejemplo común es el Código de Cuenta Corriente (CCC), que se utiliza para identificar una cuenta bancaria, o el ISBN en los libros. Es importante señalar que un atributo identificador puede ser compuesto, es decir, puede descomponerse en varios subatributos. Por ejemplo, el CCC puede dividirse en tres partes: el número del banco, el número de la sucursal y el número de cuenta.
 * __Atributos descriptores o descriptivos__: estos atributos son los que describen las propiedades o características de una entidad o incluso de una relación. Son los atributos más comunes, ya que se utilizan para proporcionar detalles adicionales que no necesariamente identifican a la entidad, pero que son útiles para describirla. Por ejemplo, en una entidad "Empleado", atributos como el nombre, la edad o la dirección serían descriptores.
@@ -75,8 +77,46 @@ Tipos de atributos:
 * __Atributos multivaluados__: este tipo de atributo puede contener varios valores dentro de un mismo dominio. Un ejemplo sería almacenar varios correos electrónicos o números de teléfono para una misma persona. Si solo se necesita guardar un único valor, se usaría un atributo descriptivo común.
 * __Atributos compuestos__: a menudo, estos atributos pueden confundirse con los atributos multivaluados, pero en realidad son diferentes. Un atributo compuesto es aquel que se puede dividir en otros subatributos. Por ejemplo, un "nombre completo" podría descomponerse en "nombre", "apellido paterno" y "apellido materno". Cada subatributo perteneciente a un atributo compuesto puede tener su propio dominio y valor.
 
+![][05]
+
 > __Nota__: siempre es necesario contar con al menos un atributo que actúe como identificador para asegurar la unicidad de cada instancia dentro de la base de datos.
+
+### Relaciones
+
+Una __relación__ en el contexto de bases de datos es la conexión o vínculo que se establece entre dos o más entidades. Cada relación debe tener un nombre que refleje de forma clara la función que desempeña o la interacción que representa entre las entidades involucradas. En los diagramas de Entidad-Relación (E/R), las relaciones se ilustran con la forma de un rombo, dentro del cual se coloca el nombre de la relación.
+
+![][06]
+
+
+Por lo general, el nombre de la relación suele ser descriptivo de la relación, por ejemplo, si estamos relacionando las entidades _CLIENTE_ y _COCHE_, podríamos asignar _compra_, para indicar la acción que conecta a las entidades. Sin embargo, estos nombres más descriptivos pueden a veces causar confusión cuando estamos tratando de identificar la cardinalidad (es decir, el número de ocurrencias que puede tener una entidad en la relación), por lo que es importante elegir la nomenclatura con cuidado.
+
+Cada relación involucra un conjunto de entidades participantes, que son las entidades vinculadas por esa relación. El grado de la relación hace referencia al número de entidades que participan en ella. Si dos entidades están conectadas, hablamos de una relación de grado 2, también conocida como relación binaria. Por ejemplo, la relación CLIENTE-COCHE es binaria porque conecta dos entidades distintas.
+
+Por otro lado, existen relaciones más complejas que involucran tres o más entidades. Estas relaciones se denominan de grado 3 o relaciones ternarias. Un ejemplo típico es la relación _publica_, que conecta tres entidades: LIBRO, EDITORIAL y AUTOR:
+
+![][07]
+
+Un caso particular es cuando una entidad se conecta consigo misma, situación que se denomina relación reflexiva. En este tipo de relaciones, una misma entidad puede tener varias interacciones consigo misma, como, por ejemplo, en un organigrama de empleados donde un empleado puede estar subordinado a otro empleado, lo que genera una relación jerárquica dentro de la misma entidad.
+
+![][08]
+
+__El papel o rol de una entidad o relación__
+
+El rol o papel que desempeña una entidad dentro de una relación es fundamental para entender cómo interactúan las entidades entre sí. Los roles permiten aclarar el significado y la función de cada entidad en el contexto de la relación que las vincula. Estos roles se especifican cuando es necesario hacer más evidente el propósito o el papel que una entidad juega en una relación en particular.
+
+A continuación, mostramos ejemplos basados en los casos mencionados previamente, esta vez incluyendo la designación de los roles o papeles de cada una de las entidades dentro de las relaciones. Este enfoque ayuda a clarificar cómo cada entidad contribuye a la relación y su significado dentro del sistema:
+
+![][09]
+
+![][10]
 
 [01]: ../img/ut02/fases-diseno-bbdd.png "01"
 [02]: ../img/ut02/elementos-modelo-entidad-relacion.png "02"
 [03]: ../img/ut02/tipos-entidades.png "03"
+[04]: ../img/ut02/tipos-atributos01.png "04"
+[05]: ../img/ut02/tipos-atributos02.png "05"
+[06]: ../img/ut02/tipos-relaciones01.png "06"
+[07]: ../img/ut02/tipos-relaciones02.png "07"
+[08]: ../img/ut02/tipos-relaciones03.png "08"
+[09]: ../img/ut02/tipos-relaciones04.png "09"
+[10]: ../img/ut02/tipos-relaciones05.png "10"
