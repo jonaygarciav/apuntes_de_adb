@@ -110,6 +110,74 @@ A continuación, mostramos ejemplos basados en los casos mencionados previamente
 
 ![][10]
 
+__La cardinalidad de una relación__
+
+La __cardinalidad de una relación__ se refiere al número de veces que una entidad puede estar vinculada a otra entidad dentro de una relación. En el caso de una relación binaria, donde dos entidades están involucradas, la cardinalidad expresa cuántas instancias de una entidad pueden asociarse con una instancia de la otra. Existen principalmente tres tipos de cardinalidades en estas relaciones:
+
+Una relación _uno a uno_ (1:1): Aquí, cada elemento de la primera entidad está relacionado con un solo elemento de la segunda entidad, y viceversa. En otras palabras, cada entidad tiene una única correspondencia con la otra, sin duplicaciones en ninguno de los lados.
+Este tipo de relación se puede representar gráficamente para visualizar cómo los elementos de ambas entidades están vinculados de manera exclusiva entre sí:
+
+![][11]
+
+Una relación _uno a muchos_ (1:N) indica que un elemento de la entidad A puede estar vinculado a varios elementos de la entidad B, pero cada elemento de B solo puede estar conectado a un único elemento de A. Esto significa que, desde la perspectiva de A, hay varias asociaciones posibles, mientras que desde la perspectiva de B, solo hay una relación con A.
+
+![][12]
+
+Una relación _muchos a muchos_ (N:N) indica que cualquier cantidad de elementos de una entidad A puede estar asociada con múltiples elementos de una entidad B, y viceversa. Esto significa que no existe una restricción en el número de asociaciones entre los elementos de ambas entidades; un elemento de A puede estar vinculado a varios de B, y un elemento de B puede estar relacionado con varios de A.
+
+![][13]
+
+__La participación de una entidad__
+
+La __participación de una entidad__ en una relación también se denomina cardinalidad de esa entidad dentro de dicha relación. Este concepto define cómo se comporta una entidad en relación con otra, y puede variar según la relación específica en la que se encuentre. En términos simples, la participación describe cuántas instancias de una entidad están asociadas con una instancia de otra entidad en una relación concreta.
+
+Para calcular la participación, primero se debe seleccionar una ocurrencia de una entidad y determinar cuántas ocurrencias de la otra entidad están asociadas con ella, tanto en términos mínimos como máximos. Luego, el mismo análisis debe realizarse en el sentido contrario. Estas ocurrencias mínimas y máximas (también llamadas participación de una entidad) se representan mediante números colocados entre paréntesis, escritos en minúsculas y ubicados al lado de la relación que corresponde a la entidad evaluada.
+
+Por ejemplo, en una relación Cliente - Pedido, un cliente puede realizar como mínimo un pedido o incluso no hacer ninguno, y como máximo puede realizar muchos. Este mínimo y máximo se indicarán en la representación gráfica de la relación.
+
+Al final, la cardinalidad de la relación se representa combinando las participaciones máximas de ambas entidades, utilizando letras mayúsculas y dos puntos para separar las cantidades.
+
+Ejemplo 1: en este ejemplo, un conductor puede conducir como mínimo un coche y como máximo un solo coche. Por lo tanto, la participación de la entidad Conductor en la relación se expresa como (1,1), lo que indica que no puede conducir más de un coche. Esta participación se coloca gráficamente en el lado opuesto al de la entidad Conductor, es decir, cerca de la entidad Coche.
+
+De manera similar, un coche solo puede ser conducido por un conductor, tanto como mínimo como máximo. Así, la participación de Coche en la relación también se representa como (1,1) y se coloca junto a la entidad Conductor en la representación gráfica. Por lo tanto, al combinar las participaciones máximas de ambas entidades, obtenemos una cardinalidad 1:1, lo que significa que cada conductor está asociado con un solo coche y viceversa.
+
+![][14]
+
+Ejemplo 2: en este caso, un cliente puede comprar como mínimo un coche, pero también puede adquirir más de uno, lo que se representa con la letra "n". Esto indica que la participación del Cliente en la relación con Coche es de (1,n), y se coloca junto a la entidad Coche en el diagrama.
+
+Por otro lado, un coche puede ser comprado como mínimo por un cliente y como máximo también por un solo cliente, lo que da una participación de (1,1). Este valor se coloca junto a la entidad Cliente en la representación gráfica. Al juntar las participaciones máximas, obtenemos una cardinalidad de 1, lo que significa que un cliente puede estar relacionado con varios coches, pero cada coche solo puede estar asociado con un único cliente.
+
+![][15]
+
+Ejemplo 3: en este ejemplo, un empleado trabaja en al menos un departamento, pero puede estar asignado a más de uno. Este "varios" se representa con la letra "n", lo que da una participación de (1,n). Esta participación se coloca en el lado opuesto a la entidad Empleado, es decir, junto a Departamento en el diagrama.
+
+De manera similar, un departamento puede tener como mínimo un empleado, pero puede incluir a varios empleados. Esta participación también se representa como (1,n), y se coloca junto a la entidad Empleado en el gráfico. Al combinar ambas participaciones máximas, obtenemos una cardinalidad N, lo que significa que un empleado puede trabajar en varios departamentos, y un departamento puede tener varios empleados.
+
+![][16]
+
+## Modelo Entidad/Relación (E/R) Extendido
+
+El __modelo Entidad/Relación extendido__ (E/R extendido) se basa en el modelo clásico Entidad/Relación, pero añade nuevas características para manejar situaciones más complejas, como las relaciones de jerarquía. Este tipo de relación ocurre cuando una entidad está vinculada a otras entidades a través de una relación de tipo "_es un tipo de_". En esencia, estas relaciones permiten modelar jerarquías o clasificaciones dentro de los datos.
+
+Imaginemos que queremos crear una base de datos (BD) para los animales de un zoológico. En este caso, tendríamos la entidad ANIMAL como la entidad general, y otras entidades más específicas como __FELINO__, __AVE__, __REPTIL__ e __INSECTO__. Cada una de estas entidades más específicas estaría relacionada con __ANIMAL__ bajo una relación jerárquica, donde se podría decir que "Felino es un tipo de Animal", "Ave es un tipo de Animal", etc.
+
+Si intentáramos representar estas relaciones utilizando el modelo clásico Entidad/Relación, podría volverse muy complicado y difícil de manejar, ya que tendríamos que repetir las relaciones y atributos comunes para todas las entidades específicas. Sin embargo, el E/R extendido permite manejar esto de manera más eficiente mediante la relación jerárquica "_es un tipo de_", lo que simplifica el diseño y evita la redundancia.
+
+Este tipo de modelado es especialmente útil cuando se manejan sistemas con jerarquías de objetos, donde una entidad puede tener subtipos que comparten características comunes con la entidad padre, pero también pueden tener atributos o relaciones específicas.
+
+![][17]
+
+Para simplificar y evitar la repetición innecesaria de la misma relación en un diagrama, en el modelo Entidad/Relación extendido (E/R extendido) se introducen símbolos especiales para manejar las relaciones jerárquicas. En lugar de utilizar múltiples rombos para la relación "_es un tipo de_", se reemplaza por un triángulo invertido. Este triángulo indica que las entidades que se encuentran en la parte inferior son subtipos o entidades hijas de la entidad en la parte superior, que se denomina supertipo o entidad padre.
+
+En este tipo de relaciones, las entidades hijas heredan características comunes de la entidad padre, lo que permite evitar la duplicación de atributos y relaciones en el diseño. Las relaciones jerárquicas se basan en un atributo común que define cómo se organiza la jerarquía. Este atributo, llamado atributo discriminador, se coloca junto a la relación jerárquica, representada por "_es\_un_" o similar. Por ejemplo, en un zoológico, el atributo "tipo" podría ser utilizado para distinguir entre los diferentes tipos de animales como felinos, aves, reptiles, e insectos.
+
+En lugar de tener múltiples relaciones repetidas como "Felino es un tipo de Animal", "Ave es un tipo de Animal", etc., el diagrama se simplifica utilizando el triángulo invertido. La entidad ANIMAL estaría en la parte superior (supertipo), y las entidades __FELINO__, __AVE__, __REPTIL__ e __INSECTO__ se conectarían al triángulo, indicando que son subtipos de ANIMAL. El atributo discriminador "tipo" se colocaría junto a esta relación para identificar el tipo de animal.
+
+Este enfoque permite representar las jerarquías de manera más clara y eficiente, haciendo que el diagrama sea más fácil de interpretar y manteniendo la integridad del diseño sin redundancias.
+
+![][18]
+
+
 [01]: ../img/ut02/fases-diseno-bbdd.png "01"
 [02]: ../img/ut02/elementos-modelo-entidad-relacion.png "02"
 [03]: ../img/ut02/tipos-entidades.png "03"
@@ -120,3 +188,11 @@ A continuación, mostramos ejemplos basados en los casos mencionados previamente
 [08]: ../img/ut02/tipos-relaciones03.png "08"
 [09]: ../img/ut02/tipos-relaciones04.png "09"
 [10]: ../img/ut02/tipos-relaciones05.png "10"
+[11]: ../img/ut02/cardinalidad01.png "11"
+[12]: ../img/ut02/cardinalidad02.png "12"
+[13]: ../img/ut02/cardinalidad03.png "13"
+[14]: ../img/ut02/participacion-entidad01.png "14"
+[15]: ../img/ut02/participacion-entidad02.png "15"
+[16]: ../img/ut02/participacion-entidad03.png "16"
+[17]: ../img/ut02/modelo-er-extendido01.png "17"
+[18]: ../img/ut02/modelo-er-extendido02.png "18"
