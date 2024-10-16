@@ -99,13 +99,9 @@ Por lo general, el nombre de la relación suele ser descriptivo de la relación,
 
 Cada relación involucra un conjunto de entidades participantes, que son las entidades vinculadas por esa relación. El grado de la relación hace referencia al número de entidades que participan en ella. Si dos entidades están conectadas, hablamos de una relación de grado 2, también conocida como relación binaria. Por ejemplo, la relación CLIENTE-COCHE es binaria porque conecta dos entidades distintas.
 
-Por otro lado, existen relaciones más complejas que involucran tres o más entidades. Estas relaciones se denominan de grado 3 o relaciones ternarias. Un ejemplo típico es la relación _publica_, que conecta tres entidades: LIBRO, EDITORIAL y AUTOR:
-
-![][07]
-
 Un caso particular es cuando una entidad se conecta consigo misma, situación que se denomina relación reflexiva. En este tipo de relaciones, una misma entidad puede tener varias interacciones consigo misma, como, por ejemplo, en un organigrama de empleados donde un empleado puede estar subordinado a otro empleado, lo que genera una relación jerárquica dentro de la misma entidad.
 
-![][08]
+![][07]
 
 __El papel o rol de una entidad o relación__
 
@@ -113,9 +109,7 @@ El rol o papel que desempeña una entidad dentro de una relación es fundamental
 
 A continuación, mostramos ejemplos basados en los casos mencionados previamente, esta vez incluyendo la designación de los roles o papeles de cada una de las entidades dentro de las relaciones. Este enfoque ayuda a clarificar cómo cada entidad contribuye a la relación y su significado dentro del sistema:
 
-![][09]
-
-![][10]
+![][08]
 
 __La cardinalidad de una relación__
 
@@ -124,15 +118,15 @@ La __cardinalidad de una relación__ se refiere al número de veces que una enti
 Una relación _uno a uno_ (1:1): Aquí, cada elemento de la primera entidad está relacionado con un solo elemento de la segunda entidad, y viceversa. En otras palabras, cada entidad tiene una única correspondencia con la otra, sin duplicaciones en ninguno de los lados.
 Este tipo de relación se puede representar gráficamente para visualizar cómo los elementos de ambas entidades están vinculados de manera exclusiva entre sí:
 
-![][11]
+![][09]
 
 Una relación _uno a muchos_ (1:N) indica que un elemento de la entidad A puede estar vinculado a varios elementos de la entidad B, pero cada elemento de B solo puede estar conectado a un único elemento de A. Esto significa que, desde la perspectiva de A, hay varias asociaciones posibles, mientras que desde la perspectiva de B, solo hay una relación con A.
 
-![][12]
+![][10]
 
-Una relación _muchos a muchos_ (N:N) indica que cualquier cantidad de elementos de una entidad A puede estar asociada con múltiples elementos de una entidad B, y viceversa. Esto significa que no existe una restricción en el número de asociaciones entre los elementos de ambas entidades; un elemento de A puede estar vinculado a varios de B, y un elemento de B puede estar relacionado con varios de A.
+Una relación _muchos a muchos_ (N:M) indica que cualquier cantidad de elementos de una entidad A puede estar asociada con múltiples elementos de una entidad B, y viceversa. Esto significa que no existe una restricción en el número de asociaciones entre los elementos de ambas entidades; un elemento de A puede estar vinculado a varios de B, y un elemento de B puede estar relacionado con varios de A.
 
-![][13]
+![][11]
 
 __La participación de una entidad__
 
@@ -148,19 +142,19 @@ Ejemplo 1: en este ejemplo, un conductor puede conducir como mínimo un coche y 
 
 De manera similar, un coche solo puede ser conducido por un conductor, tanto como mínimo como máximo. Así, la participación de Coche en la relación también se representa como (1,1) y se coloca junto a la entidad Conductor en la representación gráfica. Por lo tanto, al combinar las participaciones máximas de ambas entidades, obtenemos una cardinalidad 1:1, lo que significa que cada conductor está asociado con un solo coche y viceversa.
 
-![][14]
+![][12]
 
 Ejemplo 2: en este caso, un cliente puede comprar como mínimo un coche, pero también puede adquirir más de uno, lo que se representa con la letra "n". Esto indica que la participación del Cliente en la relación con Coche es de (1,n), y se coloca junto a la entidad Coche en el diagrama.
 
 Por otro lado, un coche puede ser comprado como mínimo por un cliente y como máximo también por un solo cliente, lo que da una participación de (1,1). Este valor se coloca junto a la entidad Cliente en la representación gráfica. Al juntar las participaciones máximas, obtenemos una cardinalidad de 1, lo que significa que un cliente puede estar relacionado con varios coches, pero cada coche solo puede estar asociado con un único cliente.
 
-![][15]
+![][13]
 
 Ejemplo 3: en este ejemplo, un empleado trabaja en al menos un departamento, pero puede estar asignado a más de uno. Este "varios" se representa con la letra "n", lo que da una participación de (1,n). Esta participación se coloca en el lado opuesto a la entidad Empleado, es decir, junto a Departamento en el diagrama.
 
 De manera similar, un departamento puede tener como mínimo un empleado, pero puede incluir a varios empleados. Esta participación también se representa como (1,n), y se coloca junto a la entidad Empleado en el gráfico. Al combinar ambas participaciones máximas, obtenemos una cardinalidad N, lo que significa que un empleado puede trabajar en varios departamentos, y un departamento puede tener varios empleados.
 
-![][16]
+![][14]
 
 __Atributos propios de una relación__
 
@@ -168,7 +162,7 @@ En una relación de base de datos, los atributos propios de una relación son aq
 
 Ejemplo: Relación `compra` entre Cliente y Producto:
 
-![][17]
+![][15]
 
 Imagina que tienes dos entidades: Cliente y Producto. Cada una tiene sus propios atributos:
 
@@ -189,7 +183,7 @@ Si intentáramos representar estas relaciones utilizando el modelo clásico Enti
 
 Este tipo de modelado es especialmente útil cuando se manejan sistemas con jerarquías de objetos, donde una entidad puede tener subtipos que comparten características comunes con la entidad padre, pero también pueden tener atributos o relaciones específicas.
 
-![][18]
+![][16]
 
 Para simplificar y evitar la repetición innecesaria de la misma relación en un diagrama, en el modelo Entidad/Relación extendido (E/R extendido) se introducen símbolos especiales para manejar las relaciones jerárquicas. En lugar de utilizar múltiples rombos para la relación "_es un tipo de_", se reemplaza por un triángulo invertido. Este triángulo indica que las entidades que se encuentran en la parte inferior son subtipos o entidades hijas de la entidad en la parte superior, que se denomina supertipo o entidad padre.
 
@@ -199,7 +193,7 @@ En lugar de tener múltiples relaciones repetidas como "Felino es un tipo de Ani
 
 Este enfoque permite representar las jerarquías de manera más clara y eficiente, haciendo que el diagrama sea más fácil de interpretar y manteniendo la integridad del diseño sin redundancias.
 
-![][19]
+![][17]
 
 ### Relaciones de jerarquía
 
@@ -213,31 +207,31 @@ Ejemplo: Un empleado solo puede ser Ingeniero, Secretario o Técnico, pero no pu
 
 Estas relaciones son útiles para modelar jerarquías en bases de datos, permitiendo flexibilidad y precisión en cómo se organiza la información según las reglas y necesidades del sistema.
 
-![][20]
+![][18]
 
 __Jerarquía solapada y parcial__
 
-![][21]
+![][19]
 
 Un empleado podría ser simultáneamente técnico, científico y astronauta o técnico y astronauta, etc. (solapada). Además puede ser técnico, astronauta, científico o desempeñar otro empleo diferente (parcial).
 
 __Jerarquía solapada y total__
 
-![][22]
+![][19]
 
 Un empleado podría ser simultáneamente técnico, científico y astronauta o técnico y astronauta, etc. (solapada). Además puede ser solamente técnico, astronauta o científico (total).
 
 __Jerarquía exclusiva y parcial__
 
-![][23]
+![][20]
 
 Un empleado sólo puede desempeñar una de las tres ocupaciones (exclusiva) . Además puede ser técnico, o ser astronauta, o ser científico o también desempeñar otro empleo diferente, por ejemplo, podría ser FÍSICO (parcial).
 
-![][24]
+![][21]
 
 __Jerarquía exclusiva y total__
 
-![][25]
+![][22]
 
 Un empleado puede ser solamente técnico, astronauta o científico (total) y no ocupar más de un puesto (exclusiva).
 
@@ -249,20 +243,17 @@ Un empleado puede ser solamente técnico, astronauta o científico (total) y no 
 [06]: ../img/ut02/tipos-relaciones01.png "06"
 [07]: ../img/ut02/tipos-relaciones02.png "07"
 [08]: ../img/ut02/tipos-relaciones03.png "08"
-[09]: ../img/ut02/tipos-relaciones04.png "09"
-[10]: ../img/ut02/tipos-relaciones05.png "10"
-[11]: ../img/ut02/cardinalidad01.png "11"
-[12]: ../img/ut02/cardinalidad02.png "12"
-[13]: ../img/ut02/cardinalidad03.png "13"
-[14]: ../img/ut02/participacion-entidad01.png "14"
-[15]: ../img/ut02/participacion-entidad02.png "15"
-[16]: ../img/ut02/participacion-entidad03.png "16"
-[17]: ../img/ut02/atributos-propios-relacion.png "17"
-[18]: ../img/ut02/modelo-er-extendido01.png "18"
-[19]: ../img/ut02/modelo-er-extendido02.png "19"
-[20]: ../img/ut02/relaciones-jerarquia01.png "20"
-[21]: ../img/ut02/relaciones-jerarquia01.png "21"
-[22]: ../img/ut02/relaciones-jerarquia02.png "22"
-[23]: ../img/ut02/relaciones-jerarquia03.png "23"
-[24]: ../img/ut02/relaciones-jerarquia04.png "24"
-[25]: ../img/ut02/relaciones-jerarquia05.png "25"
+[09]: ../img/ut02/cardinalidad01.png "09"
+[10]: ../img/ut02/cardinalidad02.png "10"
+[11]: ../img/ut02/cardinalidad03.png "11"
+[12]: ../img/ut02/participacion-entidad01.png "12"
+[13]: ../img/ut02/participacion-entidad02.png "13"
+[14]: ../img/ut02/participacion-entidad03.png "14"
+[15]: ../img/ut02/atributos-propios-relacion.png "15"
+[16]: ../img/ut02/modelo-er-extendido01.png "16"
+[17]: ../img/ut02/modelo-er-extendido02.png "17"
+[18]: ../img/ut02/relaciones-jerarquia01.png "18"
+[19]: ../img/ut02/relaciones-jerarquia02.png "19"
+[20]: ../img/ut02/relaciones-jerarquia03.png "20"
+[21]: ../img/ut02/relaciones-jerarquia04.png "21"
+[22]: ../img/ut02/relaciones-jerarquia05.png "22"
