@@ -138,19 +138,19 @@ Por ejemplo, en una relación Cliente - Pedido, un cliente puede realizar como m
 
 Al final, la cardinalidad de la relación se representa combinando las participaciones máximas de ambas entidades, utilizando letras mayúsculas y dos puntos para separar las cantidades.
 
-Ejemplo 1: en este ejemplo, un conductor puede conducir como mínimo un coche y como máximo un solo coche. Por lo tanto, la participación de la entidad Conductor en la relación se expresa como (1,1), lo que indica que no puede conducir más de un coche. Esta participación se coloca gráficamente en el lado opuesto al de la entidad Conductor, es decir, cerca de la entidad Coche.
+_Ejemplo 1_: en este ejemplo, un conductor puede conducir como mínimo un coche y como máximo un solo coche. Por lo tanto, la participación de la entidad Conductor en la relación se expresa como (1,1), lo que indica que no puede conducir más de un coche. Esta participación se coloca gráficamente en el lado opuesto al de la entidad Conductor, es decir, cerca de la entidad Coche.
 
 De manera similar, un coche solo puede ser conducido por un conductor, tanto como mínimo como máximo. Así, la participación de Coche en la relación también se representa como (1,1) y se coloca junto a la entidad Conductor en la representación gráfica. Por lo tanto, al combinar las participaciones máximas de ambas entidades, obtenemos una cardinalidad 1:1, lo que significa que cada conductor está asociado con un solo coche y viceversa.
 
 ![][12]
 
-Ejemplo 2: en este caso, un cliente puede comprar como mínimo un coche, pero también puede adquirir más de uno, lo que se representa con la letra "n". Esto indica que la participación del Cliente en la relación con Coche es de (1,n), y se coloca junto a la entidad Coche en el diagrama.
+_Ejemplo 2_: en este caso, un cliente puede comprar como mínimo un coche, pero también puede adquirir más de uno, lo que se representa con la letra "n". Esto indica que la participación del Cliente en la relación con Coche es de (1,n), y se coloca junto a la entidad Coche en el diagrama.
 
 Por otro lado, un coche puede ser comprado como mínimo por un cliente y como máximo también por un solo cliente, lo que da una participación de (1,1). Este valor se coloca junto a la entidad Cliente en la representación gráfica. Al juntar las participaciones máximas, obtenemos una cardinalidad de 1, lo que significa que un cliente puede estar relacionado con varios coches, pero cada coche solo puede estar asociado con un único cliente.
 
 ![][13]
 
-Ejemplo 3: en este ejemplo, un empleado trabaja en al menos un departamento, pero puede estar asignado a más de uno. Este "varios" se representa con la letra "n", lo que da una participación de (1,n). Esta participación se coloca en el lado opuesto a la entidad Empleado, es decir, junto a Departamento en el diagrama.
+_Ejemplo 3_: en este ejemplo, un empleado trabaja en al menos un departamento, pero puede estar asignado a más de uno. Este "varios" se representa con la letra "n", lo que da una participación de (1,n). Esta participación se coloca en el lado opuesto a la entidad Empleado, es decir, junto a Departamento en el diagrama.
 
 De manera similar, un departamento puede tener como mínimo un empleado, pero puede incluir a varios empleados. Esta participación también se representa como (1,n), y se coloca junto a la entidad Empleado en el gráfico. Al combinar ambas participaciones máximas, obtenemos una cardinalidad N, lo que significa que un empleado puede trabajar en varios departamentos, y un departamento puede tener varios empleados.
 
