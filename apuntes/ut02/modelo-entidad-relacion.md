@@ -95,7 +95,6 @@ Una __relación__ en el contexto de bases de datos es la conexión o vínculo qu
 
 ![][06]
 
-
 Por lo general, el nombre de la relación suele ser descriptivo de la relación, por ejemplo, si estamos relacionando las entidades _CLIENTE_ y _COCHE_, podríamos asignar _compra_, para indicar la acción que conecta a las entidades. Sin embargo, estos nombres más descriptivos pueden a veces causar confusión cuando estamos tratando de identificar la cardinalidad (es decir, el número de ocurrencias que puede tener una entidad en la relación), por lo que es importante elegir la nomenclatura con cuidado.
 
 Cada relación involucra un conjunto de entidades participantes, que son las entidades vinculadas por esa relación. El grado de la relación hace referencia al número de entidades que participan en ella. Si dos entidades están conectadas, hablamos de una relación de grado 2, también conocida como relación binaria. Por ejemplo, la relación CLIENTE-COCHE es binaria porque conecta dos entidades distintas.
