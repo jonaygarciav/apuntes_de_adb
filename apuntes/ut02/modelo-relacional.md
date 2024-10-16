@@ -37,4 +37,42 @@ En este caso, se define la estructura de la tabla PERSONAS con sus correspondien
 
 ![][01]
 
+Para identificar de manera única cada registro en una tabla del modelo relacional, se utiliza lo que se conoce como clave primaria o principal. Esta clave se compone de uno o varios atributos de la tabla, y su función es garantizar que no haya dos registros (filas) con el mismo valor en estos atributos.
+
+En algunas tablas, puede haber más de una combinación de atributos que permita identificar de manera única una fila; estas combinaciones se conocen como claves candidatas. Sin embargo, entre todas las claves candidatas, se selecciona una que será utilizada como la clave primaria de la relación. Es importante destacar que los atributos que forman parte de la clave primaria no pueden contener valores nulos, ya que su función es asegurar la unicidad de los registros.
+
+* __Clave primaria__: atributo o conjunto de atributos que identifican de manera única cada fila de una tabla. No pueden ser nulos.
+* __Claves candidatas__: otras combinaciones posibles de atributos que también podrían identificar unívocamente las filas, pero de las cuales solo una se elige como clave primaria.
+
+### Elementos y propiedades del modelo relacional
+
+Una relación o tabla en el modelo relacional representa las entidades de las que se desea almacenar información en la base de datos (BD). Está compuesta por:
+
+* __Filas__ (también llamadas _registros_ o _tuplas_): cada fila representa una ocurrencia específica de la entidad.
+* __Columnas__ (también conocidas como _atributos_ o _campos_): cada columna corresponde a una propiedad de la entidad.
+
+Propiedades de las relaciones:
+
+* __Nombre único__: cada relación tiene un nombre distinto de todas las demás relaciones en la misma base de datos.
+* __Nombres de atributos únicos__: no pueden existir dos atributos con el mismo nombre dentro de la misma relación.
+* __El orden de los atributos no es importante__: no hay un orden fijo para las columnas o atributos.
+* __Tuplas únicas__: cada tupla debe ser única; no se permiten tuplas duplicadas en una relación. Como mínimo, las tuplas deben diferenciarse en su clave primaria.
+* __El orden de las tuplas no es importante__: no hay un orden predeterminado para los registros o filas en la tabla.
+
+Conceptos clave:
+
+* __Clave candidata__: es un atributo o conjunto de atributos que puede identificar de manera única una tupla en la relación. Existen varias claves candidatas, y cualquiera de ellas podría usarse como clave principal.
+* __Clave principal__: es la clave candidata que se elige como identificador único de las tuplas. Sirve para asegurar que cada registro en la tabla sea único.
+* __Clave alternativa__: todas las claves candidatas que no se seleccionan como clave principal se denominan claves alternativas.
+* __Integridad de la entidad__: la clave principal no puede contener valores nulos. Esto garantiza que cada tupla esté identificada de manera única.
+* __Dominio de un atributo__: el conjunto de valores permitidos que un atributo puede asumir.
+* __Clave externa__ (_foránea_ o _ajena_): es un atributo o conjunto de atributos que actúa como clave principal en otra relación. Las claves externas son fundamentales para mantener la integridad referencial, ya que los valores presentes en la clave externa deben coincidir con valores existentes en la clave principal de la tabla relacionada.
+
+Este conjunto de reglas asegura la coherencia y consistencia de los datos en una base de datos relacional, permitiendo una organización eficiente y evitando duplicidades o inconsistencias en la información.
+
+### Transformación de un esquema E/R a un esquema relacional
+
+Para traducir un Modelo Entidad/Relación (E/R) al modelo relacional, se deben seguir varias reglas o normas que guían el proceso de transformación de las entidades, relaciones y atributos del modelo conceptual a una estructura lógica basada en tablas.
+
+
 [01]: ../img/ut02/modelo-relacional01.png "01"

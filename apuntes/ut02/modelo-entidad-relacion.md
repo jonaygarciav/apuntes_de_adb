@@ -1,9 +1,17 @@
-# Diseño Logico de Base de Datos
+# Modelo Entidad/Relación
 
 * Introducción
-    * Diseño de base de datos
-         * Fase de Análisis
-         * Modelo Entidad/Relación
+* Diseño de base de datos
+     * Fase de Análisis: Especificación de Requisitos de Software (E.R.S.)
+     * Fase 1 del Diseño: Diseño Conceptual – Modelo Entidad/Relación (E/R)
+     * Fase 2 del Diseño: Diseño Lógico – Modelo Relacional
+     * Fase 3 del Diseño: Diseño Físico – Modelo Físico
+* Modelo Entidad/Relación
+     * Entidades
+     * Atributos
+     * Relaciones
+* Modelo Entidad/Relación extendido
+    * Relaciones de jerarquía
 
 ## Introducción
 
@@ -155,6 +163,23 @@ De manera similar, un departamento puede tener como mínimo un empleado, pero pu
 
 ![][16]
 
+__Atributos propios de una relación__
+
+En una relación de base de datos, los atributos propios de una relación son aquellos que no pertenecen a ninguna de las entidades que se están relacionando, sino que son exclusivos de la relación en sí. Esto ocurre porque estos atributos dependen de ambas entidades que participan en la relación.
+
+Ejemplo: Relación `compra` entre Cliente y Producto:
+
+![][17]
+
+Imagina que tienes dos entidades: Cliente y Producto. Cada una tiene sus propios atributos:
+
+* __Cliente__:  código, nombre, dirección, edad, teléfono.
+* __Producto__: código, nombre, descripción, precio por unidad.
+
+Sin embargo, cuando un cliente compra un producto, podrías necesitar registrar cuántas unidades de ese producto ha comprado. Aquí es donde entra en juego el atributo Cantidad. Este valor no pertenece exclusivamente ni al cliente ni al producto, sino que depende de ambos, ya que un cliente puede comprar varios productos en diferentes cantidades, y un mismo producto puede ser comprado por varios clientes en diferentes cantidades.
+
+Por eso, _cantidad_ es un atributo propio de la relación `compra`», ya que solo tiene sentido dentro del contexto de la interacción entre un cliente y un producto.
+
 ## Modelo Entidad/Relación (E/R) Extendido
 
 El __modelo Entidad/Relación extendido__ (E/R extendido) se basa en el modelo clásico Entidad/Relación, pero añade nuevas características para manejar situaciones más complejas, como las relaciones de jerarquía. Este tipo de relación ocurre cuando una entidad está vinculada a otras entidades a través de una relación de tipo "_es un tipo de_". En esencia, estas relaciones permiten modelar jerarquías o clasificaciones dentro de los datos.
@@ -165,7 +190,7 @@ Si intentáramos representar estas relaciones utilizando el modelo clásico Enti
 
 Este tipo de modelado es especialmente útil cuando se manejan sistemas con jerarquías de objetos, donde una entidad puede tener subtipos que comparten características comunes con la entidad padre, pero también pueden tener atributos o relaciones específicas.
 
-![][17]
+![][18]
 
 Para simplificar y evitar la repetición innecesaria de la misma relación en un diagrama, en el modelo Entidad/Relación extendido (E/R extendido) se introducen símbolos especiales para manejar las relaciones jerárquicas. En lugar de utilizar múltiples rombos para la relación "_es un tipo de_", se reemplaza por un triángulo invertido. Este triángulo indica que las entidades que se encuentran en la parte inferior son subtipos o entidades hijas de la entidad en la parte superior, que se denomina supertipo o entidad padre.
 
@@ -175,8 +200,47 @@ En lugar de tener múltiples relaciones repetidas como "Felino es un tipo de Ani
 
 Este enfoque permite representar las jerarquías de manera más clara y eficiente, haciendo que el diagrama sea más fácil de interpretar y manteniendo la integridad del diseño sin redundancias.
 
-![][18]
+![][19]
 
+### Relaciones de jerarquía
+
+Las relaciones de jerarquía en bases de datos permiten organizar entidades en subentidades, representando categorías o clasificaciones dentro de una entidad más amplia. Existen varios tipos de relaciones de jerarquía que determinan cómo se distribuyen y manejan estas subentidades en una base de datos:
+
+* __Relación total__: en este tipo de jerarquía, se subdivide una entidad en varias subentidades, y todos los elementos de la entidad principal deben pertenecer a una de estas subentidades. POr ejemplo, Si subdividimos la entidad Empleado en Ingeniero, Secretario y Técnico, todos los empleados en la base de datos deben pertenecer a uno de estos tres grupos. No puede haber empleados que no estén clasificados como alguno de esos tipos.
+* __Relación parcial__: en este caso, la entidad principal se subdivide en subentidades, pero no todos los elementos de la entidad principal deben pertenecer a una de estas subentidades. Por ejemplo, si subdividimos Empleado en Ingeniero, Secretario y Técnico, pero pueden existir empleados que no pertenezcan a ninguno de estos tres tipos. Por ejemplo, podría haber Gerentes que no encajan en esas categorías.
+* __Relación solapada__: en esta jerarquía, es posible que un mismo elemento de la entidad principal pertenezca a más de una subentidad al mismo tiempo. Por ejemplo, un empleado puede ser Ingeniero y Secretario al mismo tiempo. En este caso, hay empleados que cumplen con las condiciones para estar en dos o más subentidades.
+* __Relación exclusiva__: aquí, se subdivide la entidad en subentidades, pero cada elemento de la entidad principal puede pertenecer solo a una subentidad. No es posible que un elemento esté en más de una subentidad simultáneamente.
+Ejemplo: Un empleado solo puede ser Ingeniero, Secretario o Técnico, pero no puede ser más de uno de estos a la vez.
+
+Estas relaciones son útiles para modelar jerarquías en bases de datos, permitiendo flexibilidad y precisión en cómo se organiza la información según las reglas y necesidades del sistema.
+
+![][20]
+
+__Jerarquía solapada y parcial__
+
+![][21]
+
+Un empleado podría ser simultáneamente técnico, científico y astronauta o técnico y astronauta, etc. (solapada). Además puede ser técnico, astronauta, científico o desempeñar otro empleo diferente (parcial).
+
+__Jerarquía solapada y total__
+
+![][22]
+
+Un empleado podría ser simultáneamente técnico, científico y astronauta o técnico y astronauta, etc. (solapada). Además puede ser solamente técnico, astronauta o científico (total).
+
+__Jerarquía exclusiva y parcial__
+
+![][23]
+
+Un empleado sólo puede desempeñar una de las tres ocupaciones (exclusiva) . Además puede ser técnico, o ser astronauta, o ser científico o también desempeñar otro empleo diferente, por ejemplo, podría ser FÍSICO (parcial).
+
+![][24]
+
+__Jerarquía exclusiva y total__
+
+![][25]
+
+Un empleado puede ser solamente técnico, astronauta o científico (total) y no ocupar más de un puesto (exclusiva).
 
 [01]: ../img/ut02/fases-diseno-bbdd.png "01"
 [02]: ../img/ut02/elementos-modelo-entidad-relacion.png "02"
@@ -194,5 +258,12 @@ Este enfoque permite representar las jerarquías de manera más clara y eficient
 [14]: ../img/ut02/participacion-entidad01.png "14"
 [15]: ../img/ut02/participacion-entidad02.png "15"
 [16]: ../img/ut02/participacion-entidad03.png "16"
-[17]: ../img/ut02/modelo-er-extendido01.png "17"
-[18]: ../img/ut02/modelo-er-extendido02.png "18"
+[17]: ../img/ut02/atributos-propios-relacion.png "17"
+[18]: ../img/ut02/modelo-er-extendido01.png "18"
+[19]: ../img/ut02/modelo-er-extendido02.png "19"
+[20]: ../img/ut02/relaciones-jerarquia01.png "20"
+[21]: ../img/ut02/relaciones-jerarquia01.png "21"
+[22]: ../img/ut02/relaciones-jerarquia02.png "22"
+[23]: ../img/ut02/relaciones-jerarquia03.png "23"
+[24]: ../img/ut02/relaciones-jerarquia04.png "24"
+[25]: ../img/ut02/relaciones-jerarquia05.png "25"
