@@ -12,7 +12,7 @@ Conocimientos:
 
 ![][01]
 
-[01]: ../../img/apuntes/ut00/oferta-empleo01.png "01"
+[01]: ../img/ut00/oferta-empleo01.png "01"
 
 ## Oferta 2
 
@@ -27,7 +27,7 @@ Conocimientos:
 
 ![][02]
 
-[02]: ../../img/apuntes/ut00/oferta-empleo02.png "02"
+[02]: ../img/ut00/oferta-empleo02.png "02"
 
 ## Oferta 3
 
@@ -41,7 +41,7 @@ Conocimientos:
 
 ![][03]
 
-[03]: ../../img/apuntes/ut00/oferta-empleo03.png "03"
+[03]: ../img/ut00/oferta-empleo03.png "03"
 
 ## Oferta 4
 
@@ -56,4 +56,4 @@ Conocimientos:
 
 ![][04]
 
-[04]: ../../img/apuntes/ut00/oferta-empleo04.png "04"
+[04]: ../img/ut00/oferta-empleo04.png "04"
