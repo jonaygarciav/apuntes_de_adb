@@ -14,26 +14,26 @@ El modelo relacional ha dominado el mercado de los SGBD principalmente por dos r
 * __Fundamentos sólidos__: el modelo relacional se basa en el álgebra relacional, que es un modelo matemático con principios bien establecidos, lo que le otorga una base teórica robusta y confiable. Esto garantiza un manejo de datos eficaz y coherente.
 * __Simplicidad y eficacia__: el modelo relacional utiliza tablas (también llamadas relaciones) como estructura fundamental, lo que resulta en un sistema simple pero potente para representar y manipular los datos. Las tablas están formadas por filas y columnas, donde cada fila (o tupla) representa una instancia de una entidad, y cada columna (o atributo) representa una propiedad de dicha entidad.
 
-Si en una base de datos queremos representar la entidad __PERSONA__, el modelo relacional la traducirá a una tabla llamada "_PERSONAS_". Los atributos de la entidad, como nombre, edad, y dirección, se convertirán en las columnas de la tabla. Cada fila de la tabla "_PERSONAS_" contendrá los datos específicos de una persona, es decir, cada fila será un registro o una instancia de la entidad _PERSONA_.
+Si en una base de datos queremos representar la entidad __PERSONA__, el modelo relacional la traducirá a una tabla llamada __PERSONAS__. Los atributos de la entidad, como nombre, edad, y dirección, se convertirán en las columnas de la tabla. Cada fila de la tabla __PERSONAS__ contendrá los datos específicos de una persona, es decir, cada fila será un registro o una instancia de la entidad __PERSONA__.
 
 Este enfoque permite que las bases de datos relacionales sean fácilmente escalables y adaptables a una gran variedad de aplicaciones, lo que contribuye a su popularidad y uso extendido en muchos sistemas comerciales y de gestión de información.
 
 ## Estructura de datos relacional
 
-| D.N.I.     | Nombre   | Apellido  | Nacimiento  | Sexo | Estado civil |
-|------------|----------|-----------|-------------|------|--------------|
-| 45.123.654 | Pedro    | Gómez     | 12/03/1980  | H    | Casado       |
-| 23.456.789 | Ana      | Martínez  | 05/07/1975  | M    | Soltera      |
-| 78.654.321 | Carlos   | Pérez     | 19/11/1990  | H    | Divorciado   |
+| DNI        | Nombre   | Apellido1 | Apellido2 | Nacimiento  | Sexo | Estado civil |
+|------------|----------|-----------|-----------|-------------|------|--------------|
+| 45.123.654 | Pedro    | Gómez     | Suárez    | 12/03/1980  | H    | Casado       |
+| 23.456.789 | Ana      | Martínez  | Torrez    | 05/07/1975  | M    | Soltera      |
+| 78.654.321 | Carlos   | Pérez     | González  | 19/11/1990  | H    | Divorciado   |
 
 En el modelo relacional, una relación se refiere únicamente a la definición estructural de una tabla. Esta definición incluye el nombre de la relación (o tabla) y la lista de atributos que componen dicha tabla. Es importante destacar que, en este contexto, la relación no implica aún los datos almacenados, sino que se enfoca exclusivamente en cómo está organizada la tabla.
 
 Una manera de representar esta definición sería listando el nombre de la relación seguido de los nombres de los atributos que la conforman. Por ejemplo:
 
 * __Relación__: PERSONAS
-* __Atributos__: D.N.I., Nombre, Apellido, Fecha de Nacimiento, Sexo, Estado Civil
+* __Atributos__: DNI, Nombre, Apellido1, Apellido2, Fecha de Nacimiento, Sexo, Estado Civil
 
-En este caso, se define la estructura de la tabla PERSONAS con sus correspondientes atributos o columnas, como el D.N.I., el Nombre, el Apellido, etc.
+En este caso, se define la estructura de la tabla __PERSONAS__ con sus correspondientes atributos o columnas: DNI, Nombre, Apellido1, Apellido2, etc.
 
 ![][01]
 
@@ -138,10 +138,10 @@ Se tratará como una N:M. Se generará dos tablas, una de la propia entidad y su
 Entidad1: Identificador1, Atributo1.
 Relación: Identificador1, Identificador1, Atributo2.
 
-[01]: ../img/ut02/modelo-relacional/modelo-relacional01.png "01"
-[02]: ../img/ut02/modelo-relacional/ejemplo-diagrama-entidad-relacion.webp "02"
-[03]: ../img/ut02/modelo-relacional/entidad.webp "03"
-[04]: ../img/ut02/modelo-relacional/relaciones_n_m.webp "04"
+[01]: ../img/ut02/modelo-relacional/entidad01.png "01"
+[02]: ../img/ut02/modelo-relacional/diagrama-entidad-relacion.png "02"
+[03]: ../img/ut02/modelo-relacional/entidad02.png "03"
+[04]: ../img/ut02/modelo-relacional/relacion_n_m.png "04"
 [05]: ../img/ut02/modelo-relacional/relaciones_1_101.webp "05"
 [06]: ../img/ut02/modelo-relacional/relaciones_1_n02.webp "06"
 [07]: ../img/ut02/modelo-relacional/relaciones_1_101.webp "07"
