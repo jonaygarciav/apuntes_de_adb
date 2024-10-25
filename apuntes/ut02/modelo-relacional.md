@@ -18,7 +18,7 @@ Si en una base de datos queremos representar la entidad __PERSONA__, el modelo r
 
 Este enfoque permite que las bases de datos relacionales sean fácilmente escalables y adaptables a una gran variedad de aplicaciones, lo que contribuye a su popularidad y uso extendido en muchos sistemas comerciales y de gestión de información.
 
-### Estructura de datos relacional
+## Estructura de datos relacional
 
 | D.N.I.     | Nombre   | Apellido  | Nacimiento  | Sexo | Estado civil |
 |------------|----------|-----------|-------------|------|--------------|
@@ -44,7 +44,7 @@ En algunas tablas, puede haber más de una combinación de atributos que permita
 * __Clave primaria__: atributo o conjunto de atributos que identifican de manera única cada fila de una tabla. No pueden ser nulos.
 * __Claves candidatas__: otras combinaciones posibles de atributos que también podrían identificar unívocamente las filas, pero de las cuales solo una se elige como clave primaria.
 
-### Elementos y propiedades del modelo relacional
+## Elementos y propiedades del modelo relacional
 
 Una relación o tabla en el modelo relacional representa las entidades de las que se desea almacenar información en la base de datos (BD). Está compuesta por:
 
@@ -70,9 +70,82 @@ Conceptos clave:
 
 Este conjunto de reglas asegura la coherencia y consistencia de los datos en una base de datos relacional, permitiendo una organización eficiente y evitando duplicidades o inconsistencias en la información.
 
-### Transformación de un esquema E/R a un esquema relacional
+## Transformación de un esquema E/R a un esquema relacional
 
 Para traducir un Modelo Entidad/Relación (E/R) al modelo relacional, se deben seguir varias reglas o normas que guían el proceso de transformación de las entidades, relaciones y atributos del modelo conceptual a una estructura lógica basada en tablas.
 
+![][02]
 
-[01]: ../img/ut02/modelo-relacional01.png "01"
+### Entidades
+
+Cada entidad se transforma en una tabla. El identificador (o identificadores) de la entidad pasa a ser la clave principal de la relación y aparece subrayada o con la indicación: PK (Primary Key). Si hay clave alternativa esta se pone en «negrita».
+
+Ejemplo: Todas las entidades del ejemplo anterior generan tabla. En concreto, la entidad AULA genera la siguiente tabla:
+
+![][03]
+
+### Relaciones binarias 
+
+__Relaciones N:M__: Es el caso más sencillo. Siempre generan tabla. Se crea una tabla que incorpora como claves ajenas o foráneas FK (Foreign Key) cada una de las claves de las entidades que participan en la relación. La clave principal de esta nueva tabla está compuesta por dichos campos. Es importante resaltar que no se trata de 2 claves primarias, sino de una clave primaria compuesta por 2 campos. Si hay atributos propios, pasan a la tabla de la relación. Se haría exactamente igual si hubiera participaciones mínimas 0. Orden de los atributos en las claves compuestas: Se deben poner a la izquierda todos los atributos que forman la clave. El orden de los atributos que forman la clave vendrá determinado por las consultas que se vayan a realizar. Las tuplas de la tabla suelen estar ordenadas siguiendo como índice la clave. Por tanto, conviene poner primero aquel/los atributos por los que se va a realizar la consulta.
+
+Ejemplo: Realicemos el paso a tablas de la relación N:M entre MÓDULO (1,n) y ALUMNO (1,n). Este tipo de relación siempre genera tabla y los atributos de la relación, pasan a la tabla que ésta genera.
+
+![][04]
+
+__Relaciones 1:N__: Por lo general no generan tabla. Se dan 2 casos:
+
+* Caso 1: Si la entidad del lado «1» presenta participación (0,1), entonces se crea una nueva tabla para la relación que incorpora como claves ajenas las claves de ambas entidades. La clave principal de la relación será sólo la clave de la entidad del lado «N».
+* Caso 2: Para el resto de situaciones, la entidad del lado «N» recibe como clave ajena la clave de la entidad del lado «1». Los atributos propios de la relación pasan a la tabla donde se ha incorporado la clave ajena.
+
+Ejemplo de caso 1: Realicemos el paso a tablas de la relación 1:N entre PROFESOR (1,n) y EMPRESA (0,1). Como en el lado «1» encontramos participación mínima 0, se generará una nueva tabla.
+
+![][05]
+
+Ejemplo de caso 2: Realicemos el paso a tablas de la relación 1:N entre MÓDULO (1,1) y TEMA (1,n). Como no hay participación mínima «0» en el lado 1, no genera tabla y la clave principal del lado «1» pasa como foránea al lado «n».
+
+![][06]
+
+Relaciones 1:1: Por lo general no generan tabla. Se dan 3 casos:
+
+* Caso 1: Si las dos entidades participan con participación (0,1), entonces se crea una nueva tabla para la relación.
+* Caso 2: Si alguna entidad, pero no las dos, participa con participación mínima 0 (0,1), entonces se pone la clave ajena en dicha entidad, para evitar en lo posible, los valores nulos.
+* Caso 3: Si tenemos una relación 1:1 y ninguna tiene participación mínima 0, elegimos la clave principal de una de ellas y la introducimos como clave clave ajena en la otra tabla. Se elegirá una u otra forma en función de como se quiera organizar la información para facilitar las consultas. Los atributos propios de la relación pasan a la tabla donde se introduce la clave ajena.
+
+Ejemplo de caso 1: No se presenta ninguna situación así en el esquema estudiado. Una situación donde puede darse este caso es en HOMBRE (0,1) se casa con MUJER (0,1). Es similar al caso 1 del apartado anterior en relaciones 1:N, aunque en este caso debemos establecer una restricción de valor único para FK2.
+
+![][07]
+
+Ejemplo de caso 2 (y 3): Realicemos el paso a tablas de la relación 1:1 entre ALUMNO (1,1) y BECA (0,1). Como BECA tiene participación mínima 0, incorporamos en ella, como clave foránea, la clave de ALUMNO. Esta forma de proceder también es válida para el caso 3, pudiendo acoger la clave foránea cualquiera de las entidades.
+
+![][08]
+
+A continuación se muestra un resumen de los casos disponibles en relaciones N:M, 1:N y 1:1.
+
+![][09]
+
+### Relaciones Recursivas o Reflexivas
+
+En este tipo de relaciones se trata como una relación normal, la diferencia está es que es posible que al pasarlo al Modelo Relacional se repita dos veces un mismo campo para relacionarlo con sí mismo.
+
+![][10]
+
+Se tratará como una relación 1:N. Se generará una única tabla con todos los atributos que pueda tener, incluyendo los posibles campos de relación si los hubiere, haciendo repetición de la clave primaria como clave foránea para relacionarla consigo mismo.
+Entidad1: Identificador1, Atributo1, Identificador1, Atributo2.
+
+![][11]
+
+Se tratará como una N:M. Se generará dos tablas, una de la propia entidad y sus atributos y otra de la relación en los que incluirá las dos claves externas y los atributos de la relación si hubiere.
+Entidad1: Identificador1, Atributo1.
+Relación: Identificador1, Identificador1, Atributo2.
+
+[01]: ../img/ut02/modelo-relacional/modelo-relacional01.png "01"
+[02]: ../img/ut02/modelo-relacional/ejemplo-diagrama-entidad-relacion.webp "02"
+[03]: ../img/ut02/modelo-relacional/entidad.webp "03"
+[04]: ../img/ut02/modelo-relacional/relaciones-n-m.webp "04"
+[05]: ../img/ut02/modelo-relacional/relaciones-1-n01.webp "05"
+[06]: ../img/ut02/modelo-relacional/relaciones-1-n02.webp "06"
+[07]: ../img/ut02/modelo-relacional/relaciones-1-101.webp "07"
+[08]: ../img/ut02/modelo-relacional/relaciones-1-102.webp "08"
+[09]: ../img/ut02/modelo-relacional/relaciones-resumen.webp "09"
+[10]: ../img/ut02/modelo-relacional/relaciones-reflexivas01.webp "10"
+[11]: ../img/ut02/modelo-relacional/relaciones-reflexivas02.webp "11"
