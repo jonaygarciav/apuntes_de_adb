@@ -26,7 +26,7 @@ Este enfoque permite que las bases de datos relacionales sean fácilmente escala
 | 23.456.789 | Ana      | Martínez  | Torrez    | 05/07/1975  | M    | Soltera      |
 | 78.654.321 | Carlos   | Pérez     | González  | 19/11/1990  | H    | Divorciado   |
 
-En el modelo relacional, una relación se refiere únicamente a la definición estructural de una tabla. Esta definición incluye el nombre de la relación (o tabla) y la lista de atributos que componen dicha tabla. Es importante destacar que, en este contexto, la relación no implica aún los datos almacenados, sino que se enfoca exclusivamente en cómo está organizada la tabla.
+En el modelo relacional, una relación se refiere únicamente a la definición estructural de una tabla. Esta definición incluye el nombre de la relación (o tabla) y la lista de atributos que componen dicha relación. Es importante destacar que, en este contexto, la relación no implica aún los datos almacenados, sino que se enfoca exclusivamente en cómo está organizada la tabla.
 
 Una manera de representar esta definición sería listando el nombre de la relación seguido de los nombres de los atributos que la conforman. Por ejemplo:
 
@@ -138,14 +138,14 @@ Se tratará como una N:M. Se generará dos tablas, una de la propia entidad y su
 Entidad1: Identificador1, Atributo1.
 Relación: Identificador1, Identificador1, Atributo2.
 
-[01]: ../img/ut02/modelo-relacional/entidad01.png "01"
-[02]: ../img/ut02/modelo-relacional/diagrama-entidad-relacion.png "02"
-[03]: ../img/ut02/modelo-relacional/entidad02.png "03"
-[04]: ../img/ut02/modelo-relacional/relacion_n_m.png "04"
-[05]: ../img/ut02/modelo-relacional/relaciones_1_101.webp "05"
-[06]: ../img/ut02/modelo-relacional/relaciones_1_n02.webp "06"
-[07]: ../img/ut02/modelo-relacional/relaciones_1_101.webp "07"
-[08]: ../img/ut02/modelo-relacional/relaciones_1_102.webp "08"
-[09]: ../img/ut02/modelo-relacional/relaciones-resumen.webp "09"
-[10]: ../img/ut02/modelo-relacional/relaciones-reflexivas01.webp "10"
-[11]: ../img/ut02/modelo-relacional/relaciones-reflexivas02.webp "11"
+[01]: ../../img/apuntes/ut02/modelo-relacional/entidad01.png "01"
+[02]: ../../img/apuntes/ut02/modelo-relacional/diagrama-entidad-relacion.png "02"
+[03]: ../../img/apuntes/ut02/modelo-relacional/entidad02.png "03"
+[04]: ../../img/apuntes/ut02/modelo-relacional/relacion_n_m.png "04"
+[05]: ../../img/apuntes/ut02/modelo-relacional/relaciones_1_101.webp "05"
+[06]: ../../img/apuntes/ut02/modelo-relacional/relaciones_1_n02.webp "06"
+[07]: ../../img/apuntes/ut02/modelo-relacional/relaciones_1_101.webp "07"
+[08]: ../../img/apuntes/ut02/modelo-relacional/relaciones_1_102.webp "08"
+[09]: ../../img/apuntes/ut02/modelo-relacional/relaciones-resumen.webp "09"
+[10]: ../../img/apuntes/ut02/modelo-relacional/relaciones-reflexivas01.webp "10"
+[11]: ../../img/apuntes/ut02/modelo-relacional/relaciones-reflexivas02.webp "11"

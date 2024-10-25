@@ -184,6 +184,6 @@ _SQL_ es un lenguaje ampliamente utilizado en la mayoría de los Sistemas Gestor
 
 Las bases de datos son esenciales para la gestión de la información en aplicaciones modernas, proporcionando una estructura que permite a las empresas y organizaciones almacenar, acceder y analizar datos de manera segura y eficiente. La elección del tipo de base de datos depende de factores como la naturaleza de los datos, las necesidades de rendimiento, la escalabilidad y la complejidad de las relaciones entre los datos.
 
-[01]: ../img/ut01/tabla-registros-campos-clave-indice.png "01"
-[02]: ../img/ut01/bbdd-relacional.png "02"
-[03]: ../img/ut01/tiobe-index.png "03"
+[01]: ../../img/apuntes/ut01/tabla-registros-campos-clave-indice.png "01"
+[02]: ../../img/apuntes/ut01/bbdd-relacional.png "02"
+[03]: ../../img/apuntes/ut01/tiobe-index.png "03"

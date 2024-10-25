@@ -484,13 +484,13 @@ Tipos de Datos:
 
 Redis se usa comúnmente para almacenar en caché datos que se acceden frecuentemente, mejorando así el rendimiento de las aplicaciones.
 
-[01]: ../img/ut01/db-engines.png "01"
-[02]: ../img/ut01/mysql-logo.png "02"
-[03]: ../img/ut01/mariadb-logo.png "03"
-[04]: ../img/ut01/oracle-logo.png "04"
-[05]: ../img/ut01/postgresql-logo.png "05"
-[06]: ../img/ut01/sqlite3-logo.png "06"
-[07]: ../img/ut01/sqlsersqlite3-logo.png "07"
-[08]: ../img/ut01/sqlserver-logo.png "08"
-[09]: ../img/ut01/mongodb-logo.png "09"
-[10]: ../img/ut01/redis-logo.png "10"
+[01]: ../../img/apuntes/ut01/db-engines.png "01"
+[02]: ../../img/apuntes/ut01/mysql-logo.png "02"
+[03]: ../../img/apuntes/ut01/mariadb-logo.png "03"
+[04]: ../../img/apuntes/ut01/oracle-logo.png "04"
+[05]: ../../img/apuntes/ut01/postgresql-logo.png "05"
+[06]: ../../img/apuntes/ut01/sqlite3-logo.png "06"
+[07]: ../../img/apuntes/ut01/sqlsersqlite3-logo.png "07"
+[08]: ../../img/apuntes/ut01/sqlserver-logo.png "08"
+[09]: ../../img/apuntes/ut01/mongodb-logo.png "09"
+[10]: ../../img/apuntes/ut01/redis-logo.png "10"

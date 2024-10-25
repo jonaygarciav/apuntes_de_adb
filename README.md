@@ -15,3 +15,4 @@ UT01: Sistemas de almacenamiento de la información
 UT02: Diseño lógico de una BBDD
 * Modelo Entidad/Relación ([Apuntes](./apuntes/ut02/modelo-entidad-relacion.md) | [Ejercicios](./ejercicios/ut02/modelo-entidad-relacion.md))
 * Modelo Relacional ([Apuntes](./apuntes/ut02/modelo-relacional.md) | [Ejercicios](./ejercicios/ut02/modelo-relacional.md))
+* Normalización ([Apuntes](./apuntes/ut02/normalizacion.md) | [Ejercicios](./ejercicios/ut02/normalizacion.md))
