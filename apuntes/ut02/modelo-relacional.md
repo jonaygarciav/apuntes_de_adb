@@ -127,25 +127,31 @@ A continuación se muestra un resumen de los casos disponibles en relaciones N:M
 
 En este tipo de relaciones se trata como una relación normal, la diferencia está es que es posible que al pasarlo al Modelo Relacional se repita dos veces un mismo campo para relacionarlo con sí mismo.
 
+Caso 1: Se tratará como una relación 1:N. Se generará una única tabla con todos los atributos que pueda tener, incluyendo los posibles campos de relación si los hubiere, haciendo repetición de la clave primaria como clave foránea para relacionarla consigo mismo.
+
 ![][10]
 
-Se tratará como una relación 1:N. Se generará una única tabla con todos los atributos que pueda tener, incluyendo los posibles campos de relación si los hubiere, haciendo repetición de la clave primaria como clave foránea para relacionarla consigo mismo.
-Entidad1: Identificador1, Atributo1, Identificador1, Atributo2.
+> Nota: no puede haber dos campos con el mismos nombre en la misma tabla, por lo que debemos cambiar el nombre de la clave para que haga referencia al papel que desempeña como clave foránea.
 
 ![][11]
 
-Se tratará como una N:M. Se generará dos tablas, una de la propia entidad y sus atributos y otra de la relación en los que incluirá las dos claves externas y los atributos de la relación si hubiere.
-Entidad1: Identificador1, Atributo1.
-Relación: Identificador1, Identificador1, Atributo2.
+Caso2: se tratará como una N:M. Se generará dos tablas, una de la propia entidad y sus atributos y otra de la relación en los que incluirá las dos claves externas y los atributos de la relación si hubiere.
+
+![][12]
+
+![][13]
+
 
 [01]: ../img/ut02/modelo-relacional/entidad01.png "01"
 [02]: ../img/ut02/modelo-relacional/diagrama-entidad-relacion.png "02"
 [03]: ../img/ut02/modelo-relacional/entidad02.png "03"
 [04]: ../img/ut02/modelo-relacional/relacion-muchos-a-muchos.png "04"
-[05]: ../img/ut02/modelo-relacional/relacion-uno-a-uno01.png "05"
-[06]: ../img/ut02/modelo-relacional/relaciones_1_n02.webp "06"
-[07]: ../img/ut02/modelo-relacional/relaciones_1_101.webp "07"
-[08]: ../img/ut02/modelo-relacional/relaciones_1_102.webp "08"
+[05]: ../img/ut02/modelo-relacional/relacion-uno-a-muchos01.png "05"
+[06]: ../img/ut02/modelo-relacional/relacion-uno-a-muchos02.png "06"
+[07]: ../img/ut02/modelo-relacional/relacion-uno-a-uno01.png "07"
+[08]: ../img/ut02/modelo-relacional/relacion_uno-a-uno02.png "08"
 [09]: ../img/ut02/modelo-relacional/relaciones-resumen.webp "09"
-[10]: ../img/ut02/modelo-relacional/relaciones-reflexivas01.webp "10"
-[11]: ../img/ut02/modelo-relacional/relaciones-reflexivas02.webp "11"
+[10]: ../img/ut02/modelo-relacional/relacion-recursiva01.png "10"
+[11]: ../img/ut02/modelo-relacional/relacion-recursiva02.png "11"
+[12]: ../img/ut02/modelo-relacional/relacion-recursiva03.png "12"
+[13]: ../img/ut02/modelo-relacional/relacion-recursiva04.png "13"
