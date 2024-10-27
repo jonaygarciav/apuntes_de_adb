@@ -131,7 +131,7 @@ Caso 1: Se tratará como una relación 1:N. Se generará una única tabla con to
 
 ![][10]
 
-> Nota: no puede haber dos campos con el mismos nombre en la misma tabla, por lo que debemos cambiar el nombre de la clave para que haga referencia al papel que desempeña como clave foránea.
+> __Nota__: no puede haber dos campos con el mismos nombre en la misma tabla, por lo que debemos cambiar el nombre de la clave para que haga referencia al papel que desempeña como clave foránea.
 
 ![][11]
 
