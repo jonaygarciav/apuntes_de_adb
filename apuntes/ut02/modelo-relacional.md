@@ -20,11 +20,11 @@ Este enfoque permite que las bases de datos relacionales sean fácilmente escala
 
 ## Estructura de datos relacional
 
-| DNI        | Nombre   | Apellido1 | Apellido2 | Nacimiento  | Sexo | Estado civil |
-|------------|----------|-----------|-----------|-------------|------|--------------|
-| 45.123.654 | Pedro    | Gómez     | Suárez    | 12/03/1980  | H    | Casado       |
-| 23.456.789 | Ana      | Martínez  | Torrez    | 05/07/1975  | M    | Soltera      |
-| 78.654.321 | Carlos   | Pérez     | González  | 19/11/1990  | H    | Divorciado   |
+| DNI        | Nombre   | Apellido1 | Apellido2 | Fecha Nacimiento  | Sexo | Estado Civil |
+|------------|----------|-----------|-----------|-------------------|------|--------------|
+| 45.123.654 | Pedro    | Gómez     | Suárez    | 12/03/1980        | H    | Casado       |
+| 23.456.789 | Ana      | Martínez  | Torrez    | 05/07/1975        | M    | Soltera      |
+| 78.654.321 | Carlos   | Pérez     | González  | 19/11/1990        | H    | Divorciado   |
 
 En el modelo relacional, una relación se refiere únicamente a la definición estructural de una tabla. Esta definición incluye el nombre de la relación (o tabla) y la lista de atributos que componen dicha relación. Es importante destacar que, en este contexto, la relación no implica aún los datos almacenados, sino que se enfoca exclusivamente en cómo está organizada la tabla.
 
@@ -141,6 +141,50 @@ Caso2: se tratará como una N:M. Se generará dos tablas, una de la propia entid
 
 ![][13]
 
+### Jerarquía 
+
+Existen varias soluciones para realizar el paso al modelo relacional de una jerarquía. La solución que se elija en cada caso dependerá del tipo de jerarquía que estemos resolviendo: total, parcial, inclusiva o exclusiva.
+Las 3 soluciones posibles que podemos aplicar son las siguientes:
+
+1. Crear una única tabla para la superclase. En este caso todos los atributos de las subclases se guardarían en la superclase.
+2. Crear una tabla sólo para las subclases. En este caso los atributos de la superclase habría que guardarlos en cada una de las subclases.
+3. Crear una tabla para cada una de las entidades, tanto para la superclase como las subclases. En este caso las subclases tendrían que guardar la clave primaria de la superclase.
+
+__Ejemplo de especialización exclusiva/total__
+
+![][14]
+
+En este caso sería adecuado utilizar la solución 2 o 3:
+
+* Solución 2: Crear una tabla sólo para las subclases.
+    * EPISODIO(id, título, sinopsis, imagen, archivo_vídeo, duración temporada, número)
+    * PELÍCULA(id, título, sinopsis, imagen, archivo_vídeo, duración puntuación_imdb, director)
+
+* Solución 3: Crear una tabla para cada una de las entidades.
+    * VÍDEO(id, título, sinopsis, imagen, archivo_vídeo, duración, tipo)
+    * EPISODIO(id, temporada, número)
+        * id: FK de VÍDEO(id)
+    * PELÍCULA(id, puntuación_imdb, director)
+        * id: FK de VÍDEO(id)
+
+__Ejemplo de especialización inclusiva/total__
+
+![][15]
+
+En este caso podríamos utilizar cualquiera de las tres soluciones, dependerá del contexto del ejercicio y de
+cómo se relacionen estas entidades con el resto de entidades del diagrama.
+
+* Solución 1. Crear una única tabla para la superclase.
+    * LIBRO(id, título, isbn, año_publicación, descripción, tipo, lugar_impresión, fecha_impresión, precio_papel,  tamaño_archivo, precio_ebook)
+* Solución 2: Crear una tabla sólo para las subclases.
+    * LIBRO_PAPEL(id, título, isbn, año_publicación, descripción, lugar_impresión, fecha_impresión, precio)
+    * LIBRO_EBOOK(id, título, isbn, año_publicación, descripción, tamaño_archivo, precio)
+* Solución 3: Crear una tabla para cada una de las entidades.
+    * LIBRO(id, título, isbn, año_publicación, descripción, tipo)
+    * LIBRO_PAPEL(id, fecha_impresión, precio)
+        * id: FK de LIBRO(id)
+    * LIBRO_EBOOK(id, tamaño_archivo, precio)
+        * id: FK de LIBRO(id)
 
 [01]: ../img/ut02/modelo-relacional/entidad01.png "01"
 [02]: ../img/ut02/modelo-relacional/diagrama-entidad-relacion.png "02"
@@ -155,3 +199,5 @@ Caso2: se tratará como una N:M. Se generará dos tablas, una de la propia entid
 [11]: ../img/ut02/modelo-relacional/relacion-recursiva02.png "11"
 [12]: ../img/ut02/modelo-relacional/relacion-recursiva03.png "12"
 [13]: ../img/ut02/modelo-relacional/relacion-recursiva04.png "13"
+[14]: ../img/ut02/modelo-relacional/jerarquia-exclusiva-total.png "14"
+[15]: ../img/ut02/modelo-relacional/jerarquia-inclusiva-total.png "15"

@@ -99,7 +99,7 @@ Por lo general, el nombre de la relación suele ser descriptivo de la relación,
 
 Cada relación involucra un conjunto de entidades participantes, que son las entidades vinculadas por esa relación. El grado de la relación hace referencia al número de entidades que participan en ella. Si dos entidades están conectadas, hablamos de una relación de grado 2, también conocida como relación binaria. Por ejemplo, la relación CLIENTE-COCHE es binaria porque conecta dos entidades distintas.
 
-Un caso particular es cuando una entidad se conecta consigo misma, situación que se denomina relación reflexiva. En este tipo de relaciones, una misma entidad puede tener varias interacciones consigo misma, como, por ejemplo, en un organigrama de empleados donde un empleado puede estar subordinado a otro empleado, lo que genera una relación jerárquica dentro de la misma entidad.
+Un caso particular es cuando una entidad se conecta consigo misma, situación que se denomina relación __recursiva__ o __reflexiva__. En este tipo de relaciones, una misma entidad puede tener varias interacciones consigo misma, como, por ejemplo, en un organigrama de empleados donde un empleado puede estar subordinado a otro empleado, lo que genera una relación jerárquica dentro de la misma entidad.
 
 ![][07]
 
