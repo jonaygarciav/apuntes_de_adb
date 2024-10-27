@@ -47,4 +47,4 @@ De cada médico se desea guardar el código, nombre, apellidos, teléfono y espe
 
 Se desea llevar el control de cada uno de los ingresos que el paciente hace en el hospital. Cada ingreso que realiza el paciente queda registrado en la base de datos. De cada ingreso se guarda el código de ingreso (que se incrementará automáticamente cada vez que el paciente realice un ingreso), el número de habitación y cama en la que el paciente realiza el ingreso y la fecha de ingreso.
 
-Un médico puede atender varios ingresos, pero el ingreso de un paciente solo puede ser atendido por un único médico. Un paciente puede realizar varios ingresos en el hospital".
+Un médico puede atender varios ingresos, pero un ingreso solamente puede ser atendido por un único médico. Un paciente puede realizar varios ingresos en el hospital.
