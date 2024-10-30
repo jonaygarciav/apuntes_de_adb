@@ -1,5 +1,13 @@
 # Desplegar un contenedor de MySQL 8.0 en Docker
 
+* Introducción
+* Contenedor sin persistencia
+* Contenedor con persistencia
+* Compartir una carpeta entre el Host y el contenedor
+* Acceso externo al servicio del contenero
+
+## Introducción
+
 Imagen oficial de MySQL para Docker:
 * [https://hub.docker.com/_/mysql](https://hub.docker.com/_/mysql)
 
@@ -276,7 +284,7 @@ mysql> show databases;
 mysql>
 ```
 
-## Compartir una carpeta entre el host y el contenedor
+## Compartir una carpeta entre el Host y el contenedor
 
 ```bash
 $ pwd
@@ -361,7 +369,7 @@ $ docker ps
 CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
 ```
 
-## Acceso externo al contenedor
+## Acceso externo al servicio del contenedor
 
 ```bash
 $ docker run -d --name mysql-8.0-srv1 -p33306:3306 -e MYSQL_ROOT_PASSWORD=mysql8 mysql/mysql-server:8.0
