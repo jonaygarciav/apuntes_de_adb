@@ -13,7 +13,7 @@ drwxr-xr-x 3 root   root    4096 oct  4 07:22 ..
 ```
 
 ```bash
-$ sudo apt install ./mysql-apt-config_0.8.33-1_all.deb
+$ sudo dpkg -i mysql-apt-config_0.8.33-1_all.deb
 ```
 
 ```bash
@@ -73,3 +73,6 @@ mysql> exit
 Bye
 alumno@ubuntu-server2204:~$
 ```
+
+Referencia(s):
+* [https://dev.mysql.com/doc/mysql-apt-repo-quick-guide/en/](https://dev.mysql.com/doc/mysql-apt-repo-quick-guide/en/)
