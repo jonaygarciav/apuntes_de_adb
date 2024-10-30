@@ -11,6 +11,10 @@
 Imagen oficial de MySQL para Docker:
 * [https://hub.docker.com/_/mysql](https://hub.docker.com/_/mysql)
 
+## Descargar imagen de Mysql 8.0 para Docker
+
+#TODO
+
 ## Contenedor sin persistencia
 
 ```bash
