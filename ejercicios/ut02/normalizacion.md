@@ -318,7 +318,7 @@ Ahora sí cumple la _3FN_.
 ### Ajuste de Normalización: eliminar redundancia del campo Municipio en la tabla Clientes y del campo Provincia en la tabla Provincias
 
 En el caso del campo `Municipio` que se encuentra en ambas tablas `Clientes` y `Provincias`. Para eliminar la duplicación de información:
-* Descomponer la tabla para que `Clientes` almacene solo la información exclusiva del cliente y utilice una clave foránea (_IdMunicipio_) para relacionarse con una tabla independiente llamada `Municipios`. Así, si necesitas actualizar el municipio, puedes hacerlo en un solo lugar.
+* Descomponer la tabla para que `Clientes` almacene solamente la información exclusiva del cliente y utilice una clave foránea (_IdMunicipio_) para relacionarse con una tabla independiente llamada `Municipios`. Así, si necesitas actualizar el municipio, puedes hacerlo en un solo lugar.
 * Al separar _Municipio_ y _Provincia_ en la tabla `Provincias`, eliminamos la redundancia y mantenemos la información normalizada. La tabla `Clientes` tendrá ahora solo el identificador de _IdMunicipio_, que actúa como clave foránea y permite una relación con la tabla `Municipios`.
 
 En el caso del campo `Provincia` que se encuentra en la tabla `Provincias`. Para eliminar la duplicación de información:
