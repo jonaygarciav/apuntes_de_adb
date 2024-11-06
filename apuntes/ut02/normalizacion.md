@@ -4,10 +4,10 @@
 
 El diseño de una base de datos relacional puede iniciarse representando el mundo real a través de un modelo conceptual, como el modelo entidad-relación (E/R). Este modelo permite obtener un esquema conceptual que, en una segunda fase, se convierte en un modelo relacional mediante reglas específicas de transformación. Alternativamente, aunque menos recomendable, es posible desarrollar directamente el esquema relacional sin pasar por el modelo conceptual. En ambos enfoques, es fundamental (y en el modelo relacional directo, obligatorio) aplicar un conjunto de reglas conocidas como la Teoría de la normalización, que asegura que el esquema relacional cumple ciertas propiedades, evitando así:
 
-* Redundancia de datos: Repetición innecesaria de datos en el sistema.
-* Anomalías de actualización: Inconsistencias en los datos debido a redundancias y modificaciones incompletas.
-* Anomalías de eliminación: Pérdida involuntaria de datos al eliminar otros registros relacionados.
-* Anomalías de inserción: Dificultad para agregar datos nuevos debido a la dependencia de otros datos ausentes.
+* __Redundancia de datos__: repetición innecesaria de datos en el sistema.
+* __Anomalías de actualización__: inconsistencias en los datos debido a redundancias y modificaciones incompletas.
+* __Anomalías de eliminación__: pérdida involuntaria de datos al eliminar otros registros relacionados.
+* __Anomalías de inserción__: dificultad para agregar datos nuevos debido a la dependencia de otros datos ausentes.
 
 En la práctica, si una base de datos se diseña usando un modelo conceptual como el modelo E/R, suele ser innecesaria una normalización posterior. Sin embargo, cuando se trata de una base de datos creada sin un diseño previo, es probable que necesite un proceso de normalización.
 
@@ -18,7 +18,7 @@ En la teoría de bases de datos relacionales, las formas normales (FN) son crite
 Algunas consideraciones previas que debemos conocer:
 
 * __Dependencia funcional__: la dependencia funcional, representada como `A → B`, indica que el atributo B depende funcionalmente del atributo A. Esto significa que, para cada valor de A, siempre existe un valor específico de B. Por ejemplo, si A es el D.N.I. (Documento Nacional de Identidad) y B es el Nombre, entonces cada número de D.N.I. se asocia con un nombre de titular único. Por lo tanto, el nombre depende funcionalmente del D.N.I.
-* __Dependencia funcional completa__: la dependencia funcional completa se refiere a la situación en la que un atributo B depende de otro atributo A en su totalidad. Esto cobra relevancia cuando A está compuesto por varios atributos (una clave compuesta). Por ejemplo, supongamos que A es una clave compuesta formada por D.N.I._Empleado y Cod._Dpto. y que B representa Nombre_Dpto. En este caso, el nombre del departamento (B) depende completamente del código de departamento (Cod._Dpto.), pero no del D.N.I. del empleado (D.N.I._Empleado). Por lo tanto, no existe una dependencia funcional completa de B respecto a A.
+* __Dependencia funcional parcial__: en una relación con una clave primaria compuesta (formada por dos o más atributos), una dependencia funcional parcial ocurre cuando un atributo no clave depende solamente de una parte de la clave primaria, en lugar de depender de la clave primaria completa. Esto implica que el atributo no clave está asociado a uno de los componentes de la clave primaria, en vez de estar relacionado con toda la clave compuesta, lo cual genera redundancia y dificulta la normalización.
 * __Dependencia transitiva__: la dependencia transitiva ocurre cuando un atributo C depende indirectamente de un atributo A a través de un tercer atributo B, es decir, A → B → C. Por ejemplo, si A es el D.N.I. de un alumno, B es la localidad donde vive y C es la provincia de esa localidad, entonces la provincia (C) depende de forma transitiva del D.N.I. (A) a través de la localidad (B).
 
 ## Primera Forma Normal
@@ -210,6 +210,7 @@ Tabla `Cursos`:
 | 2ESO-A  | Federico |
 
 Explicación final:
+
 * La tabla `Alumnos` contiene solo los datos directamente relacionados con el alumno.
 * La tabla `Localidades` almacena la relación entre cada localidad y su provincia, eliminando la dependencia transitiva y cumpliendo así con la 3FN.
 * Las tablas `Teléfonos`, `Matrículas`, y `Cursos` también están en 3FN, ya que cada columna depende únicamente de la clave primaria de su respectiva tabla.
