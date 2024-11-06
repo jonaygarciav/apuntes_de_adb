@@ -210,7 +210,6 @@ Tabla `Cursos`:
 | 2ESO-A  | Federico |
 
 Explicación final:
-
 * La tabla `Alumnos` contiene solo los datos directamente relacionados con el alumno.
 * La tabla `Localidades` almacena la relación entre cada localidad y su provincia, eliminando la dependencia transitiva y cumpliendo así con la 3FN.
 * Las tablas `Teléfonos`, `Matrículas`, y `Cursos` también están en 3FN, ya que cada columna depende únicamente de la clave primaria de su respectiva tabla.
