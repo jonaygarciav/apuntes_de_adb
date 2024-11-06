@@ -64,7 +64,7 @@ Con esta reorganización, cada número de teléfono es un valor atómico en la t
 
 # Segunda Forma Normal
 
-Una relación está en __Segunda Forma Normal__ (_2FN_) sí y solo si cumple con los requisitos de la _Primera Forma Normal (1FN)_ y todos los atributos que no forman parte de la clave principal dependen funcionalmente de esta de forma completa. Esto significa que ningún atributo debe depender solo de una parte de la clave si esta es compuesta.
+Una relación está en __Segunda Forma Normal__ (_2FN_) sí y solo si cumple con los requisitos de la _Primera Forma Normal (1FN)_ y todos los atributos que no forman parte de la clave principal dependen funcionalmente de esta la clave principal, es decir, los atributos que no forman parte de ninguna clave deben depender completamente de la clave principal.
 
 Por ejemplo, si tomamos el ejemplo anterior de la tabla `Alumnos` en _1FN_, donde todos los datos se encuentran en una única tabla:
 
@@ -75,7 +75,6 @@ Por ejemplo, si tomamos el ejemplo anterior de la tabla `Alumnos` en _1FN_, dond
 | 33333333C | Susana  | 1ESO-B  | 11-Julio-2016    | Roberto   | Écija           | Sevilla         |
 | 44444444D | Juan    | 2ESO-A  | 05-Julio-2016    | Federico  | El Villar       | Córdoba         |
 | 55555555E | José    | 2ESO-A  | 02-Julio-2016    | Federico  | El Villar       | Córdoba         |
-
 
 Análisis de dependencias funcionales:
 
