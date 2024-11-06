@@ -81,7 +81,7 @@ La 2NF elimina las dependencias funcionales.
 Análisis de dependencias funcionales:
 * _Titulo_ y _Editorial_ dependen solamente de _CodLibro_, ya que estas características pertenecen exclusivamente al libro y no dependen del lector. Esto indica una _dependencia funcional parcial_ con respecto a la clave primaria compuesta (_CodLibro_, _CodLector_).
 * _Apellido1_, _Apellido2_ y _Nombre_ dependen solamente de _CodLector_, porque estos datos pertenecen únicamente al lector y no están relacionados directamente con el libro. Esto también es una _dependencia funcional parcial_ respecto a la clave primaria compuesta (_CodLibro_, _CodLector_).
-* _FechaDev_ depende _CodLibro_ y _CodLector_, porque estos datos están relacionados con el lector y el libro. Esto _dependencia funcional completa_ respecto a la clave primaria compuesta.
+* _FechaDev_ depende _CodLibro_ y _CodLector_, porque estos datos están relacionados con el lector y el libro. Esto es una _dependencia funcional completa_ respecto a la clave primaria compuesta.
 
 Se crean tablas adicionales para los datos de los _libros_, _lectores_ y la _relación préstamo_.
 
