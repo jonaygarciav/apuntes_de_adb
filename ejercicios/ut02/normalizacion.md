@@ -15,7 +15,7 @@ La siguiente tabla representa una base de datos simplificada para una biblioteca
 
 ### Primera Forma Normal (1NF)
 
-La clave primaria sería compuesta por los campos _CodLibro_ y _CodLector_, ya que cada combinación única identifica un préstamo específico de un libro a un lector.
+La clave primaria estaría compuesta por los campos _CodLibro_ y _CodLector_, ya que cada combinación única identifica un préstamo específico de un libro a un lector.
 
 > __Nota__: al elegir como clave primaria _CodLibro_ y _CodLector_, significa que no permitimos que un mismo lector puede sacar el mismo libro más de una vez.
 
@@ -44,7 +44,7 @@ Además los valores del campo `Autor` no son atómicos, con lo que creamos disti
 | 1007     | Clipper 5.01        | Ramalho         | McGraw Hill    | 501       | Pérez     | Gómez    | Juan   | 18/04/2014 |
 | 1004     | Visual Basic 5      | E. Petroustsos  | Anaya          | 505       | Padrón    | González | Alicia | 30/04/2014 |
 
-Este cambio genera una redundancia en la clave primaria, por lo que sigue sin cumplir la _1FN_ por lo que debemos crear una tabla para guardar los `autores`.
+Este cambio genera una redundancia en la clave primaria (_CodLibro_, _CodLector_), por lo que sigue sin cumplir la _1FN_ por lo que debemos crear una tabla para guardar los `autores`.
 
 Tabla `Biblioteca`:
 
