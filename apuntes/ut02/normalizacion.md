@@ -84,7 +84,7 @@ Análisis de dependencias funcionales:
 * `Curso → Tutor`: cada curso tiene un tutor específico.
 * `(DNI, Curso) → FechaMatrícula`: La fecha de matrícula depende de una combinación única de DNI y Curso.
 
-Dado que algunos atributos dependen de partes individuales de la clave compuesta `(DNI, Curso)`, esta tabla no está en _2FN_. La única dependencia completa en esta tabla es `(DNI, Curso) → FechaMatrícula`. Para resolver esto y pasar a _2FN_, dividimos la tabla en tres tablas más pequeñas.
+Dado que algunos atributos dependen de partes individuales de la clave compuesta `(DNI, Curso)`, esta tabla no está en _2FN_. La única dependencia funcional en esta tabla es `(DNI, Curso) → FechaMatrícula`. Para resolver esto y pasar a _2FN_, dividimos la tabla en tres tablas más pequeñas.
 
 Tabla `Alumnos` (contiene datos únicos de cada alumno):
 
