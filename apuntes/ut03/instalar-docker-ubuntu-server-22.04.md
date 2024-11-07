@@ -119,7 +119,7 @@ Añadir al usuario _alumno_ al grupo _docker_ para que pueda ejecutar contenedor
 $ sudo usermod -aG docker alumno
 ```
 
-Sal de la sesión o reinicia el sistema para que estos cambios tengan efecto:
+Reinicia el sistema para que estos cambios tengan efecto:
 
 ```bash
 $ sudo reboot
