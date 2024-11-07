@@ -45,11 +45,11 @@ mysql/mysql-server   8.0       1d9c2219ff69   21 months ago   496MB
 ```
 Este comando muestra todas las imágenes de Docker que se han descargado o creado localmente. Muestra la siguiente información:
 
-* REPOSITORY: Nombre del repositorio de la imagen (por ejemplo, mysql/mysql-server).
-* TAG: Etiqueta de la imagen, que suele representar la versión (por ejemplo, 8.0).
-* IMAGE ID: Identificador único de la imagen.
-* CREATED: Fecha en la que se creó la imagen.
-* SIZE: Tamaño de la imagen en disco.
+* __REPOSITORY__: nombre del repositorio de la imagen (por ejemplo, mysql/mysql-server).
+* __TAG__: rtiqueta de la imagen, que suele representar la versión (por ejemplo, 8.0).
+* __IMAGE ID__: identificador único de la imagen.
+* __CREATED__: fecha en la que se creó la imagen.
+* __SIZE__: tamaño de la imagen en disco.
 
 En este caso, aparece la imagen `mysql/mysql-server` con la versión `8.0` en la lista de imágenes.
 
