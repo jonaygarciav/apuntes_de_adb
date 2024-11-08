@@ -20,5 +20,5 @@ UT02: Diseño lógico de una BBDD
 UT03: 
 
 * Instalar MySQL 8.0 en Ubuntu Server 22.04 ([Apuntes](./apuntes/ut03/instalar-mysql-8.0-ubuntu-server-22.04.md))
-* Instalar Docker en Ubuntu Server 22.04 ([Apuntes](./apuntes/ut03/instalar-docker-ubuntu-server-22.04.md))
+* Instalar Docker en Ubuntu Server 22.04 ([Apuntes](https://github.com/jonaygarciav/apuntes_de_devops/blob/main/apuntes/virtualizacion/ub-server22.04-docker-install.md))
 * Desplegar MySQL 8.0 en Docker ([Apuntes](./apuntes/ut03/desplegar-mysql-8.0-docker.md))
