@@ -744,7 +744,7 @@ Bye
 
 Creamos el usuario `admin` en base de datos el cual puede conectarse desde cualquier ip:
 
-* `use mysql`: nos conectamos a la base de datos _mysql_, que es donde se encuentra la tabla _user_ con todos los usuarios.
+* `use mysql`: conecta a la base de datos llamada _mysql_, que es donde se encuentra la tabla _user_ con todos los usuarios.
 * `show tables`: muestra todas las tablas de la base de datos _mysql_, se puede ver al final la tabla _user_.
 * `SELECT host,user FROM user;`: devuelve los campos _host_ y _user_ de la tabla _user_. Se puede ver que el usuario _root_ solamente tiene acceso desde _localhost_.
 * `CREATE USER 'admin'@'%' IDENTIFIED WITH mysql_native_password BY 'mysql8'`: crea un usuario _admin_ que puede conectarse desde cualquier dirección IP (%) utilizando el password _mysql8_.
