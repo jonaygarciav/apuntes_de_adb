@@ -548,7 +548,7 @@ CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
 Crear y ejecutar el contenedor MySQL con acceso externo:
 
 ```bash
-$ docker run -d --name mysql-8.0-srv1 -p33306:3306 -e MYSQL_ROOT_PASSWORD=mysql8 mysql/mysql-server:8.0
+$ docker run -d --name mysql-8.0-srv1 -p 33306:3306 -e MYSQL_ROOT_PASSWORD=mysql8 mysql/mysql-server:8.0
 39a5d23773d23bcafbdd360bece4cff5a00d9e58d87c64a2cc5069650c494caa
 ```
 
