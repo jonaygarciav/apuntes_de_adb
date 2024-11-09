@@ -192,7 +192,9 @@ exit
 
 Este comando abre una sesión de terminal (bash) dentro del contenedor, lo que permite ejecutar comandos directamente en el sistema operativo del contenedor, es decir, muestra un prompt bash dentro del contenedor con el que podemos interactuar con el sistema, ejecutar comandos de administración de MySQL o explorar el sistema de archivos del contenedor.
 
-Detener el contenedor de MySQL:
+### Eliminar el contenedor (Opcional)
+
+Eliminar el contenedor si ya no lo vamos a utilizar. Para ello, detenemos primero el contenedor de MySQL:
 
 ```bash
 $ docker stop mysql-8.0-srv1
@@ -200,8 +202,6 @@ mysql-8.0-srv1
 ```
 
 Este comando detiene el contenedor `mysql-8.0-srv1` sin eliminarlo. Esto es útil cuando quieres detener temporalmente el servicio sin eliminar el contenedor.
-
-### Eliminar el contenedor (Opcional)
 
 Eliminar el contenedor de MySQL si ya no lo necesitamos:
 
@@ -259,13 +259,13 @@ docker volume inspect proporciona información detallada sobre el volumen, inclu
 Crear y ejecutar un contenedor MySQL usando el volumen:
 
 ```bash
-$ docker run -d --name mysql-8.0-srv1 -v mysql-8.0-data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=mysql8  mysql/mysql-server:8.0
+$ docker run -d --name mysql-8.0-srv1 -v mysql-8.0-srv1-data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=mysql8  mysql/mysql-server:8.0
 622c21a3e55f1eac0056c808e2b9280299b7b00377e46b3f974cd108cfec4fc5
 ```
 
 Este comando ejecuta un contenedor MySQL en segundo plano:
 
-* `-v mysql-8.0-data:/var/lib/mysql`: monta el volumen mysql-8.0-data en /var/lib/mysql, la ruta donde MySQL almacena sus datos.
+* `-v mysql-8.0-svr1-data:/var/lib/mysql`: monta el volumen mysql-8.0-data en /var/lib/mysql, la ruta donde MySQL almacena sus datos.
 * `-e MYSQL_ROOT_PASSWORD=mysql8`: establece la contraseña para el usuario root de MySQL como mysql8.
 * `mysql/mysql-server:8.0`: especifica la imagen de MySQL (versión 8.0).
 
@@ -287,7 +287,7 @@ $ docker  inspect mysql-8.0-srv1 |grep mounts -i -A10
             {
                 "Type": "volume",
                 "Name": "mysql-8.0-data",
-                "Source": "/var/lib/docker/volumes/mysql-8.0-data/_data",
+                "Source": "/var/lib/docker/volumes/mysql-8.0-svr1-data/_data",
                 "Destination": "/var/lib/mysql",
                 "Driver": "local",
                 "Mode": "z",
@@ -388,7 +388,7 @@ CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
 Reiniciar el contenedor utilizando el mismo volumen que utilizaba el anterior contenedor creado:
 
 ```bash
-alumno@ubuntu-server2204:~$ docker run -d --name mysql-8.0-srv1 -v mysql-8.0-data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=mysql8  mysql/mysql-server:8.0
+alumno@ubuntu-server2204:~$ docker run -d --name mysql-8.0-srv1 -v mysql-8.0-srv1-data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=mysql8  mysql/mysql-server:8.0
 28a24a02cfdd9d3cb287234b2fcd74ce7da7e83caca07f1a709571d9d422aa9c
 ```
 
@@ -433,6 +433,34 @@ mysql>
 ```
 
 Al acceder nuevamente a la consola de MySQL y ejecutar `SHOW DATABASES;`, vemos la base de datos `pruebas` creada anteriormente, confirmando que el volumen ha mantenido la persistencia de los datos incluso después de eliminar el contenedor, gracias al volumen `mysql-8.0-data`.
+
+### Eliminar el contenedor (Opcional)
+
+Eliminar el contenedor si ya no lo vamos a utilizar. Para ello, detenemos primero el contenedor de MySQL:
+
+```bash
+$ docker stop mysql-8.0-srv1
+mysql-8.0-srv1
+```
+
+Este comando detiene el contenedor `mysql-8.0-srv1` sin eliminarlo. Esto es útil cuando quieres detener temporalmente el servicio sin eliminar el contenedor.
+
+Eliminar el contenedor de MySQL si ya no lo necesitamos:
+
+```bash
+alumno@ubuntu-server2204:~$ docker rm mysql-8.0-srv1
+mysql-8.0-srv1
+```
+
+Este comando elimina el contenedor `mysql-8.0-srv1` del sistema. El contenedor debe estar detenido antes de poder eliminarlo.
+
+Verificar los contenedores activos:
+
+```bash
+$ docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+```
+Este comando muestra nuevamente la lista de contenedores activos. Después de eliminar el contenedor mysql-8.0-srv1, éste último no debería de estar en la lista.
 
 ## Compartir una carpeta entre el Host y el contenedor
 
@@ -525,22 +553,54 @@ drwxr-xr-x   1 root root 4096 Jan 16  2023 var
 
 Este comando lista los archivos y directorios en el contenedor, y deberías ver la carpeta _/scripts_ montada. Los permisos de usuario indican que el volumen se montó correctamente desde el sistema host.
 
-### Eliminar el contenedor (Opcional)
+### Eliminar el contenedor y el volumen (Opcional)
 
-Eliminar el contenedor si ya no lo vamos a utilizar:
+Eliminar el contenedor si ya no lo vamos a utilizar. Para ello, detenemos primero el contenedor de MySQL:
 
 ```bash
 $ docker stop mysql-8.0-srv1
 mysql-8.0-srv1
 ```
 
+Este comando detiene el contenedor `mysql-8.0-srv1` sin eliminarlo. Esto es útil cuando quieres detener temporalmente el servicio sin eliminar el contenedor.
+
+Eliminar el contenedor de MySQL si ya no lo necesitamos:
+
 ```bash
-$ docker rm mysql-8.0-srv1
+alumno@ubuntu-server2204:~$ docker rm mysql-8.0-srv1
 mysql-8.0-srv1
+```
+
+Este comando elimina el contenedor `mysql-8.0-srv1` del sistema. El contenedor debe estar detenido antes de poder eliminarlo.
+
+Verificar los contenedores activos:
 
 ```bash
 $ docker ps
 CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+```
+Este comando muestra nuevamente la lista de contenedores activos. Después de eliminar el contenedor mysql-8.0-srv1, éste último no debería de estar en la lista.
+
+Eliminar el volumen si no lo vamos a utilizar más. Para ello, listamos primero los volúmenes creados:
+
+```bash
+$ docker volume  ls
+DRIVER    VOLUME NAME
+local     mysql-8.0-srv1-data
+```
+
+Eliminamos el volumen _mysql-8.0-srv1-data_:
+
+```bash
+$ docker volume rm mysql-8.0-srv1-data
+mysql-8.0-srv1-data
+```
+
+Volvemos a listar los volúmenes creados:
+
+```bash
+$ docker volume  ls
+DRIVER    VOLUME NAME
 ```
 
 ## Acceso externo al servicio del contenedor
@@ -655,10 +715,10 @@ mysql> select host,user from user;
 +-----------+------------------+
 5 rows in set (0.00 sec)
 
-mysql> CREATE USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY 'mysql8';
+mysql> CREATE USER 'admin'@'%' IDENTIFIED WITH mysql_native_password BY 'mysql8';
 Query OK, 0 rows affected (0.03 sec)
 
-mysql> GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;
+mysql> GRANT ALL PRIVILEGES ON *.* TO 'admin'@'%' WITH GRANT OPTION;
 Query OK, 0 rows affected (0.03 sec)
 
 mysql> FLUSH PRIVILEGES;
@@ -668,7 +728,7 @@ mysql> select host,user from user;
 +-----------+------------------+
 | host      | user             |
 +-----------+------------------+
-| %         | root             |
+| %         | admin            |
 | localhost | healthchecker    |
 | localhost | mysql.infoschema |
 | localhost | mysql.session    |
@@ -681,16 +741,16 @@ mysql> exit
 Bye
 ```
 
-Creamos el usuario `root` en base de datos el cual puede conectarse desde cualquier ip:
+Creamos el usuario `admin` en base de datos el cual puede conectarse desde cualquier ip:
 
-* `CREATE USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY 'mysql8'`: crea un usuario root que puede conectarse desde cualquier dirección IP (%) utilizando el password _mysql8_.
-* `GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;`: otorga todos los permisos al usuario root para que pueda realizar cualquier acción en todas las bases de datos.
+* `CREATE USER 'admin'@'%' IDENTIFIED WITH mysql_native_password BY 'mysql8'`: crea un usuario _admin_ que puede conectarse desde cualquier dirección IP (%) utilizando el password _mysql8_.
+* `GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;`: otorga todos los permisos al usuario _admin_ para que pueda realizar cualquier acción en todas las bases de datos.
 * `FLUSH PRIVILEGES`: recarga los privilegios para que los cambios surtan efecto de inmediato.
 
 Conectarse a MySQL externamente desde el Host (Máquina Virtual):
 
 ```bash
-$ mysql -h 127.0.0.1 -P 33306 -u root -p
+$ mysql -h 127.0.0.1 -P 33306 -u admin -p
 Enter password:
 Welcome to the MySQL monitor.  Commands end with ; or \g.
 Your MySQL connection id is 17
@@ -704,30 +764,40 @@ owners.
 
 Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
-mysql>
+mysql> exit
+Bye
 ```
 
 * `-h 127.0.0.1`: especifica 127.0.0.1 como el host, que corresponde al localhost de la máquina.
 * `-P 33306`: usa el puerto 33306 (mapeado al puerto 3306 en el contenedor).
-* `-u root -p`: se conecta con el usuario root y solicita la contraseña.
+* `-u admin -p`: se conecta con el usuario admin y solicita la contraseña.
 
 Esto prueba el acceso al servicio MySQL en el contenedor desde el host, a través del puerto mapeado.
 
 ### Eliminar el contenedor (Opcional)
 
-Eliminar el contenedor si ya no lo vamos a utilizar:
+Eliminar el contenedor si ya no lo vamos a utilizar. Para ello, detenemos primero el contenedor de MySQL:
 
 ```bash
 $ docker stop mysql-8.0-srv1
 mysql-8.0-srv1
 ```
 
+Este comando detiene el contenedor `mysql-8.0-srv1` sin eliminarlo. Esto es útil cuando quieres detener temporalmente el servicio sin eliminar el contenedor.
+
+Eliminar el contenedor de MySQL si ya no lo necesitamos:
+
 ```bash
-$ docker rm mysql-8.0-srv1
+alumno@ubuntu-server2204:~$ docker rm mysql-8.0-srv1
 mysql-8.0-srv1
 ```
+
+Este comando elimina el contenedor `mysql-8.0-srv1` del sistema. El contenedor debe estar detenido antes de poder eliminarlo.
+
+Verificar los contenedores activos:
 
 ```bash
 $ docker ps
 CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
 ```
+Este comando muestra nuevamente la lista de contenedores activos. Después de eliminar el contenedor mysql-8.0-srv1, éste último no debería de estar en la lista.
