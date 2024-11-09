@@ -30,10 +30,10 @@ Status: Downloaded newer image for mysql/mysql-server:8.0
 docker.io/mysql/mysql-server:8.0
 ```
 
-* `docker pull`: descarga una imagen de Docker desde el Docker Hub o de otro registro de Docker configurado.
-* `mysql/mysql-server:8.0`: especifica la imagen mysql/mysql-server con la etiqueta 8.0. La etiqueta indica la versión específica de MySQL que se descargará.
+* `docker pull`: descarga una imagen de Docker desde el _Docker Hub_ o de otro registro de Docker configurado.
+* `mysql/mysql-server:8.0`: especifica la imagen _mysql/mysql-server_ con la etiqueta _8.0_. La etiqueta indica la versión específica de MySQL que se descargará.
 
-Docker verifica si la imagen ya está almacenada localmente. Si no lo está, comienza a descargar cada capa de la imagen, lo que se indica con la palabra Pull complete cuando se completa cada capa.
+Docker verifica si la imagen ya está almacenada localmente. Si no lo está, comienza a descargar cada capa de la imagen, lo que se indica con la palabra _Pull complete_ cuando se completa cada capa.
 
 Ver las imágenes disponibles en el sistema local:
 
@@ -43,6 +43,7 @@ REPOSITORY           TAG       IMAGE ID       CREATED         SIZE
 hello-world          latest    d2c94e258dcb   18 months ago   13.3kB
 mysql/mysql-server   8.0       1d9c2219ff69   21 months ago   496MB
 ```
+
 Este comando muestra todas las imágenes de Docker que se han descargado o creado localmente. Muestra la siguiente información:
 
 * __REPOSITORY__: nombre del repositorio de la imagen (por ejemplo, mysql/mysql-server).
@@ -51,7 +52,7 @@ Este comando muestra todas las imágenes de Docker que se han descargado o cread
 * __CREATED__: fecha en la que se creó la imagen.
 * __SIZE__: tamaño de la imagen en disco.
 
-En este caso, aparece la imagen `mysql/mysql-server` con la versión `8.0` en la lista de imágenes.
+En este caso, aparece la imagen _mysql/mysql-server_ con la versión _8.0_ en la lista de imágenes.
 
 Eliminar una imagen de docker:
 
@@ -282,7 +283,7 @@ Este comando muestra los contenedores en ejecución. Deberías ver _mysql-8.0-sr
 Inspeccionar el contenedor para confirmar el volumen:
 
 ```bash
-$ docker  inspect mysql-8.0-srv1 |grep mounts -i -A10
+$ docker inspect mysql-8.0-srv1 | grep mounts -i -A10
         "Mounts": [
             {
                 "Type": "volume",
