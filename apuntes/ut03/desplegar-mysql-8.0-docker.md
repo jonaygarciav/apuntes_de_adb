@@ -4,7 +4,8 @@
 * Contenedor sin persistencia
 * Contenedor con persistencia
 * Compartir una carpeta entre el Host y el contenedor
-* Acceso externo al servicio del contenero
+* Acceso externo al servicio del contenedor
+* Cargar un archivo SQL cuando arranca por primera vez el contenedor
 
 ## Introducción
 
@@ -809,7 +810,7 @@ CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
 Este comando muestra nuevamente la lista de contenedores activos. Después de eliminar el contenedor mysql-8.0-srv1, éste último no debería de estar en la lista.
 
 
-## Crear un contendor que cargue un archivo SQL cuando arranca por primera vez el contenedor
+## Cargar un archivo SQL cuando arranca por primera vez el contenedor
 
 Vamos a crear un fichero llamado `seed.sql` el cual queremos que se cargue cuando ejecutemos por primera vez el contenedor.
 
