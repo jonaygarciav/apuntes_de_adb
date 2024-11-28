@@ -190,6 +190,7 @@ mysql>
 Comprobamos que la carga del fichero SQL se ha realizado correctamente:
 
 ```sql
+-- Mostrar las bases de datos creadas
 mysql> SHOW databases;
 +--------------------+
 | Database           |
@@ -202,11 +203,14 @@ mysql> SHOW databases;
 +--------------------+
 5 rows in set (0,01 sec)
 
+-- Conectar a la base de datos testdb
 mysql> USE testdb;
 Reading table information for completion of table and column names
 You can turn off this feature to get a quicker startup with -A
 
 Database changed
+
+-- Mostrar todas las tablas de la base de datos testdb
 mysql> SHOW tables;
 +------------------+
 | Tables_in_testdb |
@@ -215,6 +219,7 @@ mysql> SHOW tables;
 +------------------+
 1 row in set (0,00 sec)
 
+-- Mostrar la configuración de la tabla alumnos
 mysql> DESCRIBE alumnos;
 +-----------+--------------+------+-----+---------+----------------+
 | Field     | Type         | Null | Key | Default | Extra          |
@@ -227,6 +232,7 @@ mysql> DESCRIBE alumnos;
 +-----------+--------------+------+-----+---------+----------------+
 5 rows in set (0,00 sec)
 
+-- Mostrar todos los registros de la tabla alumnos
 mysql> SELECT * FROM alumnos;
 +----+--------+------------------+---------------------------+------------+
 | id | nombre | apellidos        | email                     | telefono   |
