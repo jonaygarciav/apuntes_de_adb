@@ -187,6 +187,8 @@ Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 mysql>
 ```
 
+Comprobamos que la carga del fichero SQL se ha realizado correctamente:
+
 ```sql
 mysql> SHOW databases;
 +--------------------+
