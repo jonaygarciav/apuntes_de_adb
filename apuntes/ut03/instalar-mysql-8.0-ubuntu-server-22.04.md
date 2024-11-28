@@ -198,7 +198,7 @@ Este comando actualiza la lista de paquetes disponibles y versiones, incluyendo 
 
 ### Instalar el cliente de MySQL
 
-Instalar MySQL Server y MySQL Client:
+Instalar cliente de MySQL:
 
 ```bash
 $ sudo apt install -f mysql-client=8.0*
