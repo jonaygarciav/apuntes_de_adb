@@ -20,7 +20,7 @@ mysql> FLUSH PRIVILEGES;
 Query OK, 0 rows affected (0,02 sec)
 ```
 
-Por defecto, MySQL está configurado para aceptar peticiones únicamente desde local (localhost) por motivos de seguridad, lo que restringe las conexiones solamente a aquellas provenientes de la misma máquina. Para permitir conexiones desde cualquier equipo, es necesario configurar el valor `bind-address` a `0.0.0.0`, permitiendo que MySQL acepte conexiones desde cualquier dirección IP externa, lo cual es necesario si deseas que usuarios o aplicaciones remotas accedan a la base de datos. 
+Por defecto, MySQL está configurado para aceptar peticiones únicamente desde local (localhost) por motivos de seguridad, lo que restringe las conexiones solamente a aquellas provenientes de la misma máquina. Para permitir conexiones desde cualquier equipo, es necesario configurar el parámetro `bind-address` a `0.0.0.0`, permitiendo que MySQL acepte conexiones desde cualquier dirección IP externa, lo cual es necesario si deseas que usuarios o aplicaciones remotas accedan a la base de datos. Este  parámetro se configura en el fichero `mysqld.cnf` debajo de la directiva `[mysqld]`:
 
 ```bash
 $ sudo nano /etc/mysql/mysql.conf.d/mysqld.cnf
