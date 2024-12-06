@@ -1,10 +1,11 @@
 # Acciones posteriores a la instalación de MySQL 8.0.40 en Fedora Server 40
 
+* Permitir conexiones remotas al servidor
 * Crear un usuario administrador remoto
 * Crear una base de datos y un usuario
 * Cargar un archivo SQL en una base de datos
 
-## Configuración conexión remota
+## Permitir conexiones remotas al servidor
 
 ```sql
 mysql> SHOW VARIABLES LIKE 'bind_address';
