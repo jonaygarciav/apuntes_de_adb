@@ -1,4 +1,4 @@
-# Instalar MySQL 8.0 en Fedora Server 35
+# Instalar MySQL 8.0 en Fedora Server 40
 
 * Instalar servidor y cliente MySQL
 * Instalar cliente MySQL
@@ -8,57 +8,57 @@
 ### Preparar la instalación de MySQL
 
 ```bash
-$ wget https://dev.mysql.com/get/mysql80-community-release-fc35-1.noarch.rpm
-```
-
-```bash
-$ sudo dnf localinstall mysql80-community-release-fc35-1.noarch.rpm
-```
-
-```bash
-$ dnf repolist enabled | grep "mysql.*-community.*"
-mysql-connectors-community       MySQL Connectors Community
-mysql-tools-community            MySQL Tools Community
-mysql80-community                MySQL 8.0 Community Server
-```
-
-```bash
-$ sudo rpm --import https://repo.mysql.com/RPM-GPG-KEY-mysql-2022
+$ ls -la
+total 29552
+drwx------. 2 alumno alumno     4096 dic  6 12:31 .
+drwxr-xr-x. 3 root   root         20 dic  6 12:07 ..
+-rw-r--r--. 1 alumno alumno       18 feb  9  2024 .bash_logout
+-rw-r--r--. 1 alumno alumno      144 feb  9  2024 .bash_profile
+-rw-r--r--. 1 alumno alumno      522 feb  9  2024 .bashrc
+-rw-r--r--. 1 alumno alumno  3516681 dic  6 12:27 mysql-community-client-8.0.40-10.fc40.x86_64.rpm
+-rw-r--r--. 1 alumno alumno  1311599 dic  6 12:30 mysql-community-client-plugins-8.0.40-10.fc40.x86_64.rpm
+-rw-r--r--. 1 alumno alumno   569678 dic  6 12:27 mysql-community-common-8.0.40-10.fc40.x86_64.rpm
+-rw-r--r--. 1 alumno alumno  2378846 dic  6 12:31 mysql-community-icu-data-files-8.0.40-10.fc40.x86_64.rpm
+-rw-r--r--. 1 alumno alumno  1475148 dic  6 12:27 mysql-community-libs-8.0.40-10.fc40.x86_64.rpm
+-rw-r--r--. 1 alumno alumno 20978064 dic  6 12:27 mysql-community-server-8.0.40-10.fc40.x86_64.rpm
 ```
 
 ### Instalar el servidor de MySQL
 
 ```bash
-$ dnf install mysql-community-server
+$ sudo dnf localinstall mysql-community-client-8.0.40-10.fc40.x86_64.rpm mysql-community-client-plugins-8.0.40-10.fc40.x86_64.rpm mysql-community-common-8.0.40-10.fc40.x86_64.rpm mysql-community-icu-data-files-8.0.40-10.fc40.x86_64.rpm mysql-community-libs-8.0.40-10.fc40.x86_64.rpm mysql-community-server-8.0.40-10.fc40.x86_64.rpm
 ```
 
 ```bash
-$ sudo service mysqld start
+$ sudo systemctl start mysqld.service
 $ sudo systemctl enable mysqld.service
 ```
 
 ```bash
 $ systemctl status mysqld.service
 ● mysqld.service - MySQL Server
-     Loaded: loaded (/usr/lib/systemd/system/mysqld.service; enabled; vendor preset: disabled)
-     Active: active (running) since Fri 2024-12-06 08:46:20 WET; 32s ago
+     Loaded: loaded (/usr/lib/systemd/system/mysqld.service; enabled; preset: disabled)
+    Drop-In: /usr/lib/systemd/system/service.d
+             └─10-timeout-abort.conf
+     Active: active (running) since Fri 2024-12-06 12:34:59 WET; 8s ago
        Docs: man:mysqld(8)
              http://dev.mysql.com/doc/refman/en/using-systemd.html
-   Main PID: 30593 (mysqld)
+   Main PID: 1642 (mysqld)
      Status: "Server is operational"
-      Tasks: 39 (limit: 4649)
-     Memory: 471.0M
-        CPU: 3.110s
+      Tasks: 38 (limit: 4643)
+     Memory: 472.3M (peak: 486.4M)
+        CPU: 3.901s
      CGroup: /system.slice/mysqld.service
-             └─ 30593 /usr/sbin/mysqld
+             └─1642 /usr/sbin/mysqld
 
-dic 06 08:46:04 fedora systemd[1]: Starting MySQL Server...
-dic 06 08:46:20 fedora systemd[1]: Started MySQL Server.
+dic 06 12:34:42 localhost.localdomain systemd[1]: Starting mysqld.service - MySQL Server...
+dic 06 12:34:57 localhost.localdomain (mysqld)[1642]: mysqld.service: Referenced but unset environment variable evaluates to an empty string: MYSQLD_OPTS
+dic 06 12:34:59 localhost.localdomain systemd[1]: Started mysqld.service - MySQL Server.
 ```
 
 ```bash
 $ mysql --version
-mysql  Ver 8.0.31 for Linux on x86_64 (MySQL Community Server - GPL)
+mysql  Ver 8.0.40 for Linux on x86_64 (MySQL Community Server - GPL)
 ```
 
 ```bash
@@ -72,6 +72,12 @@ $ sudo mysql_secure_installation
 Securing the MySQL server deployment.
 
 Enter password for user root:
+
+The existing password for the user account root has expired. Please set a new password.
+
+New password:
+
+Re-enter new password:
 The 'validate_password' component is installed on the server.
 The subsequent steps will run with the existing configuration
 of the component.
@@ -130,10 +136,10 @@ All done!
 $ mysql -u root -p
 Enter password:
 Welcome to the MySQL monitor.  Commands end with ; or \g.
-Your MySQL connection id is 16
-Server version: 8.0.31 MySQL Community Server - GPL
+Your MySQL connection id is 12
+Server version: 8.0.40 MySQL Community Server - GPL
 
-Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+Copyright (c) 2000, 2024, Oracle and/or its affiliates.
 
 Oracle is a registered trademark of Oracle Corporation and/or its
 affiliates. Other names may be trademarks of their respective
@@ -142,6 +148,25 @@ owners.
 Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
 mysql>
+```
+
+### Permitir peticiones entrantes al puerto 3306 en Fedora
+
+Por defecto el firewall de Fedora viene activado, así que tendremos que permitir peticiones entrantes al servicio MySQL a través del puerto 3306:
+
+```bash
+$ sudo firewall-cmd --permanent --add-port=3306/tcp
+success
+```
+
+```bash
+$ sudo firewall-cmd --reload
+success
+```
+
+```bash
+$ sudo firewall-cmd --list-ports
+3306/tcp
 ```
 
 ## Instalar cliente MySQL 8.0

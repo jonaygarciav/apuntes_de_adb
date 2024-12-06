@@ -1,4 +1,4 @@
-# Acciones posteriores a la instalación
+# Acciones posteriores a la instalación de MySQL 8.0.40 en Fedora Server 40
 
 * Crear un usuario administrador remoto
 * Crear una base de datos y un usuario
@@ -79,7 +79,7 @@ Ahora realizamos la conexión desde la máquina remota al servidor MySQL (en est
 $ mysql -h 192.168.150.12 -u admin -p
 Enter password:
 Welcome to the MySQL monitor.  Commands end with ; or \g.
-Your MySQL connection id is 9
+Your MySQL connection id is 12
 Server version: 8.0.40 MySQL Community Server - GPL
 
 Copyright (c) 2000, 2024, Oracle and/or its affiliates.
@@ -179,8 +179,8 @@ Método alternativo para realizar la carga del archivo SQL:
 ```bash
 $ mysql -u test -p
 Enter password:
-çWelcome to the MySQL monitor.  Commands end with ; or \g.
-Your MySQL connection id is 18
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 12
 Server version: 8.0.40 MySQL Community Server - GPL
 
 Copyright (c) 2000, 2024, Oracle and/or its affiliates.
@@ -212,7 +212,7 @@ Nos conectamos como usuario root:
 $ mysql -u root -p
 Enter password:
 Welcome to the MySQL monitor.  Commands end with ; or \g.
-Your MySQL connection id is 13
+Your MySQL connection id is 12
 Server version: 8.0.40 MySQL Community Server - GPL
 
 Copyright (c) 2000, 2024, Oracle and/or its affiliates.
