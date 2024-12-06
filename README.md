@@ -19,7 +19,14 @@ UT02: Diseño lógico de una BBDD
 
 UT03: 
 
-* Instalar MySQL 8.0 en Ubuntu Server 22.04 ([Apuntes](./apuntes/ut03/instalar-mysql-8.0-ubuntu-server-22.04.md))
-    * Configuración después de la instalación ([Apuntes](./apuntes/ut03/configuracion-post-instalacion.md))
-* Instalar Docker en Ubuntu Server 22.04 ([Apuntes](https://github.com/jonaygarciav/apuntes_de_devops/blob/main/apuntes/virtualizacion/ub-server22.04-docker-install.md))
-* Desplegar MySQL 8.0 en Docker ([Apuntes](./apuntes/ut03/desplegar-mysql-8.0-docker.md))
+MySQL 8.0:
+
+* Instalar MySQL 8.0 en Ubuntu Server 22.04 ([Apuntes](./apuntes/ut03/instalar-mysql-8.0-ubuntu-server-22.04.md) | [Post Instalación](./apuntes/ut03/configuracion-post-instalacion.md))
+* Instalar MySQL 8.0 en Fedora Server 35 ([Apuntes](./apuntes/ut03/fd-server35-mysql8.0-installation.md) | [Post Instalación](./apuntes/ut03/fd-server35-mysql8.0-post-installation.md))
+* Desplegar MySQL 8.0 en Docker ([Instalar Docker en Ubuntu 22.04](https://github.com/jonaygarciav/apuntes_de_devops/blob/main/apuntes/virtualizacion/ub-server22.04-docker-install.md)):
+    * Elección de imágenes en Docker Hub ([Apuntes](./apuntes/ut03/docker-mysql8.0-eleccion-imagenes.md))
+    * Desplegar un contenedor sin persistencia ([Apuntes](./apuntes/ut03/docker-mysql8.0-sin-persistencia.md))
+    * Desplegar un contenedor con persistencia ([Apuntes](./apuntes/ut03/docker-mysql8.0-con-persistencia.md))
+    * Desplegar un contenedor compartiendo una carpeta entre el host y el contenedor ([Apuntes](./apuntes/ut03/docker-mysql8.0-compartir-carpeta.md))
+    * Desplegar un contenedor con acceso externo al servicio del contenedor ([Apuntes](./apuntes/ut03/docker-mysql8.0-acceso-externo.md))
+    * Desplegar un contenedor cargando un fichero SQL cuando arranca por primera vez el contenedor ([Apuntes](./apuntes/ut03/docker-mysql-8.0-carga-fichero-sql.md))
