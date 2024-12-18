@@ -17,20 +17,21 @@ UT02: Diseño lógico de una BBDD
 * Modelo Relacional ([Apuntes](./apuntes/ut02/modelo-relacional.md) | [Ejercicios](./ejercicios/ut02/modelo-relacional.md))
 * Normalización ([Apuntes](./apuntes/ut02/normalizacion.md) | [Ejercicios](./ejercicios/ut02/normalizacion.md))
 
-UT03: 
-
-MySQL WorkBench 8.0.40:
-* Instalar MySQL WorkBench 8.0.40 en Ubuntu Desktop 24.04 ([Apuntes](./apuntes/ut03/ub-desktop24.04-mysql-workbench8.0.40-installation.md))
-* Instalar MySQL WorkBench 8.0.40 en Fedora Workstation 40 ([Apuntes](./apuntes/ut03/fd-workstation40-mysql-workbench8.0.40-installation.md))
-
-Cliente/Servidor MySQL 8.0.40:
-* Instalar MySQL 8.0 en Ubuntu Server 22.04 ([Apuntes](./apuntes/ut03/instalar-mysql-8.0-ubuntu-server-22.04.md) | [Post Instalación](./apuntes/ut03/configuracion-post-instalacion.md))
-* Instalar MySQL 8.0 en Fedora Server 40 ([Apuntes](./apuntes/ut03/fd-server40-mysql8.0-installation.md) | [Post Instalación](./apuntes/ut03/fd-server40-mysql8.0-post-installation.md))
-* Desplegar MySQL 8.0 en Docker ([Instalar Docker en Ubuntu 22.04](https://github.com/jonaygarciav/apuntes_de_devops/blob/main/apuntes/virtualizacion/ub-server22.04-docker-install.md)):
-    * Elección de imágenes en Docker Hub ([Apuntes](./apuntes/ut03/docker-mysql8.0-eleccion-imagenes.md))
-    * Desplegar un contenedor sin persistencia ([Apuntes](./apuntes/ut03/docker-mysql8.0-sin-persistencia.md))
-    * Desplegar un contenedor con persistencia ([Apuntes](./apuntes/ut03/docker-mysql8.0-con-persistencia.md))
-    * Desplegar un contenedor compartiendo una carpeta entre el host y el contenedor ([Apuntes](./apuntes/ut03/docker-mysql8.0-compartir-carpeta.md))
-    * Desplegar un contenedor con acceso externo al servicio del contenedor ([Apuntes](./apuntes/ut03/docker-mysql8.0-acceso-externo.md))
-    * Desplegar un contenedor cargando un fichero SQL cuando arranca por primera vez el contenedor ([Apuntes](./apuntes/ut03/docker-mysql-8.0-carga-fichero-sql.md))
-
+UT03: Fundamentos de Bases de Datos MySQL
+* Comandos SQL ([Apuntes](./apuntes/ut03/comandos-sql.md))
+* Character Set y Collations
+* Engines
+* Tipos de datos
+* Instalación de MySQL WorkBench 8.0.40:
+    * Instalar MySQL WorkBench 8.0.40 en Ubuntu Desktop 24.04 ([Apuntes](./apuntes/ut03/ub-desktop24.04-mysql-workbench8.0.40-installation.md))
+    * Instalar MySQL WorkBench 8.0.40 en Fedora Workstation 40 ([Apuntes](./apuntes/ut03/fd-workstation40-mysql-workbench8.0.40-installation.md))
+* Instalación de Cliente/Servidor MySQL 8.0.40:
+    * Instalar MySQL 8.0 en Ubuntu Server 22.04 ([Apuntes](./apuntes/ut03/instalar-mysql-8.0-ubuntu-server-22.04.md) | [Post Instalación](./apuntes/ut03/configuracion-post-instalacion.md))
+    * Instalar MySQL 8.0 en Fedora Server 40 ([Apuntes](./apuntes/ut03/fd-server40-mysql8.0-installation.md) | [Post Instalación](./apuntes/ut03/fd-server40-mysql8.0-post-installation.md))
+    * Desplegar MySQL 8.0 en Docker ([Instalar Docker en Ubuntu 22.04](https://github.com/jonaygarciav/apuntes_de_devops/blob/main/apuntes/virtualizacion/ub-server22.04-docker-install.md)):
+        * Elección de imágenes en Docker Hub ([Apuntes](./apuntes/ut03/docker-mysql8.0-eleccion-imagenes.md))
+        * Desplegar un contenedor sin persistencia ([Apuntes](./apuntes/ut03/docker-mysql8.0-sin-persistencia.md))
+        * Desplegar un contenedor con persistencia ([Apuntes](./apuntes/ut03/docker-mysql8.0-con-persistencia.md))
+        * Desplegar un contenedor compartiendo una carpeta entre el host y el contenedor ([Apuntes](./apuntes/ut03/docker-mysql8.0-compartir-carpeta.md))
+        * Desplegar un contenedor con acceso externo al servicio del contenedor ([Apuntes](./apuntes/ut03/docker-mysql8.0-acceso-externo.md))
+        * Desplegar un contenedor cargando un fichero SQL cuando arranca por primera vez el contenedor ([Apuntes](./apuntes/ut03/docker-mysql-8.0-carga-fichero-sql.md))

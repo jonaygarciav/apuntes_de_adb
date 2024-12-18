@@ -1,7 +1,23 @@
 # Instalar MySQL 8.0 en Fedora Server 40
 
+* Descargar paquetes
 * Instalar servidor y cliente MySQL
 * Instalar cliente MySQL
+
+## Descargar paquetes
+
+Desde la página oficial de MySQL [https://dev.mysql.com/downloads/mysql/](https://dev.mysql.com/downloads/mysql/) seleccionamos los paquetes necesarios para la instalación de MySQL 8.0.40 sobre Fedora 40:
+* __Selected Version__: 8.0.40
+* __Select Operating System__: Fedora
+* __Select OS Version__: Fedora 40 (x86, 64-bit)
+
+Descargamos los siguientes paquetes:
+* `mysql-community-client-8.0.40-10.fc40.x86_64.rpm`: necesario para la instalación tanto del servidor como del cliente MySQL.
+* `mysql-community-client-plugins-8.0.40-10.fc40.x86_64.rpm`: necesario para la instalación tanto del servidor como del cliente MySQL.
+* `mysql-community-common-8.0.40-10.fc40.x86_64.rpm`: necesario para la instalación tanto del servidor como del cliente MySQL.
+* `mysql-community-icu-data-files-8.0.40-10.fc40.x86_64.rpm`: necesario solamente para la instalación del servidor MySQL.
+* `mysql-community-libs-8.0.40-10.fc40.x86_64.rpm`: necesario para la instalación tanto del servidor como del cliente MySQL.
+* `mysql-community-server-8.0.40-10.fc40.x86_64.rpm`: necesario solamente para la instalación del servidor MySQL.
 
 ## Instalar servidor y cliente MySQL 8.0
 
@@ -23,7 +39,7 @@ drwxr-xr-x. 3 root   root         20 dic  6 12:07 ..
 -rw-r--r--. 1 alumno alumno 20978064 dic  6 12:27 mysql-community-server-8.0.40-10.fc40.x86_64.rpm
 ```
 
-### Instalar el servidor de MySQL
+### Instalar servidor y cliente MySQL
 
 ```bash
 $ sudo dnf localinstall mysql-community-client-8.0.40-10.fc40.x86_64.rpm mysql-community-client-plugins-8.0.40-10.fc40.x86_64.rpm mysql-community-common-8.0.40-10.fc40.x86_64.rpm mysql-community-icu-data-files-8.0.40-10.fc40.x86_64.rpm mysql-community-libs-8.0.40-10.fc40.x86_64.rpm mysql-community-server-8.0.40-10.fc40.x86_64.rpm
@@ -173,4 +189,27 @@ $ sudo firewall-cmd --list-ports
 
 ### Preparar la instalación de MySQL
 
-#TODO
+```bash
+$ ls -la
+total 29552
+drwx------. 2 alumno alumno     4096 dic  6 12:28 .
+drwxr-xr-x. 3 root   root         20 dic  6 12:07 ..
+-rw-r--r--. 1 alumno alumno       18 feb  9  2024 .bash_logout
+-rw-r--r--. 1 alumno alumno      144 feb  9  2024 .bash_profile
+-rw-r--r--. 1 alumno alumno      522 feb  9  2024 .bashrc
+-rw-r--r--. 1 alumno alumno  3516681 dic  6 12:27 mysql-community-client-8.0.40-10.fc40.x86_64.rpm
+-rw-r--r--. 1 alumno alumno  1311599 dic  6 12:28 mysql-community-client-plugins-8.0.40-10.fc40.x86_64.rpm
+-rw-r--r--. 1 alumno alumno   569678 dic  6 12:27 mysql-community-common-8.0.40-10.fc40.x86_64.rpm
+-rw-r--r--. 1 alumno alumno  1475148 dic  6 12:27 mysql-community-libs-8.0.40-10.fc40.x86_64.rpm
+```
+
+### Instalar cliente MySQL
+
+```bash
+$ sudo yum localinstall mysql-community-client-plugins-8.0.40-10.fc40.x86_64.rpm mysql-community-libs-8.0.40-10.fc40.x86_64.rpm mysql-community-common-8.0.40-10.fc40.x86_64.rpm mysql-community-client-8.0.40-10.fc40.x86_64.rpm
+```
+
+```bash
+[alumno@localhost ~]$ mysql --version
+mysql  Ver 8.0.40 for Linux on x86_64 (MySQL Community Server - GPL)
+```
