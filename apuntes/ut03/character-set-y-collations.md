@@ -1,9 +1,12 @@
 # Character Set y Collations
 
-# Introducción
-# Comando SHOW CHARACTER SET
+* Introducción
+* Comando `SHOW CHARACTER SET`
+* Comando `SHOW COLLATIONS`
 
-Un `CHARACTER SET` es un conjunto de símbolos y sus respectivas codificaciones. Un `COLLATE` es un conjunto de reglas que define cómo se comparan los caracteres dentro de un `CHARACTER SET`.
+# Introducción
+
+Un `CHARACTER SET` es un conjunto de símbolos y sus respectivas codificaciones, mientras que un `COLLATE` es un conjunto de reglas que define cómo se comparan los caracteres dentro de un `CHARACTER SET`.
 
 Supongamos que tenemos un alfabeto con cuatro letras: `A`, `B`, `a`, `b` y asignamos un número a cada letra:
 
@@ -27,21 +30,21 @@ Como `0 < 1`, decimos que `A` es menor que `B`. Esta comparación se basa en com
 
 ¿Qué pasa si queremos que las letras en minúsculas y mayúsculas sean equivalentes? En este caso, necesitamos al menos dos reglas en nuestra collation:
 
-1. Tratar las letras minúsculas (a, b) como equivalentes a sus respectivas mayúsculas (A, B).
+1. Tratar las letras minúsculas (`a`, `b`) como equivalentes a sus respectivas mayúsculas (`A`, `B`).
 2. Luego, comparar las codificaciones.
 
-Esto se llama una `case-insensitive collation` y no distingue entre mayúsculas y minúsculas. Es un poco más compleja que la __binary collation__.
+Esto se llama una __case-insensitive collation__ y no distingue entre mayúsculas y minúsculas. Es un poco más compleja que la __binary collation__.
 
 En la vida real:
-* Los conjuntos de caracteres reales contienen no solo letras como A y B, sino alfabetos completos (a veces múltiples alfabetos) o sistemas de escritura orientales con miles de caracteres, además de símbolos especiales y signos de puntuación.
+* Los conjuntos de caracteres reales contienen no solo letras como `A` y `B`, sino alfabetos completos (a veces múltiples alfabetos) o sistemas de escritura orientales con miles de caracteres, además de símbolos especiales y signos de puntuación.
 * Las collations reales pueden tener muchas reglas.
-    * Reglas de mayúsculas y minúsculas: Decidir si a y A son equivalentes.
-    * Reglas de acentos: Decidir si Ö en alemán es igual a OE o se trata como un carácter diferente.
-    * Mapeos de múltiples caracteres: Por ejemplo, en alemán, Ö = OE en ciertas collations.
+    * Reglas de mayúsculas y minúsculas: Decidir si `a` y `A` son equivalentes.
+    * Reglas de acentos: Decidir si `Ö` en alemán es igual a `OE` o se trata como un carácter diferente.
+    * Mapeos de múltiples caracteres: Por ejemplo, en alemán, `Ö = OE` en ciertas collations.
 
 ## Comando SHOW CHARACTER SET
 
-El comando `SHOW CHARACTER SET` muestra los conjuntos de caracteres disonibles. la cláusula `LIKE`, si está presente, nos permite filtrar los conjuntos de caracteres por una patrón. La cláusula `WHERE` permite seleccionar conjuntos de caracteres haciendo uso de expresiones.
+El comando `SHOW CHARACTER SET` muestra los conjuntos de caracteres disponibles. la cláusula `LIKE`, si está presente, nos permite filtrar los conjuntos de caracteres por una patrón. La cláusula `WHERE` permite seleccionar conjuntos de caracteres haciendo uso de expresiones.
 
 ```
 mysql> SHOW CHARACTER SET;
@@ -93,7 +96,7 @@ mysql> SHOW CHARACTER SET;
 41 rows in set (0,00 sec)
 ```
 
-El conjunto de caracteres `latin1` en MySQL es una implementación del estándar ISO-8859-1 (también conocido como Latin-1 o Western European). Es un conjunto de caracteres de un solo byte que puede representar 256 caracteres, lo que incluye caracteres del alfabeto latino básico y algunos caracteres adicionales comunes en lenguajes europeos occidentales. Cada carácter utiliza exactamente 1 byte. Fue el conjunto de caracteres predeterminado en MySQL hasta la versión 5.5, antes de que utf8 tomara su lugar como el conjunto de caracteres más recomendado.
+El conjunto de caracteres `latin1` en MySQL es una implementación del estándar _ISO-8859-1_ (también conocido como _Latin-1_ o _Western European_). Es un conjunto de caracteres de un solo byte que puede representar 256 caracteres, lo que incluye caracteres del alfabeto latino básico y algunos caracteres adicionales comunes en lenguajes europeos occidentales. Cada carácter utiliza exactamente 1 byte. Fue el conjunto de caracteres predeterminado en MySQL hasta la versión 5.5, antes de que _UTF-8_ tomara su lugar como el conjunto de caracteres más recomendado.
 
 ```sql
 mysql> SHOW CHARACTER SET LIKE 'latin%';
@@ -114,7 +117,7 @@ La salida de `SHOW CHARACTER SET` tiene las siguientes columnas:
 * __Default collation__: la collation predeterminada para el conjunto de caracteres.
 * __Maxlen__: el número máximo de bytes requeridos para almacenar un carácter.
 
-El conjunto de caracteres `utf8mb4` es la implementación de MySQL para el estándar UTF-8 completo (4 bytes por carácter), que puede representar todo el rango de caracteres de Unicode. Esto incluye caracteres comunes, símbolos, emojis y caracteres de sistemas de escritura asiáticos, entre otros:
+El conjunto de caracteres `utf8mb4` es la implementación de MySQL para el estándar _UTF-8_ completo (4 bytes por carácter), que puede representar todo el rango de caracteres de Unicode. Esto incluye caracteres comunes, símbolos, emojis y caracteres de sistemas de escritura asiáticos, entre otros:
 * __1 byte__: caracteres ASCII comunes.
 * __2 bytes__: caracteres europeos básicos y algunos símbolos.
 * __3 bytes__: caracteres adicionales de Unicode, como algunos alfabetos extendidos.
@@ -243,6 +246,9 @@ mysql> SHOW COLLATION WHERE `Default` = 'Yes';
 41 rows in set (0,01 sec)
 ```
 
+Ver los collation asociados al _CHARACTER SET_ `utf8mb4`::
+
+
 ```sql
 mysql> SHOW COLLATION WHERE CHARSET LIKE 'utf8mb4';
 +----------------------------+---------+-----+---------+----------+---------+---------------+
@@ -342,17 +348,17 @@ mysql> SHOW COLLATION WHERE CHARSET LIKE 'utf8mb4';
 ```
 
 * __utf8mb4_0900_ai_ci__:
-    * Conjunto de caracteres asociado: utf8mb4
+    * Conjunto de caracteres asociado: `utf8mb4`
     * ID: 255
     * Descripción: 
         * Insensible a mayúsculas y acentos (ai = accent-insensitive, ci = case-insensitive).
-        * Es la collation predeterminada para utf8mb4 en MySQL 8.0.
-        * No distingue entre caracteres con y sin acentos (á = a) ni entre mayúsculas y minúsculas (A = a).
+        * Es la collation predeterminada para `utf8mb4` en MySQL 8.0.
+        * No distingue entre caracteres con y sin acentos (`á` = `a`) ni entre mayúsculas y minúsculas (`A` = `a`).
         * Atributo de relleno (Pad_attribute): NO PAD. Los espacios finales no son significativos en las comparaciones.
         * Ideal para texto multilingüe en aplicaciones modernas.
 
 * __utf8mb4_0900_as_ci__:
-    * _Conjunto de caracteres asociado_: utf8mb4
+    * _Conjunto de caracteres asociado_: `utf8mb4`
     * _ID_: 305
     * _Descripción_:
         * Sensible a acentos (as = accent-sensitive), pero insensible a mayúsculas (ci = case-insensitive).
@@ -361,7 +367,7 @@ mysql> SHOW COLLATION WHERE CHARSET LIKE 'utf8mb4';
         * Útil cuando los acentos son importantes, pero las mayúsculas no lo son.
 
 * __utf8mb4_0900_as_cs__:
-    * _Conjunto de caracteres asociado_: utf8mb4
+    * _Conjunto de caracteres asociado_: `utf8mb4`
     * _ID_: 278
     * _Descripción_:
         * Sensible a acentos (as = accent-sensitive) y mayúsculas (cs = case-sensitive).
@@ -370,7 +376,7 @@ mysql> SHOW COLLATION WHERE CHARSET LIKE 'utf8mb4';
         * Adecuado para aplicaciones donde tanto los acentos como las mayúsculas son importantes.
 
 * __utf8mb4_spanish2_ci__:
-    * _Conjunto de caracteres asociado_: utf8mb4
+    * _Conjunto de caracteres asociado_: `utf8mb4`
     * _ID_: 238
     * _Descripción_:
         * Insensible a mayúsculas y acentos (ci = case-insensitive).
@@ -382,7 +388,7 @@ mysql> SHOW COLLATION WHERE CHARSET LIKE 'utf8mb4';
         * Útil para textos en español donde se necesita un ordenamiento específico del idioma.
 
 * __utf8mb4_spanish_ci__:
-    * _Conjunto de caracteres asociado_: utf8mb4
+    * _Conjunto de caracteres asociado_: `utf8mb4`
     * _ID_: 231
     * _Descripción_:
         * Insensible a mayúsculas y acentos (ci = case-insensitive).
@@ -390,7 +396,7 @@ mysql> SHOW COLLATION WHERE CHARSET LIKE 'utf8mb4';
         * Considera caracteres con y sin acentos como equivalentes (á = a), pero trata a la ñ como equivalente a la n en el orden alfabético.
         * Atributo de relleno (Pad_attribute): PAD SPACE.
         * Los espacios finales son significativos en las comparaciones.
-        * Útil para textos en español con un ordenamiento menos estricto en comparación con utf8mb4_spanish2_ci.
+        * Útil para textos en español con un ordenamiento menos estricto en comparación con `utf8mb4_spanish2_ci`.
 
 Ejemplo de ordenación en cada collation:
 

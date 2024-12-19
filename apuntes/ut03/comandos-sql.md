@@ -204,7 +204,6 @@ En `MySQL`, el comando `USE` no pertenece estrictamente a ninguna de las categor
 
 El comando `SHOW` se utiliza para mostrar información sobre las bases de datos, tablas, usuarios, variables del sistema, y configuraciones del DBMS. Es una herramienta poderosa para inspeccionar el estado de un sistema de base de datos.
 
-```
 | **Opción**       | **Descripción**                                                                   |
 |-------------------|----------------------------------------------------------------------------------|
 | `DATABASES`       | Lista todas las bases de datos disponibles en el servidor.                       |
@@ -216,7 +215,6 @@ El comando `SHOW` se utiliza para mostrar información sobre las bases de datos,
 | `GRANTS`          | Muestra los permisos de un usuario específico.                                   |
 | `CREATE DATABASE` | Muestra la instrucción SQL utilizada para crear una base de datos.               |
 | `CREATE TABLE`    | Muestra la instrucción SQL utilizada para crear una tabla.                       |
-```
 
 Ejemplos de uso:
 
@@ -237,7 +235,7 @@ USE tienda;
 SHOW TABLES;
 
 +-------------------+
-| Tables_in_Tienda  |
+| Tables_in_tienda  |
 +-------------------+
 | productos         |
 | clientes          |
@@ -296,12 +294,12 @@ SHOW GRANTS FOR 'usuario'@'localhost';
 +------------------------------------------------------------+
 
 -- Mostrar el comando SQL para crear una BBDD
-SHOW CREATE DATABASE Tienda;
+SHOW CREATE DATABASE tienda;
 
 +----------+-------------------------------------------------+
 | Database | Create Database                                 |
 +----------+-------------------------------------------------+
-| Tienda   | CREATE DATABASE `Tienda` /*!40100 DEFAULT ... */|
+| tienda   | CREATE DATABASE `tienda` /*!40100 DEFAULT ... */|
 +----------+-------------------------------------------------+
 
 -- Mostrar el comando SQL para crear una tabla
@@ -364,8 +362,6 @@ SHOW VARIABLES LIKE '%size%';
 | binlog_cache_size           | 32768       |
 | innodb_buffer_pool_size     | 134217728   |
 | key_buffer_size             | 8388608     |
-| max_allowed_packet          | 4194304     |
-| net_buffer_length           | 16384       |
 | query_cache_size            | 1048576     |
 +-----------------------------+-------------+
 ```
@@ -383,21 +379,21 @@ Uso del comando `SOURCE`
 Sintaxis del comando `SOURCE`:
 
 ```sql
-SOURCE ruta-archivo.sql;
+SOURCE <archivo>;
 ```
 
-* ruta-archivo.sql: es la ubicación y el nombre del archivo que contiene las sentencias SQL.
+* `<archivo>`: archivo que contiene las sentencias SQL.
 
 Uso del comando `SOURCE` con _rutas absolutas_:
 
 ```sql
-SOURCE /home/usuario/scripts/inicial.sql;
+SOURCE /home/usuario/scripts/seed.sql;
 ```
 
 Uso del comando `SOURCE` con _rutas relativas_:
 
 ```sql
-SOURCE inicial.sql;
+SOURCE seed.sql;
 ```
 
 Los comandos se ejecutan en el orden en que aparecen en el archivo de manera secuencial, ignorando los comentarios, es decir, aquellas líneas que comienzan con `--` o están delimitadas por `/* ... */`
@@ -425,13 +421,13 @@ SELECT * FROM empleados;
 Comando para ejecutar el archivo `seed.sql` utilizando _rutas absolutas_:
 
 ```sql
-SOURCE /home/alumno/inicial.sql;
+SOURCE /home/alumno/seed.sql;
 ```
 
 Comando para ejecutar el archivo `seed.sql` utilizando _rutas relativas_:
 
 ```sql
-SOURCE inicial.sql;
+SOURCE seed.sql;
 ```
 
 Resultado:

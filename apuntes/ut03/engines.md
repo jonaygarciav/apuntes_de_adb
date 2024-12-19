@@ -1,8 +1,17 @@
 # Motores de Almacenamiento (Engines)
 
+* Introducción
+* Comando `SHOW ENGINES`
+* InnoDB
+* MyISAM
+
+## Introducción
+
 Los __engines__ o _motores de almacenamiento_ son componentes de MySQL que manejan las operaciones SQL para diferentes tipos de tablas. `InnoDB` es el motor de almacenamiento predeterminado y de propósito general, y Oracle recomienda usarlo para las tablas excepto en casos de uso especializados.
 
-Para determinar qué motores de almacenamiento soporta nuestro servidor MySQL se utiliza la instrucción `SHOW ENGINES`.
+## Comando SHOW ENGINES
+
+Para determinar qué motores de almacenamiento soporta nuestro servidor MySQL se utiliza el comando `SHOW ENGINES`.
 
 ```sql
 -- Opción 1:
@@ -49,6 +58,8 @@ mysql> SELECT * FROM INFORMATION_SCHEMA.ENGINES;
 * __Transactions__: indica si el motor soporta transacciones ACID (como commit, rollback y consistencia de datos). `YES` significa que las soporta.
 * __XA__: muestra si el motor soporta transacciones distribuidas XA, que permiten coordinar operaciones entre múltiples bases de datos.
 * __Savepoints__: indica si el motor soporta puntos de guardado (savepoints) dentro de transacciones, lo que permite volver a un estado anterior dentro de la misma transacción.
+
+A continuación, una tabla comparativa de los principales `engines` de MySQL:
 
 | **Feature**                           | **MyISAM** | **Memory** | **InnoDB** | **Archive** | **NDB** |
 |---------------------------------------|------------|------------|------------|-------------|---------|
