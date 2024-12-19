@@ -8,6 +8,10 @@
 
 Descargar los paquetes necesarios de la URL [https://dev.mysql.com/downloads/mysql/](https://dev.mysql.com/downloads/mysql/):
 
+* __Select Version__: 8.0.40
+* __Select Operating System__: Ubuntu Linux
+* __Select OS Version__: Ubuntu Linux 24.04 (x86, 64-bit)
+
 ```bash
 $ ls -l
 total 33140
@@ -105,6 +109,10 @@ Una vez terminado, se puede salir de la consola de MySQL escribiendo exit y pres
 ## Instalar cliente MySQL 8.0
 
 Descargar los paquetes necesarios de la URL [https://dev.mysql.com/downloads/mysql/](https://dev.mysql.com/downloads/mysql/):
+
+* __Select Version__: 8.0.40
+* __Select Operating System__: Ubuntu Linux
+* __Select OS Version__: Ubuntu Linux 24.04 (x86, 64-bit)
 
 ```bash
 $ ls -l
