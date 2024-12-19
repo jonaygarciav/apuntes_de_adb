@@ -21,7 +21,7 @@ UT00:
 
 ## UT03: Fundamentos de Bases de Datos MySQL
 * Comandos SQL ([Apuntes](./apuntes/ut03/comandos-sql.md) | [Ejercicios](./ejercicios/ut03/comandos-sql.md))
-* Character Set y Collations ([Apuntes](./apuntes/ut03/character-set-y-collations.md))
+* Character Set y Collations ([Apuntes](./apuntes/ut03/character-set-y-collations.md) | [Ejercicios](./ejercicios/ut03/character-set-y-collations.md))
 * Motores de almacenamiento (Engines) ([Apuntes](./apuntes/ut03/engines.md))
 * Tipos de datos ([Apuntes](./apuntes/ut03/tipos-de-datos.md))
 
