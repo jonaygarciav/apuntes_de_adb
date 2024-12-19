@@ -1,77 +1,36 @@
 # Instalar MySQL 8.0 en Ubuntu Server 22.04
 
 * Instalar servidor y cliente MySQL
+    * Acceso a MySQL Server
 * Instalar cliente MySQL
 
 ## Instalar servidor y cliente MySQL 8.0
 
-### Preparar la instalación de MySQL
-
-Descargar el paquete de configuración de MySQL APT:
+Descargar los paquetes necesarios de la URL [https://dev.mysql.com/downloads/mysql/](https://dev.mysql.com/downloads/mysql/):
 
 ```bash
-$ wget https://dev.mysql.com/get/mysql-apt-config_0.8.33-1_all.deb
+$ ls -l
+total 33140
+-rw-rw-r-- 1 alumno alumno    58808 dic 13 05:47 mysql-client_8.0.40-1ubuntu22.04_amd64.deb
+-rw-rw-r-- 1 alumno alumno    60094 dic 13 05:47 mysql-common_8.0.40-1ubuntu22.04_amd64.deb
+-rw-rw-r-- 1 alumno alumno  2228606 dic 13 05:47 mysql-community-client_8.0.40-1ubuntu22.04_amd64.deb
+-rw-rw-r-- 1 alumno alumno  2131742 dic 13 05:47 mysql-community-client-core_8.0.40-1ubuntu22.04_amd64.deb
+-rw-rw-r-- 1 alumno alumno  1442522 dic 13 05:47 mysql-community-client-plugins_8.0.40-1ubuntu22.04_amd64.deb
+-rw-rw-r-- 1 alumno alumno    70592 dic 13 05:47 mysql-community-server_8.0.40-1ubuntu22.04_amd64.deb
+-rw-rw-r-- 1 alumno alumno 27924720 dic 13 05:47 mysql-community-server-core_8.0.40-1ubuntu22.04_amd64.deb
 ```
 
-Este comando descarga el paquete de configuración de MySQL APT desde el sitio oficial de MySQL. Este archivo permite gestionar las versiones de MySQL que queremos instalar y facilita la instalación de MySQL a través del sistema de paquetes apt.
-
-Verificar el archivo descargado:
+Realizar la instalación de todos los paquetes `.deb`:
 
 ```bash
-$ ls -l *.deb
-total 60
-drwxr-x--- 4 alumno alumno  4096 oct 27 22:12 .
-drwxr-xr-x 3 root   root    4096 oct  4 07:22 ..
--rw-rw-r-- 1 alumno alumno 18072 sep 27 08:45 mysql-apt-config_0.8.33-1_all.deb
-```
-
-Este comando lista el archivo .deb descargado para confirmar su presencia en el directorio. La salida muestra información detallada del archivo, como el tamaño y la fecha de modificación.
-
-Instalar el paquete de configuración de MySQL APT:
-
-```bash
-$ sudo dpkg -i mysql-apt-config_0.8.33-1_all.deb
-```
-
-![][01]
-
-![][02]
-
-![][03]
-
-![][04]
-
-![][05]
-
-Con este comando, utilizamos dpkg para instalar el archivo .deb descargado. Esto configura el sistema de paquetes APT para que pueda gestionar las versiones de MySQL y sus componentes.
-
-Actualizar los repositorios de APT:
-
-```bash
-$ sudo apt update
-```
-
-Este comando actualiza la lista de paquetes disponibles y versiones, incluyendo los de MySQL, que se han añadido a los repositorios mediante la instalación del paquete _.deb_ anterior.
-
-### Instalar el servidor de MySQL
-
-Instalar MySQL Server y MySQL Client:
-
-```bash
-$ sudo apt install -f mysql-client=8.0* mysql-community-server=8.0* mysql-server=8.0*
+$ sudo apt install ./*.deb
 ```
 
 ![][06]
 
 ![][07]
 
-![][08]
-
 ![][09]
-
-Instalamos MySQL Server y el cliente de MySQL, especificando la versión 8.0. Esto garantiza que se instalen las versiones deseadas del servidor y cliente MySQL.
-
-Verificar el estado del servicio MySQL:
 
 ```bash
 $ systemctl status mysql.service
@@ -138,75 +97,34 @@ Para salir de la terminal:
 ```bash
 mysql> exit
 Bye
-alumno@ubuntu-server2204:~$
+$
 ```
 
 Una vez terminado, se puede salir de la consola de MySQL escribiendo exit y presionando `Enter`.
 
-Referencia(s):
-* [https://dev.mysql.com/doc/mysql-apt-repo-quick-guide/en/](https://dev.mysql.com/doc/mysql-apt-repo-quick-guide/en/)
-
 ## Instalar cliente MySQL 8.0
 
-### Preparar la instalación de MySQL
-
-Descargar el paquete de configuración de MySQL APT:
+Descargar los paquetes necesarios de la URL [https://dev.mysql.com/downloads/mysql/](https://dev.mysql.com/downloads/mysql/):
 
 ```bash
-$ wget https://dev.mysql.com/get/mysql-apt-config_0.8.33-1_all.deb
+$ ls -l
+total 5592
+drwxr-xr-x  3 alumno alumno    4096 dic 19 09:35 .
+drwxr-x--- 17 alumno alumno    4096 dic 13 05:56 ..
+-rw-rw-r--  1 alumno alumno   57774 dic 19 09:34 mysql-client_8.0.40-1ubuntu24.04_amd64.deb
+-rw-rw-r--  1 alumno alumno   59074 dic 19 09:34 mysql-common_8.0.40-1ubuntu24.04_amd64.deb
+-rw-rw-r--  1 alumno alumno 2073356 dic 19 09:34 mysql-community-client_8.0.40-1ubuntu24.04_amd64.deb
+-rw-rw-r--  1 alumno alumno 2131712 dic 19 09:35 mysql-community-client-core_8.0.40-1ubuntu24.04_amd64.deb
+-rw-rw-r--  1 alumno alumno 1376574 dic 19 09:34 mysql-community-client-plugins_8.0.40-1ubuntu24.04_amd64.deb
 ```
 
-Este comando descarga el paquete de configuración de MySQL APT desde el sitio oficial de MySQL. Este archivo permite gestionar las versiones de MySQL que queremos instalar y facilita la instalación de MySQL a través del sistema de paquetes apt.
-
-Verificar el archivo descargado:
+Realizar la instalación de todos los paquetes `.deb`:
 
 ```bash
-$ ls -l *.deb
-total 60
-drwxr-x--- 4 alumno alumno  4096 oct 27 22:12 .
-drwxr-xr-x 3 root   root    4096 oct  4 07:22 ..
--rw-rw-r-- 1 alumno alumno 18072 sep 27 08:45 mysql-apt-config_0.8.33-1_all.deb
+$ sudo apt install ./*.deb
 ```
 
-Este comando lista el archivo .deb descargado para confirmar su presencia en el directorio. La salida muestra información detallada del archivo, como el tamaño y la fecha de modificación.
-
-Instalar el paquete de configuración de MySQL APT:
-
-```bash
-$ sudo dpkg -i mysql-apt-config_0.8.33-1_all.deb
-```
-
-![][01]
-
-![][02]
-
-![][03]
-
-![][04]
-
-![][05]
-
-Con este comando, utilizamos dpkg para instalar el archivo .deb descargado. Esto configura el sistema de paquetes APT para que pueda gestionar las versiones de MySQL y sus componentes.
-
-Actualizar los repositorios de APT:
-
-```bash
-$ sudo apt update
-```
-
-Este comando actualiza la lista de paquetes disponibles y versiones, incluyendo los de MySQL, que se han añadido a los repositorios mediante la instalación del paquete _.deb_ anterior.
-
-### Instalar el cliente de MySQL
-
-Instalar cliente de MySQL:
-
-```bash
-$ sudo apt install -f mysql-client=8.0*
-```
-
-Instalamos el cliente de MySQL, especificando la versión 8.0. Esto garantiza que se instale la versión deseada del cliente MySQL.
-
-Comprobar la versión de MySQL instalada:
+Comprobar la versión del cliente:
 
 ```bash
 $ mysql -V
@@ -215,12 +133,6 @@ mysql  Ver 8.0.40 for Linux on x86_64 (MySQL Community Server - GPL)
 
 Este comando muestra la versión de MySQL instalada en el sistema, confirmando que se ha instalado correctamente.
 
-[01]: ../../img/ut03/instalar-mysql-8.0-ubuntu-server-22.04/configurar-apt01.png "01"
-[02]: ../../img/ut03/instalar-mysql-8.0-ubuntu-server-22.04/configurar-apt02.png "02"
-[03]: ../../img/ut03/instalar-mysql-8.0-ubuntu-server-22.04/configurar-apt03.png "03"
-[04]: ../../img/ut03/instalar-mysql-8.0-ubuntu-server-22.04/configurar-apt04.png "04"
-[05]: ../../img/ut03/instalar-mysql-8.0-ubuntu-server-22.04/configurar-apt05.png "05"
 [06]: ../../img/ut03/instalar-mysql-8.0-ubuntu-server-22.04/instalar-mysql01.png "06"
 [07]: ../../img/ut03/instalar-mysql-8.0-ubuntu-server-22.04/instalar-mysql02.png "07"
-[08]: ../../img/ut03/instalar-mysql-8.0-ubuntu-server-22.04/instalar-mysql03.png "08"
 [09]: ../../img/ut03/instalar-mysql-8.0-ubuntu-server-22.04/instalar-mysql04.png "09"
