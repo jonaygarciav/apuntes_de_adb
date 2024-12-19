@@ -12,7 +12,7 @@ El __DDL__ (_Data Definition Language_) es un subconjunto del lenguaje SQL que s
 Características de DDL
 * __Define la estructura de la base de datos__: permite crear, modificar y eliminar objetos como tablas, índices, vistas, etc.
 * __Cambios permanentes__: los comandos DDL afectan directamente a la base de datos y no pueden deshacerse fácilmente (a menos que utilices transacciones en sistemas que lo permitan).
-* __Palabras clave comunes_: CREATE, ALTER, DROP, TRUNCATE, RENAME.
+* __Palabras clave comunes__: CREATE, ALTER, DROP, TRUNCATE, RENAME.
 
 # Engines
 

@@ -215,12 +215,12 @@ mysql  Ver 8.0.40 for Linux on x86_64 (MySQL Community Server - GPL)
 
 Este comando muestra la versión de MySQL instalada en el sistema, confirmando que se ha instalado correctamente.
 
-[01]: ../img/ut03/instalar-mysql-8.0-ubuntu-server-22.04/configurar-apt01.png "01"
-[02]: ../img/ut03/instalar-mysql-8.0-ubuntu-server-22.04/configurar-apt02.png "02"
-[03]: ../img/ut03/instalar-mysql-8.0-ubuntu-server-22.04/configurar-apt03.png "03"
-[04]: ../img/ut03/instalar-mysql-8.0-ubuntu-server-22.04/configurar-apt04.png "04"
-[05]: ../img/ut03/instalar-mysql-8.0-ubuntu-server-22.04/configurar-apt05.png "05"
-[06]: ../img/ut03/instalar-mysql-8.0-ubuntu-server-22.04/instalar-mysql01.png "06"
-[07]: ../img/ut03/instalar-mysql-8.0-ubuntu-server-22.04/instalar-mysql02.png "07"
-[08]: ../img/ut03/instalar-mysql-8.0-ubuntu-server-22.04/instalar-mysql03.png "08"
-[09]: ../img/ut03/instalar-mysql-8.0-ubuntu-server-22.04/instalar-mysql04.png "09"
+[01]: ../../img/ut03/instalar-mysql-8.0-ubuntu-server-22.04/configurar-apt01.png "01"
+[02]: ../../img/ut03/instalar-mysql-8.0-ubuntu-server-22.04/configurar-apt02.png "02"
+[03]: ../../img/ut03/instalar-mysql-8.0-ubuntu-server-22.04/configurar-apt03.png "03"
+[04]: ../../img/ut03/instalar-mysql-8.0-ubuntu-server-22.04/configurar-apt04.png "04"
+[05]: ../../img/ut03/instalar-mysql-8.0-ubuntu-server-22.04/configurar-apt05.png "05"
+[06]: ../../img/ut03/instalar-mysql-8.0-ubuntu-server-22.04/instalar-mysql01.png "06"
+[07]: ../../img/ut03/instalar-mysql-8.0-ubuntu-server-22.04/instalar-mysql02.png "07"
+[08]: ../../img/ut03/instalar-mysql-8.0-ubuntu-server-22.04/instalar-mysql03.png "08"
+[09]: ../../img/ut03/instalar-mysql-8.0-ubuntu-server-22.04/instalar-mysql04.png "09"
