@@ -40,3 +40,6 @@ UT00:
         * Desplegar un contenedor compartiendo una carpeta entre el host y el contenedor ([Apuntes](./apuntes/ut03/mysql8.0.40/docker-mysql8.0-compartir-carpeta.md))
         * Desplegar un contenedor con acceso externo al servicio del contenedor ([Apuntes](./apuntes/ut03/mysql8.0.40/docker-mysql8.0-acceso-externo.md))
         * Cargar un fichero SQL al desplegar un contenedor cuando arranca por primera vez ([Apuntes](./apuntes/ut03/mysql8.0.40/docker-mysql-8.0-carga-fichero-sql.md))
+
+## UT04: Data Definition Language (DDL)
+* Manipulación de Bases de Datos ([Apuntes](./apuntes/ut04/database-manipulation.md))
