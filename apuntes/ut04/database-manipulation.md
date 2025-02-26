@@ -212,13 +212,17 @@ Consideraciones importantes:
 Consultar el listado de todas las bases de datos a las que el usuario actual tiene acceso:
 
 ```sql
-SHOW DATABASES;
-
-Database
-information_schema
-mysql
-performance_schema
-test_db
+mysql> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
+| test_db            |
++--------------------+
+5 rows in set (0,01 sec)
 ```
 
 > __Nota__: si el usuario tiene permisos limitados, es posible que no vea todas las bases de datos del servidor. Bases de datos como `information_schema`, `mysql` y `performance_schema` son internas de MySQL.
