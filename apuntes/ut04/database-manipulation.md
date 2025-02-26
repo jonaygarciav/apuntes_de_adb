@@ -102,7 +102,20 @@ mysql> SELECT @@collation_database;
 | utf8mb4_0900_ai_ci   |
 +----------------------+
 1 row in set (0,00 sec)
+
+mysql> SELECT @@character_set_database, @@collation_database;
++--------------------------+----------------------+
+| @@character_set_database | @@collation_database |
++--------------------------+----------------------+
+| utf8mb4                  | utf8mb4_0900_ai_ci   |
++--------------------------+----------------------+
+1 row in set (0,00 sec)
 ```
+
+El _COLLATION_ puede ser:
+* __case-sensitive (_cs)__: los caracteres a y A son diferentes (sensible a las mayúsculas).
+* __case-insensitive (_ci)__: los caracteres a y A son iguales (no-sensigle a las mayúsculas).
+* __binary (_bin)__: dos caracteres son iguales si los valores de su representación numérica son iguales.
 
 ## Eliminar una Base de Datos
 
