@@ -114,7 +114,7 @@ mysql> SELECT @@character_set_database, @@collation_database;
 
 El _COLLATION_ puede ser:
 * __case-sensitive (_cs)__: los caracteres a y A son diferentes (sensible a las mayúsculas).
-* __case-insensitive (_ci)__: los caracteres a y A son iguales (no-sensigle a las mayúsculas).
+* __case-insensitive (_ci)__: los caracteres a y A son iguales (no-sensible a las mayúsculas).
 * __binary (_bin)__: dos caracteres son iguales si los valores de su representación numérica son iguales.
 
 ## Eliminar una Base de Datos
