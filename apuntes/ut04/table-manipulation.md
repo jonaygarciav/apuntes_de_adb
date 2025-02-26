@@ -2,6 +2,8 @@
 
 * Introducción
 * Crear una Tabla
+    * Restricciones sobre las columnas de una tabla
+    * Otras opciones a tener en cuenta en la creación de las tablas
 * Eliminar una Tabla
 * Modificar una Tabla
 * Otros Comandos
@@ -302,6 +304,98 @@ INSERT INTO pieza VALUES (4, 'Pieza 4', 'Azul', 24.50, 2);
 * ¿Qué le ocurre a las piezas que pertenecen la Categoría A después de borrarla?
 * ¿Podríamos actualizar la Categoría A de la tabla categoria?
 * ¿Qué le ocurre a las piezas que pertenecen la Categoría A después de actualizarla?
+
+Conclusión:
+
+* `RESTRICT` bloquea la eliminación y actualización si hay dependencias.
+* `CASCADE` propaga los cambios y eliminaciones automáticamente.
+* `SET NULL` evita la eliminación forzada, pero deja registros huérfanos en pieza.
+
+### Otras opciones a tener en cuenta en la creación de las tablas
+
+Al crear tablas en MySQL, podemos definir varias opciones que influyen en su funcionamiento y estructura. Algunas de las más importantes son:
+
+* `AUTO_INCREMENT`: permite establecer un valor inicial para un campo con auto-incremento.
+* `CHARACTER SET`: define el conjunto de caracteres que se utilizará en la tabla.
+* `COLLATE`: determina el tipo de cotejamiento que se aplicará en la tabla.
+* `ENGINE`: especifica el motor de almacenamiento que se usará. Los más comunes en MySQL son InnoDB y MyISAM, siendo InnoDB el predeterminado.
+
+Ejemplo:
+
+```sql
+DROP DATABASE IF EXISTS proveedores;
+CREATE DATABASE proveedores CHARSET utf8mb4;
+USE proveedores;
+
+CREATE TABLE categoria (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  nombre VARCHAR(100) NOT NULL
+)  ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1000;
+
+CREATE TABLE pieza (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  nombre VARCHAR(100) NOT NULL,
+  color VARCHAR(50) NOT NULL,
+  precio DECIMAL(7,2) NOT NULL,  
+  id_categoria INT UNSIGNED NOT NULL,
+  FOREIGN KEY (id_categoria) REFERENCES categoria(id)
+)  ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1000;
+```
+
+En este ejemplo se ha seleccionado para cada una de las tablas las siguientes opciones de configuración:
+* `InnoDB` como motor de base de datos
+* `utf8mb4` como _CHARACTER SET_
+* `1000` como valor inicial para las columnas de tipo _AUTO_INCREMENT_. Así, el primer registro insertado en la tabla su 'id' tendrá un valor de 1000.
+
+## Eliminar una Tabla
+
+En MySQL, podemos eliminar una tabla de la base de datos utilizando la sentencia `DROP TABLE`. Esta acción es irreversible y elimina completamente la estructura y los datos de la tabla especificada.
+
+La sintaxis básica es la siguiente:
+
+```sql
+DROP [TEMPORARY] TABLE [IF EXISTS] nombre_tabla [, nombre_tabla];
+```
+
+Opciones:
+
+`DROP TABLE nombre_tabla;`: elimina la tabla especificada. Si la tabla no existe, MySQL mostrará un error.
+`DROP TABLE IF EXISTS nombre_tabla;`: elimina la tabla solo si existe. Si la tabla no existe, no se genera un error, lo que evita interrupciones en scripts de automatización.
+`DROP TABLE nombre_tabla_1, nombre_tabla_2;`: permite eliminar múltiples tablas en una sola instrucción.
+
+Ejemplos de uso:
+
+```sql
+DROP TABLE clientes;
+```
+
+Este comando eliminará la tabla clientes de la base de datos actual. Si la tabla no existe, MySQL generará un error.
+
+```sql
+DROP TABLE IF EXISTS pedidos;
+```
+
+Aquí, la tabla pedidos se eliminará si existe. Si no existe, no se generará error.
+
+```sql
+DROP TABLE empleados, departamentos;
+```
+
+Este ejemplo eliminará las tablas empleados y departamentos al mismo tiempo.
+
+
+Consideraciones importantes:
+* __Irreversibilidad__: al ejecutar DROP TABLE, la tabla y todos sus datos se eliminan definitivamente. Si necesitas conservar los datos, es recomendable realizar una copia de seguridad antes de eliminarla.
+* __Efectos en claves foráneas__: si la tabla que se elimina tiene claves foráneas referenciadas por otras tablas, MySQL impedirá su eliminación a menos que se eliminen primero las referencias o se deshabilite la verificación de claves foráneas (SET FOREIGN_KEY_CHECKS=0;).
+* __Diferencia entre DROP TABLE y TRUNCATE TABLE__:
+    * `DROP TABLE` elimina la tabla junto con su estructura y todos sus datos.
+    * `TRUNCATE TABLE` borra solo los datos de la tabla pero mantiene la estructura para futuras inserciones.
+
+> __Nota__: recomendación: Usa DROP TABLE con precaución, especialmente en entornos de producción, ya que una eliminación accidental puede causar pérdida permanente de datos.
+
+## Modificar una Tabla
+
+#TODO
 
 [01]: ../img/ut04/table-manipulation/01.png "01"
 [02]: ../img/ut04/table-manipulation/02.png "02"
