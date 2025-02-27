@@ -395,7 +395,255 @@ Consideraciones importantes:
 
 ## Modificar una Tabla
 
-#TODO
+A veces es necesario modificar una tabla existente para añadir, eliminar o cambiar atributos de columnas. Si la tabla no tiene datos, la forma más sencilla es eliminarla y volver a crearla. Sin embargo, si ya contiene información, es necesario usar la sentencia `ALTER TABLE`.
+
+MySQL permite diversas modificaciones en una tabla utilizando `ALTER TABLE`. La sintaxis es la siguiente:
+
+```sql
+ALTER TABLE tbl_name
+    [alter_specification [, alter_specification] ...]
+    [partition_options]
+
+alter_specification:
+    table_options
+  | ADD [COLUMN] col_name column_definition
+        [FIRST | AFTER col_name]
+  | ADD [COLUMN] (col_name column_definition,...)
+  | ADD {INDEX|KEY} [index_name]
+        [index_type] (index_col_name,...) [index_option] ...
+  | ADD [CONSTRAINT [symbol]] PRIMARY KEY
+        [index_type] (index_col_name,...) [index_option] ...
+  | ADD [CONSTRAINT [symbol]]
+        UNIQUE [INDEX|KEY] [index_name]
+        [index_type] (index_col_name,...) [index_option] ...
+  | ADD FULLTEXT [INDEX|KEY] [index_name]
+        (index_col_name,...) [index_option] ...
+  | ADD SPATIAL [INDEX|KEY] [index_name]
+        (index_col_name,...) [index_option] ...
+  | ADD [CONSTRAINT [symbol]]
+        FOREIGN KEY [index_name] (index_col_name,...)
+        reference_definition
+  | ALGORITHM [=] {DEFAULT|INPLACE|COPY}
+  | ALTER [COLUMN] col_name {SET DEFAULT literal | DROP DEFAULT}
+  | CHANGE [COLUMN] old_col_name new_col_name column_definition
+        [FIRST|AFTER col_name]
+  | [DEFAULT] CHARACTER SET [=] charset_name [COLLATE [=] collation_name]
+  | CONVERT TO CHARACTER SET charset_name [COLLATE collation_name]
+  | {DISABLE|ENABLE} KEYS
+  | {DISCARD|IMPORT} TABLESPACE
+  | DROP [COLUMN] col_name
+  | DROP {INDEX|KEY} index_name
+  | DROP PRIMARY KEY
+  | DROP FOREIGN KEY fk_symbol
+  | FORCE
+  | LOCK [=] {DEFAULT|NONE|SHARED|EXCLUSIVE}
+  | MODIFY [COLUMN] col_name column_definition
+        [FIRST | AFTER col_name]
+  | ORDER BY col_name [, col_name] ...
+  | RENAME {INDEX|KEY} old_index_name TO new_index_name
+  | RENAME [TO|AS] new_tbl_name
+  | {WITHOUT|WITH} VALIDATION
+  | ADD PARTITION (partition_definition)
+  | DROP PARTITION partition_names
+  | DISCARD PARTITION {partition_names | ALL} TABLESPACE
+  | IMPORT PARTITION {partition_names | ALL} TABLESPACE
+  | TRUNCATE PARTITION {partition_names | ALL}
+  | COALESCE PARTITION number
+  | REORGANIZE PARTITION partition_names INTO (partition_definitions)
+  | EXCHANGE PARTITION partition_name WITH TABLE tbl_name [{WITH|WITHOUT} VALIDATION]
+  | ANALYZE PARTITION {partition_names | ALL}
+  | CHECK PARTITION {partition_names | ALL}
+  | OPTIMIZE PARTITION {partition_names | ALL}
+  | REBUILD PARTITION {partition_names | ALL}
+  | REPAIR PARTITION {partition_names | ALL}
+  | REMOVE PARTITIONING
+  | UPGRADE PARTITIONING
+
+index_col_name:
+    col_name [(length)] [ASC | DESC]
+
+index_type:
+    USING {BTREE | HASH}
+
+index_option:
+    KEY_BLOCK_SIZE [=] value
+  | index_type
+  | WITH PARSER parser_name
+  | COMMENT 'string'
+
+table_options:
+    table_option [[,] table_option] ...
+
+table_option:
+    AUTO_INCREMENT [=] value
+  | AVG_ROW_LENGTH [=] value
+  | [DEFAULT] CHARACTER SET [=] charset_name
+  | CHECKSUM [=] {0 | 1}
+  | [DEFAULT] COLLATE [=] collation_name
+  | COMMENT [=] 'string'
+  | COMPRESSION [=] {'ZLIB'|'LZ4'|'NONE'}
+  | CONNECTION [=] 'connect_string'
+  | {DATA|INDEX} DIRECTORY [=] 'absolute path to directory'
+  | DELAY_KEY_WRITE [=] {0 | 1}
+  | ENCRYPTION [=] {'Y' | 'N'}
+  | ENGINE [=] engine_name
+  | INSERT_METHOD [=] { NO | FIRST | LAST }
+  | KEY_BLOCK_SIZE [=] value
+  | MAX_ROWS [=] value
+  | MIN_ROWS [=] value
+  | PACK_KEYS [=] {0 | 1 | DEFAULT}
+  | PASSWORD [=] 'string'
+  | ROW_FORMAT [=] {DEFAULT|DYNAMIC|FIXED|COMPRESSED|REDUNDANT|COMPACT}
+  | STATS_AUTO_RECALC [=] {DEFAULT|0|1}
+  | STATS_PERSISTENT [=] {DEFAULT|0|1}
+  | STATS_SAMPLE_PAGES [=] value
+  | TABLESPACE tablespace_name [STORAGE {DISK|MEMORY|DEFAULT}]
+  | UNION [=] (tbl_name[,tbl_name]...)
+
+partition_options:
+    (see CREATE TABLE options)
+```
+
+#### Modificar el tipo de datos de una columna (MODIFY)
+
+El comando `MODIFY` se usa para cambiar el tipo de dato de una columna sin modificar su nombre.
+
+Por ejemplo, si tenemos la siguiente tabla:
+
+```sql
+CREATE TABLE usuario (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  nombre VARCHAR(25)
+);
+```
+
+Y queremos aumentar la capacidad de nombre a 50 caracteres y asegurarnos de que no sea nulo:
+
+```sql
+ALTER TABLE usuario MODIFY nombre VARCHAR(50) NOT NULL;
+```
+
+La columna _nombre_ ahora acepta hasta 50 caracteres y no puede ser nula.
+
+#### Renombrar una columna y cambiar su tipo (CHANGE)
+
+El comando `CHANGE` permite renombrar una columna y modificar su tipo al mismo tiempo.
+
+Por ejemplo, si tenemos esta tabla:
+
+```sql
+CREATE TABLE usuario (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  nombre_de_usuario VARCHAR(25)
+);
+```
+
+Y queremos cambiar el nombre de la columna a _nombre_ y aumentar su capacidad a 50 caracteres:
+
+```sql
+ALTER TABLE usuario CHANGE nombre_de_usuario nombre VARCHAR(50) NOT NULL;
+```
+
+La columna ahora se llama _nombre_ y su tamaño es 50 caracteres.
+
+#### Modificar o eliminar valores por defecto (ALTER)
+
+El comando `ALTER` permite asignar o eliminar un valor por defecto en una columna.
+
+Por ejemplo, si tenemos la siguiente tabla:
+
+```sql
+CREATE TABLE usuario (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  nombre VARCHAR(50) NOT NULL,
+  rol ENUM('Estudiante', 'Profesor') NOT NULL
+);
+```
+
+Podemos establecer que el valor por defecto de rol sea "Estudiante":
+
+```sql
+ALTER TABLE usuario ALTER rol SET DEFAULT 'Estudiante';
+```
+
+Si no se especifica un valor al insertar un usuario, se asignará "Estudiante" automáticamente.
+
+Para eliminar el valor por defecto, usaremos `DROP`:
+
+```sql
+ALTER TABLE usuario ALTER rol DROP DEFAULT;
+```
+
+#### Añadir nuevas columnas (ADD)
+
+El comando `ADD` permite agregar nuevas columnas a una tabla existente.
+
+Por ejemplo, si tenemos la siguiente tabla:
+
+```sql
+CREATE TABLE usuario (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  nombre VARCHAR(50) NOT NULL,
+  rol ENUM('Estudiante', 'Profesor') NOT NULL
+);
+```
+
+Podemos agregar una columna _fecha\_nacimiento_ de tipo `DATE`:
+
+```sql
+ALTER TABLE usuario ADD fecha_nacimiento DATE NOT NULL;
+```
+
+La nueva columna se agrega al final de la tabla.
+
+Para insertar una columna en una posición específica, usaremos `AFTER`:
+
+```sql
+ALTER TABLE usuario ADD apellido1 VARCHAR(50) NOT NULL AFTER nombre;
+ALTER TABLE usuario ADD apellido2 VARCHAR(50) AFTER apellido1;
+```
+
+Ahora la tabla tendrá _apellido1_ y _apellido2_ justo después de nombre.
+
+#### Eliminar una columna (DROP)
+
+El comando `DROP` se usa para eliminar una columna de la tabla.
+
+Por ejemplo, si tenemos la siguiente tabla:
+
+```sql
+CREATE TABLE usuario (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  nombre VARCHAR(50) NOT NULL,
+  apellido1 VARCHAR(50) NOT NULL,
+  apellido2 VARCHAR(50),
+  rol ENUM('Estudiante', 'Profesor') NOT NULL DEFAULT 'Estudiante',
+  fecha_nacimiento DATE NOT NULL
+);
+```
+
+Podemos eliminar la columna _fecha_nacimiento_ con:
+
+```sql
+ALTER TABLE usuario DROP fecha_nacimiento;
+```
+
+La columna fecha_nacimiento desaparece de la tabla.
+
+#### Otras Consultas Útiles en MySQL
+
+* `SHOW TABLES;`: muestra todas las tablas de la base de datos.
+* `DESCRIBE`: nombre_tabla; o DESC nombre_tabla;
+* `SHOW CREATE TABLE nombre_tabla;`: muestra la sentencia SQL utilizada para crear la tabla.
+
+#### Conclusión
+
+* `MODIFY`: cambia el tipo de una columna sin modificar su nombre.
+* `CHANGE`: permite cambiar el nombre de una columna y modificar su tipo al mismo tiempo.
+* `ALTER`: permite agregar o eliminar valores por defecto.
+* `ADD`: se usa para agregar nuevas columnas en la tabla.
+* `DROP`: elimina columnas de la tabla.
+* Consultas como `SHOW TABLES`, `DESCRIBE`, y `SHOW CREATE TABLE` ayudan a verificar la estructura de las tablas.
 
 [01]: ../img/ut04/table-manipulation/01.png "01"
 [02]: ../img/ut04/table-manipulation/02.png "02"
