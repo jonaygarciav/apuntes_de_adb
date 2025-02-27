@@ -6,6 +6,12 @@
     * Otras opciones a tener en cuenta en la creación de las tablas
 * Eliminar una Tabla
 * Modificar una Tabla
+    * Modificar el tipo de datos de una columna (MODIFY)
+    * Renombrar una columna y cambiar su tipo (CHANGE)
+    * Modificar o eliminar valores por defecto (ALTER)
+    * Añadir nuevas columnas (ADD)
+    * Eliminar una columna (DROP)
+* Otras Consultas Útiles en MySQL
 * Otros Comandos
 
 ## Introducción
