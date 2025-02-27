@@ -23,7 +23,7 @@ El uso correcto del comando `CREATE` es el primer paso para diseñar bases de da
 
 ### Crear una Base de Datos
 
-La creación de Bases de Datos en MySQL 8 se realiza mediante el comando `CREATE DATABASE`, que nos permite definir el nombre de la base de datos, el _character set_ y el _collation_. La sintaxis general es la siguiente:
+La creación de Bases de Datos en MySQL 8 se realiza mediante el comando `CREATE DATABASE`, que nos permite definir el nombre de la base de datos, el _CHARACTER SET_ y el _COLLATION_. La sintaxis general es la siguiente:
 
 ```sql
 CREATE {DATABASE | SCHEMA} [IF NOT EXISTS] database_name;
