@@ -3,7 +3,6 @@
 * Números Enteros
 * Números en Punto Flotante (Valores Aproximados)
 * Números en Punto Fijo (Valores Exactos)
-* Números en Punto Fijo (Valores Exactos)
 * Fechas y Tiempo
 * JSON (Formato de Datos Estructurados)
 
