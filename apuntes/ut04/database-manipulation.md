@@ -207,7 +207,7 @@ Consideraciones importantes:
 * No cambia automáticamente las tablas existentes, es decir, si se cambia el _CHARACTER SET_, las tablas dentro de la base de datos seguirán con su configuración previa, a menos que se modifiquen individualmente con el comando `ALTER TABLE`, solamente las tablas que se creen con el comando `CREATE TABLE` a partir del cambio de _CHARACTER SET_ sí tendrán la nueva configuración.
 * En MySQL, solo el usuario con privilegios `ALTER` sobre la base de datos puede ejecutar este comando.
 
-## Otros Comandos
+## Otros Comandos Útiles
 
 Consultar el listado de todas las bases de datos a las que el usuario actual tiene acceso:
 
