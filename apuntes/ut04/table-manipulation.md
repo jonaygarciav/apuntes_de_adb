@@ -11,8 +11,8 @@
     * Modificar o eliminar valores por defecto (ALTER)
     * Añadir nuevas columnas (ADD)
     * Eliminar una columna (DROP)
-* Otras Consultas Útiles en MySQL
-* Otros Comandos
+* Otras Consultas Útiles
+* Conclusión
 
 ## Introducción
 
@@ -636,7 +636,7 @@ ALTER TABLE usuario DROP fecha_nacimiento;
 
 La columna fecha_nacimiento desaparece de la tabla.
 
-#### Otras Consultas Útiles en MySQL
+#### Otras Consultas Útiles
 
 * `SHOW TABLES;`: muestra todas las tablas de la base de datos.
 * `DESCRIBE`: nombre_tabla; o DESC nombre_tabla;
