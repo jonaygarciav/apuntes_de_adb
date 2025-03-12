@@ -45,3 +45,5 @@ UT00:
 * Manipulación de Bases de Datos ([Apuntes](./apuntes/ut04/database-manipulation.md))
 * Manipulación de Tablas ([Apuntes](./apuntes/ut04/table-manipulation.md))
 * Tipos de Datos ([Apuntes](./apuntes/ut04/tipos-de-datos.md))
+* Relaciones en MySQL ([Apuntes](./apuntes/ut04/relaciones-en-mysql.md))
+* [Ejercicios](./ejercicios/ut04/ejercicios.md)
