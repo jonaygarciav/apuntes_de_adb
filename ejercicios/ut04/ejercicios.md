@@ -170,7 +170,7 @@ Un actor puede actuar en varias películas, y una película puede tener varios a
 19. Elimina un actor y sus registros de películas.
 20. Elimina la base de datos cine.
 
-## Ejercicio 6: Alumnos y Cursos (N:M)
+## Ejercicio 6: Profesores y Cursos (N:M)
 
 Un estudiante puede inscribirse en varios cursos, y un curso puede tener varios estudiantes.
 
