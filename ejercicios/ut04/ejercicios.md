@@ -105,9 +105,7 @@ Un autor puede escribir muchos libros, pero cada libro pertenece a un solo autor
 19. Elimina la tabla libros y bibliotecas.
 20. Elimina la base de datos biblioteca.
 
-## Ejercicio 4: Departamento y Empleados (1:N)
-
-Un departamento puede tener muchos empleados, pero un empleado pertenece a un solo departamento.
+## Ejercicio 4: Alumnos y Asignaturas (N:M)
 
 1. Crea una base de datos llamada universidad con utf8mb4_unicode_ci.
 2. Modifica la base de datos universidad para cambiar su collation a utf8mb4_general_ci.
