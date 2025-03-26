@@ -140,7 +140,7 @@ Un departamento puede tener muchos empleados, pero un empleado pertenece a un so
 
 ## Ejercicio 5: Actores y Películas (Relación N:M)
 
-Un estudiante puede inscribirse en varios cursos, y un curso puede tener varios estudiantes.
+Un actor puede actuar en varias películas, y una película puede tener varios actores.
 
 1. Crea una base de datos llamada cine con utf8mb4_unicode_ci.
 2. Modifica la base de datos cine para cambiar su collation a utf8mb4_general_ci.
@@ -171,3 +171,37 @@ Un estudiante puede inscribirse en varios cursos, y un curso puede tener varios 
 18. Elimina la participación de un actor en una película específica.
 19. Elimina un actor y sus registros de películas.
 20. Elimina la base de datos cine.
+
+## Ejercicio 6: Actores y Películas (N:M)
+
+Un estudiante puede inscribirse en varios cursos, y un curso puede tener varios estudiantes.
+
+1. Crea una base de datos llamada instituto con utf8mb4_unicode_ci.
+2. Modifica la base de datos instituto para cambiar su collation a utf8mb4_general_ci.
+3. Crea una tabla profesores con los siguientes campos:
+* id: UNSIGNED INT, auto incremental, clave primaria.
+* nombre: VARCHAR(100), no nulo.
+4. Crea una tabla cursos con los siguientes campos:
+* id: AUTO_INCREMENT, clave primaria.
+* nombre: VARCHAR(150), no nulo.
+* descripcion: TEXT, opcional.
+5. Crea la tabla intermedia profesores_cursos para gestionar la relación muchos a muchos entre profesores y cursos, con los campos:
+* id: AUTO_INCREMENT, clave primaria.
+* profesor_id: UNSIGNED INT, clave foránea a profesores(id).
+* curso_id: UNSIGNED INT, clave foránea a cursos(id).
+* fecha_asignacion: DATE, no nulo.
+6. Modifica la tabla profesores_cursos para agregar una columna horas_clase de tipo INT.
+7. Cambia el tamaño del campo nombre en la tabla cursos a 200 caracteres.
+8. Elimina la columna horas_clase de la tabla profesores_cursos.
+9. Añade un índice a la columna nombre en cursos para mejorar la búsqueda.
+10. Inserta un profesor llamado "Juan Pérez".
+11. Añade un curso llamado "Matemáticas" con una descripción "Curso de álgebra y geometría".
+12. Asigna el profesor "Juan Pérez" al curso "Matemáticas" con fecha de asignación de hoy.
+13. Inserta dos profesores adicionales ("Ana Rodríguez" y "Luis Gómez").
+14. Añade tres cursos adicionales ("Física", "Historia", "Química").
+15. Asigna a los profesores a distintos cursos.
+16. Consulta todos los cursos en los que imparte clases "Juan Pérez".
+17. Consulta todos los profesores que enseñan el curso "Matemáticas".
+18. Elimina la asignación de un profesor en un curso específico.
+19. Elimina un profesor y sus registros de cursos.
+20. Elimina la base de datos instituto.
