@@ -105,7 +105,7 @@ Un autor puede escribir muchos libros, pero cada libro pertenece a un solo autor
 19. Elimina la tabla libros y bibliotecas.
 20. Elimina la base de datos biblioteca.
 
-## Ejercicio 4: Departamento con empleados (1:N)
+## Ejercicio 4: Departamento y Empleados (1:N)
 
 Un departamento puede tener muchos empleados, pero un empleado pertenece a un solo departamento.
 
@@ -172,7 +172,7 @@ Un actor puede actuar en varias películas, y una película puede tener varios a
 19. Elimina un actor y sus registros de películas.
 20. Elimina la base de datos cine.
 
-## Ejercicio 6: Actores y Películas (N:M)
+## Ejercicio 6: Alumnos y Cursos (N:M)
 
 Un estudiante puede inscribirse en varios cursos, y un curso puede tener varios estudiantes.
 
