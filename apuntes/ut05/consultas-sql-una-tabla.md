@@ -24,7 +24,7 @@ En este tema nos vamos a centrar en el uso de la sentencia `SELECT`.
 
 Según la documentación oficial de MySQL ésta sería la sintaxis para realizar una consulta con la sentencia SELECT en MySQL:
 
-```mysql
+```sql
 SELECT
     [ALL | DISTINCT | DISTINCTROW ]
       [HIGH_PRIORITY]
@@ -48,8 +48,11 @@ SELECT
       | INTO DUMPFILE 'file_name'
       | INTO var_name [, var_name]]
     [FOR UPDATE | LOCK IN SHARE MODE]]
+```
+
 Para empezar con consultas sencillas podemos simplificar la definición anterior y quedarnos con la siguiente:
 
+```sql
 SELECT [DISTINCT] select_expr [, select_expr ...]
 [FROM table_references]
 [WHERE where_condition]
@@ -83,7 +86,7 @@ Nos permite indicar cuáles serán las columnas que tendrá la tabla de resultad
 * Una __constante__ que aparecerá en todas las filas de la tabla resultado.
 * Una __expresión__ que nos permite calcular nuevos valores.
 
-__Cómo obtener los datos de todas las columnas de una tabla (SELECT *)__
+__Cómo obtener los datos de todas las columnas de una tabla__
 
 Vamos a utilizar la siguiente base de datos de ejemplo para MySQL:
 
