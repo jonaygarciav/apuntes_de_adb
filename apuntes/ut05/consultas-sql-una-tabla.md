@@ -4,6 +4,27 @@
 * Consultas básicas sobre una tabla
     * Sintaxis de la instrucción SELECT
     * Cláusula SELECT
+        * Cómo obtener los datos de algunas columnas de una tabla
+        * Cómo realizar comentarios en sentencias SQL
+        * Cómo obtener columnas calculadas
+        * Cómo utilizar funciones de MySQL en la cláusula SELECT
+    * Modificadores ALL, DISTINCT, DISTINCTROW
+    * Cláusula ORDER BY
+        * Cómo ordenar de forma ascendente
+        * Cómo ordenar de forma descendente
+        * Cómo ordenador utilizando múltiples columnas
+    * Cláusula LIMIT
+    * Cláusula WHERE
+        * Operadores disponibles en MySQL
+        * Operador BETWEEN
+        * Operador IN
+        * Operador LIKE
+        * Expresiones regulares utilizando los operadores REGEXP y RLIKE
+        * Operadores IS e IS NOT
+    * Funciones disponibles en MySQL
+        * Funciones con cadenas
+        * Funciones con fecha y hora
+        * Funciones matemáticas
 
 ## Introducción
 
@@ -86,7 +107,7 @@ Nos permite indicar cuáles serán las columnas que tendrá la tabla de resultad
 * Una __constante__ que aparecerá en todas las filas de la tabla resultado.
 * Una __expresión__ que nos permite calcular nuevos valores.
 
-__Cómo obtener los datos de todas las columnas de una tabla__
+#### Cómo obtener los datos de todas las columnas de una tabla
 
 Vamos a utilizar la siguiente base de datos de ejemplo para MySQL:
 
@@ -243,7 +264,7 @@ Devolverá lo siguiente:
 10 rows in set (0,00 sec)
 ```
 
-### Cómo realizar comentarios en sentencias SQL
+#### Cómo realizar comentarios en sentencias SQL
 
 Para comentarios de una línea se utilizan los caracteres `--` o `#`:
 
@@ -268,7 +289,7 @@ SELECT nombre, apellido1, apellido2 /* Esto es otro comentario */
 FROM alumno;
 ```
 
-### Cómo obtener columnas calculadas
+#### Cómo obtener columnas calculadas
 
 Vamos a utilizar la siguiente base de datos de ejemplo para MySQL:
 
@@ -918,7 +939,7 @@ Podemos diferenciar cinco tipos de condiciones que pueden aparecer en la cláusu
 
 Los operandos usados en las condiciones pueden ser nombres de columnas, constantes o expresiones. Los operadores que podemos usar en las condiciones pueden ser aritméticos, de comparación, lógicos, etc.
 
-### Operadores disponibles en MySQL
+#### Operadores disponibles en MySQL
 
 A continuación se muestran los operadores más utilizados en MySQL para realizar las consultas.
 
@@ -1366,8 +1387,6 @@ Una vez hecho esto podrá consultar sus valores haciendo:
 ```sql
 SELECT @@GLOBAL.lc_time_names, @@SESSION.lc_time_names;
 ```
-
-En la documentación oficial pueden encontrar más información sobre la configuración regional en MySQL Server.
 
 Para consultar el valor de todas las variables de sesión del sistema podemos utilizar la sentencia:
 
