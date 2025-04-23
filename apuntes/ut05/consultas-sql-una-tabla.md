@@ -245,7 +245,7 @@ Devolverá lo siguiente:
 
 ### Cómo realizar comentarios en sentencias SQL
 
-Comentarios de una línea se utilizan los caracteres `--` o `#`:
+Para comentarios de una línea se utilizan los caracteres `--` o `#`:
 
 ```sql
 -- Esto es un comentario
@@ -259,7 +259,7 @@ SELECT nombre, apellido1, apellido2 # Esto es otro comentario
 FROM alumno;
 ```
 
-Comentarios de múltiples líneas se utilizan los caracteres `/*` y `*/`:
+Para comentarios de múltiples líneas se utilizan los caracteres `/*` para comenzar el comentario y `*/` para cerrar el comentario:
 
 ```sql
 /* Esto es un comentario
