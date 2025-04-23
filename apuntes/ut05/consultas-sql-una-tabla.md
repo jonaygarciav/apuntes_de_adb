@@ -43,7 +43,7 @@ En este tema nos vamos a centrar en el uso de la sentencia `SELECT`.
 
 ### Sintaxis de la instrucción SELECT
 
-Según la documentación oficial de MySQL ésta sería la sintaxis para realizar una consulta con la sentencia SELECT en MySQL:
+Según la documentación oficial de MySQL ésta sería la sintaxis para realizar una consulta con la sentencia `SELECT` en MySQL:
 
 ```sql
 SELECT
@@ -103,7 +103,7 @@ El hecho de que el resultado de una consulta sea una tabla es muy interesante po
 
 Nos permite indicar cuáles serán las columnas que tendrá la tabla de resultados de la consulta que estamos realizando. Las opciones que podemos indicar son las siguientes:
 
-* El __nombre de una columna__ de la tabla sobre la que estamos realizando la consulta. Será una columna de la tabla que aparece en la cláusula FROM.
+* El __nombre de una columna__ de la tabla sobre la que estamos realizando la consulta. Será una columna de la tabla que aparece en la cláusula `FROM`.
 * Una __constante__ que aparecerá en todas las filas de la tabla resultado.
 * Una __expresión__ que nos permite calcular nuevos valores.
 
@@ -447,7 +447,7 @@ Al crear este alias obtendremos el siguiente resultado:
 
 #### Cómo utilizar funciones de MySQL en la cláusula SELECT
 
-Es posible hacer uso de funciones específicas de MySQL en la cláusula SELECT. MySQL nos ofrece funciones matemáticas, funciones para trabajar con cadenas y funciones para trabajar con fechas y horas. Algunos ejemplos de las funciones de MySQL que utilizaremos a lo largo del curso son las siguientes.
+Es posible hacer uso de funciones específicas de MySQL en la cláusula `SELECT`. MySQL nos ofrece funciones matemáticas, funciones para trabajar con cadenas y funciones para trabajar con fechas y horas. Algunos ejemplos de las funciones de MySQL que utilizaremos a lo largo del curso son las siguientes.
 
 Funciones con cadenas
 
@@ -527,7 +527,7 @@ FROM alumno;
 10 rows in set (0,00 sec)
 ```
 
-> __Nota__: la función `CONCAT` devolverá NULL cuando alguna de las cadenas que está concatenando es igual NULL, mientras que la función CONCAT_WS omitirá todas las cadenas que sean igual a NULL y realizará la concatenación con el resto de cadenas.
+> __Nota__: la función `CONCAT` devolverá NULL cuando alguna de las cadenas que está concatenando es igual `NULL`, mientras que la función CONCAT_WS omitirá todas las cadenas que sean igual a `NULL` y realizará la concatenación con el resto de cadenas.
 
 Obtener el nombre y los apellidos de todos los alumnos en una única columna en minúscula:
 
@@ -572,7 +572,7 @@ SELECT UPPER(CONCAT(nombre, ' ', apellido1, ' ', apellido2)) AS nombre_completo 
 10 rows in set (0,00 sec)
 ```
 
-Obtener el nombre y los apellidos de todos los alumnos en una única columna. Cuando el segundo apellido de un alumno sea NULL se devolverá el nombre y el primer apellido concatenados en mayúscula, y cuando no lo sea, se devolverá el nombre completo concatenado tal y como aparece en la tabla:
+Obtener el nombre y los apellidos de todos los alumnos en una única columna. Cuando el segundo apellido de un alumno sea `NULL` se devolverá el nombre y el primer apellido concatenados en mayúscula, y cuando no lo sea, se devolverá el nombre completo concatenado tal y como aparece en la tabla:
 
 ```sql
 SELECT 
@@ -605,7 +605,7 @@ Los modificadores `ALL` y `DISTINCT` indican si se deben incluir o no filas repe
 
 * `ALL` indica que se deben incluir todas las filas, incluidas las repetidas. Es la opción por defecto, por lo tanto no es necesario indicarla.
 * `DISTINCT` elimina las filas repetidas en el resultado de la consulta.
-* `DISTINCTROW` es un sinónimo de DISTINCT.
+* `DISTINCTROW` es un sinónimo de `DISTINCT`.
 
 En el siguiente ejemplo vamos a ver la diferencia que existe entre utilizar `DISTINCT` y no utilizarlo. La siguiente consulta mostrará todas las filas que existen en la columna apellido1 de la tabla alumno.
 
@@ -652,7 +652,7 @@ FROM alumno;
 9 rows in set (0,01 sec)
 ```
 
-Si en la cláusula `SELECT` utilizamos `DISTINCT` con más de una columna, la consulta seguirá eliminando todas las filas repetidas que existan. Por ejemplo, si tenemos las columnas apellido1, apellido2 y nombre, se eliminarán todas las filas que tengan los mismos valores en las tres columnas.
+Si en la cláusula `SELECT` utilizamos `DISTINCT` con más de una columna, la consulta seguirá eliminando todas las filas repetidas que existan. Por ejemplo, si tenemos las columnas _apellido1_, _apellido2_ y _nombre_, se eliminarán todas las filas que tengan los mismos valores en las tres columnas.
 
 ```sql
 SELECT DISTINCT apellido1, apellido2, nombre
@@ -685,7 +685,7 @@ FROM alumno;
 [ORDER BY {col_name | expr | position} [ASC | DESC], ...]
 ```
 
-Esta cláusula nos permite ordenar el resultado de forma ascendente ASC o descendente DESC, además de permitirnos ordenar por varias columnas estableciendo diferentes niveles de ordenación.
+Esta cláusula nos permite ordenar el resultado de forma ascendente `ASC` o descendente `DESC`, además de permitirnos ordenar por varias columnas estableciendo diferentes niveles de ordenación.
 
 #### Cómo ordenar de forma ascendente
 
@@ -743,7 +743,7 @@ El resultado de ambas consultas será:
 10 rows in set (0,00 sec)
 ```
 
-Las filas están ordenadas correctamente por el primer apellido, pero todavía hay que resolver cómo ordenar el listado cuando existen varias filas donde coincide el valor del primer apellido. En este caso tenemos dos filas donde el primer apellido es Sánchez:
+Las filas están ordenadas correctamente por el primer apellido, pero todavía hay que resolver cómo ordenar el listado cuando existen varias filas donde coincide el valor del primer apellido. En este caso tenemos dos filas donde el primer apellido es _Sánchez_:
 
 ```
 nombre	apellido1	apellido2
@@ -804,7 +804,7 @@ ORDER BY apellido1, apellido2, nombre;
 10 rows in set (0,00 sec)
 ```
 
-En lugar de indicar el nombre de las columnas en la cláusula ORDER BY podemos indicar sobre la posición donde aparecen en la cláusula SELECT, de modo que la consulta anterior sería equivalente a la siguiente:
+En lugar de indicar el nombre de las columnas en la cláusula `ORDER BY` podemos indicar sobre la posición donde aparecen en la cláusula `SELECT`, de modo que la consulta anterior sería equivalente a la siguiente:
 
 ```sql
 SELECT apellido1, apellido2, nombre
@@ -935,7 +935,7 @@ Podemos diferenciar cinco tipos de condiciones que pueden aparecer en la cláusu
 * Condiciones para comprobar si un valor está dentro de un rango de valores.
 * Condiciones para comprobar si un valor está dentro de un conjunto de valores.
 * Condiciones para comparar cadenas con patrones.
-* Condiciones para comprobar si una columna tiene valores a NULL.
+* Condiciones para comprobar si una columna tiene valores a `NULL`.
 
 Los operandos usados en las condiciones pueden ser nombres de columnas, constantes o expresiones. Los operadores que podemos usar en las condiciones pueden ser aritméticos, de comparación, lógicos, etc.
 
@@ -1330,7 +1330,6 @@ Las funciones se pueden utilizar en las cláusulas `SELECT`, `WHERE` y `ORDER BY
 | TRIM        | Elimina los espacios en blanco que existan al inicio y al final de una cadena |
 | REPLACE     | Permite reemplazar un carácter dentro de una cadena     |
 
-
 Ejercicios:
 
 1. Devuelve un listado con dos columnas, donde aparezca en la primera columna el nombre de los alumnos y en la segunda, el nombre con todos los caracteres invertidos.
@@ -1363,14 +1362,13 @@ Ejercicios:
 | MINUTE      | Devuelve los minutos de un valor de tipo DATETIME|
 | SECOND      | Devuelve los segundos de un valor de tipo DATETIME |
 
-
 Configuración regional en MySQL Server (locale)
 
-Importante: Tenga en cuenta que para que los nombres de los meses y las abreviaciones aparezcan en español deberá configurar la variable del sistema lc_time_names. Esta variable afecta al resultado de las funciones DATE_FORMAT, DAYNAME y MONTHNAME.
+> __Nota__: tenga en cuenta que para que los nombres de los meses y las abreviaciones aparezcan en español deberá configurar la variable del sistema `lc_time_names`. Esta variable afecta al resultado de las funciones `DATE_FORMAT`, `DAYNAME` y `MONTHNAME`.
 
 En MySQL las variables se pueden definir como variables globales o variables de sesión. La diferencia que existe entre ellas es que una variable de sesión pierde su contenido cuando cerramos la sesión con el servidor, mientras que una variable global mantiene su valor hasta que se realiza un reinicio del servicio o se modifica por otro valor. Las variables globales sólo pueden ser configuradas por usuarios con privilegios de administración.
 
-Para configurar la variable lc_time_names como una variable global, con la configuración regional de España tendrá que utilizar la palabra reservada GLOBAL, como se indica en el siguiente ejemplo.
+Para configurar la variable lc_time_names como una variable global, con la configuración regional de España tendrá que utilizar la palabra reservada `GLOBAL`, como se indica en el siguiente ejemplo.
 
 ```sql
 SET GLOBAL lc_time_names = 'es_ES';
