@@ -47,3 +47,6 @@ UT00:
 * Tipos de Datos ([Apuntes](./apuntes/ut04/tipos-de-datos.md))
 * Relaciones en MySQL ([Apuntes](./apuntes/ut04/relaciones-en-mysql.md))
 * [Ejercicios](./ejercicios/ut04/ejercicios.md)
+
+## UT05: Data Manipulation Language (DML)
+* Consultas SQL de una tabla ([Apuntes](./apuntes/ut05/consultas-sql-una-tabla.md) | [Ejercicios](./ejercicios/ut05/consultas-sql-una-tabla.md))
