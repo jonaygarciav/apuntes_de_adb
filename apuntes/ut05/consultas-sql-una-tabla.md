@@ -302,7 +302,7 @@ Es posible realizar cálculos aritméticos entre columnas para calcular nuevos v
 | 5   | 6                 | 9.99                |
 ```
 
-Y queremos calcular una nueva columna con el precio total de la venta, que sería equivalente a multiplicar el valor de la column cantidad_comprada por precio_por_elemento.
+Y queremos calcular una nueva columna con el precio total de la venta, que sería equivalente a multiplicar el valor de la column _cantidad\_comprada_ por _precio\_por\_elemento_.
 
 Para obtener esta nueva columna podríamos realizar la siguiente consulta:
 
