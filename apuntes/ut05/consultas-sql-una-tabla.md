@@ -28,7 +28,7 @@
 
 ## Introducción
 
-El __DML__ (_Data Manipulation Language_) o Lenguaje de Manipulación de Datos es la parte de SQL dedicada a la manipulación de los datos. Las sentencias DML son las siguientes:
+__DML__ (_Data Manipulation Language_ o _Lenguaje de Manipulación de Datos_ es la parte de SQL dedicada a la manipulación de los datos. Las sentencias DML son las siguientes:
 
 * `SELECT`: se utiliza para realizar consultas y extraer información de la base de datos.
 * `INSERT`: se utiliza para insertar registros en las tablas de la base de datos.
