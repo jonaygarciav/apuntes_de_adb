@@ -213,6 +213,5 @@ INSERT INTO empleado VALUES(13, '82635162B', 'Juan Antonio','Sáez', 'Guerrero',
 
 36. Lista los nombres, apellidos y nif de los empleados que trabajan en los departamentos 2, 4 o 5.
 
-
 [01]: ./01.png "01"
 [02]: ./02.png "01"
