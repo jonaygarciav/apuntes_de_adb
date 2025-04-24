@@ -1,30 +1,40 @@
 # Consultas SQL de una sola Tabla
 
-* Introducción
-* Consultas básicas sobre una tabla
-    * Sintaxis de la instrucción SELECT
-    * Cláusula SELECT
-        * Cómo obtener los datos de algunas columnas de una tabla
-        * Cómo realizar comentarios en sentencias SQL
-        * Cómo obtener columnas calculadas
-        * Cómo utilizar funciones de MySQL en la cláusula SELECT
-    * Modificadores ALL, DISTINCT, DISTINCTROW
-    * Cláusula ORDER BY
-        * Cómo ordenar de forma ascendente
-        * Cómo ordenar de forma descendente
-        * Cómo ordenador utilizando múltiples columnas
-    * Cláusula LIMIT
-    * Cláusula WHERE
-        * Operadores disponibles en MySQL
-        * Operador BETWEEN
-        * Operador IN
-        * Operador LIKE
-        * Expresiones regulares utilizando los operadores REGEXP y RLIKE
-        * Operadores IS e IS NOT
-    * Funciones disponibles en MySQL
-        * Funciones con cadenas
-        * Funciones con fecha y hora
-        * Funciones matemáticas
+* [Introducción](#introducción)
+* [Consultas básicas sobre una tabla](#consultas-básicas-sobre-una-tabla)
+  * [Sintaxis de la instrucción SELECT](#sintaxis-de-la-instrucción-select)
+  * [Cláusula SELECT](#cláusula-select)
+    * [Cómo obtener los datos de todas las columnas de una tabla](#cómo-obtener-los-datos-de-todas-las-columnas-de-una-tabla)
+    * [Cómo obtener los datos de algunas columnas de una tabla](#cómo-obtener-los-datos-de-algunas-columnas-de-una-tabla)
+    * [Cómo realizar comentarios en sentencias SQL](#cómo-realizar-comentarios-en-sentencias-sql)
+    * [Cómo obtener columnas calculadas](#cómo-obtener-columnas-calculadas)
+    * [Cómo realizar alias de columnas con AS](#cómo-realizar-alias-de-columnas-con-as)
+    * [Cómo utilizar funciones de MySQL en la cláusula SELECT](#cómo-utilizar-funciones-de-mysql-en-la-cláusula-select)
+  * [Modificadores ALL, DISTINCT y DISTINCTROW](#modificadores-all-distinct-y-distinctrow)
+  * [Cláusula ORDER BY](#cláusula-order-by)
+    * [Cómo ordenar de forma ascendente](#cómo-ordenar-de-forma-ascendente)
+    * [Cómo ordenar de forma descendente](#cómo-ordenar-de-forma-descendente)
+    * [Cómo ordenar utilizando múltiples columnas](#cómo-ordenar-utilizando-múltiples-columnas)
+  * [Cláusula LIMIT](#cláusula-limit)
+  * [Cláusula WHERE](#cláusula-where)
+    * [Operadores disponibles en MySQL](#operadores-disponibles-en-mysql)
+    * [Operador BETWEEN](#operador-between)
+    * [Operador IN](#operador-in)
+    * [Operador LIKE](#operador-like)
+    * [Expresiones regulares utilizando los operadores REGEXP y RLIKE](#expresiones-regulares-utilizando-los-operadores-regexp-y-rlike)
+    * [Operadores IS e IS NOT](#operadores-is-e-is-not)
+  * [Funciones disponibles en MySQL](#funciones-disponibles-en-mysql)
+    * [Funciones con cadenas](#funciones-con-cadenas)
+    * [Funciones de fecha y hora](#funciones-de-fecha-y-hora)
+    * [Funciones matemáticas](#funciones-matemáticas)
+    * [Funciones de control de flujo](#funciones-de-control-de-flujo)
+* [Errores comunes](#errores-comunes)
+  * [Error al comprobar si una columna es NULL](#error-al-comprobar-si-una-columna-es-null)
+  * [Error al comparar cadenas con patrones utilizando el operador =](#error-al-comparar-cadenas-con-patrones-utilizando-el-operador-)
+  * [Error al comparar cadenas con patrones utilizando el operador !=](#error-al-comparar-cadenas-con-patrones-utilizando-el-operador--1)
+  * [Error al comparar un rango de valores con AND](#error-al-comparar-un-rango-de-valores-con-and)
+  * [Errores de conversión de tipos en la evaluación de expresiones](#errores-de-conversión-de-tipos-en-la-evaluación-de-expresiones)
+  * [Error al utilizar los operadores de suma y resta entre datos de tipo DATE, DATETIME y TIMESTAMP](#error-al-utilizar-los-operadores-de-suma-y-resta-entre-datos-de-tipo-date-datetime-y-timestamp)
 
 ## Introducción
 
@@ -1621,6 +1631,129 @@ NULLIF(expr1,expr2)
 ```
 
 Esta función devuelve `NULL` si expr1 es igual a expr2, en caso contrario devuelve el valor de expr1.
+
+## Errores comunes
+
+### Error al comprobar si una columna es NULL
+
+Cómo obtener la lista de alumnos que tienen un valor NULL en la columna teléfono.
+
+```sql
+-- Consulta incorrecta.
+SELECT *
+FROM alumno
+WHERE teléfono = NULL;
+
+-- Consulta correcta.
+SELECT *
+FROM alumno
+WHERE teléfono IS NULL;
+```
+
+### Error al comparar cadenas con patrones utilizando el operador =
+
+Cómo obtener un listado de los alumnos cuyo primer apellido empieza por `S`.
+
+```sql
+-- Consulta incorrecta.
+SELECT *
+FROM alumno
+WHERE apellido1 = 'S%';
+
+-- Consulta correcta.
+SELECT *
+FROM alumno
+WHERE apellido1 LIKE 'S%';
+```
+
+### Error al comparar cadenas con patrones utilizando el operador !=
+
+Cómo obtener un listado de los alumnos cuyo primer apellido no empieza por `S`.
+
+```sql
+-- Consulta incorrecta.
+SELECT *
+FROM alumno
+WHERE apellido1 != 'S%';
+
+-- Consulta correcta.
+SELECT *
+FROM alumno
+WHERE apellido1 NOT LIKE 'S%';
+```
+
+### Error al comparar un rango de valores con AND
+
+Cuando queremos comparar si un valor está dentro de un rango tenemos que utilizar dos condiciones unidas con la operación lógica AND. En el siguiente ejemplo se muestra una consulta incorrecta donde la segunda condición siempre será verdadera porque no estamos comparando con ningún valor, estamos poniendo un valor constante que al ser distinto de 0 siempre nos dará un valor verdadero como resultado de la comparación.
+
+```sql
+-- Consulta incorrecta
+SELECT *
+FROM alumno
+WHERE fecha_nacimiento >= '1999/01/01' AND '1999/12/31'
+
+-- Consulta correcta
+SELECT *
+FROM alumno
+WHERE fecha_nacimiento >= '1999/01/01' AND fecha_nacimiento <= '1999/12/31'
+```
+
+### Errores de conversión de tipos en la evaluación de expresiones
+
+Cuando se utiliza un operador con operandos de diferentes tipos de dato, MySQL realiza una conversión automática de tipo para que los operandos sean compatibles. Por ejemplo, convierte automáticamente cadenas en números según sea necesario y viceversa:
+
+```sql
+SELECT 1 + '1';
+ -> 2
+
+SELECT CONCAT(1, '1');
+ -> '11'
+```
+
+Las cadenas las convierte a datos de tipo entero de la mejor forma posible y luego realiza la resta. En este caso la cadena '2021-01-31' la convierte en el número entero 2021 y la cadena '2021-02-01' en el número entero 2021, por este motivo el resultado de la resta es 0:
+
+```sql
+SELECT '2021-01-31' - '2021-02-01';
+ -> 0
+```
+
+En este ejemplo estamos convirtiendo las cadenas a un valor de tipo DATE y luego se realiza la resta. En este caso, los datos de tipo DATE los convierte a datos de tipo entero pero de una forma más precisa que la conversión anterior, ya que la cadena '2008-08-31' la convierte en el número entero 20080831 y la cadena '2008-09-01' en el número entero 20080901, por este motivo el resultado de la resta es -70.
+
+```sql
+SELECT CAST('2021-01-31' AS DATE) - CAST('2021-02-01' AS DATE);
+ -> -70
+```
+
+En este ejemplo resta entre dos valores de tipo INT
+
+SELECT 20210131 - 20210201;
+ -> -70
+
+### Error al utilizar los operadores de suma y resta entre datos de tipo DATE, DATETIME y TIMESTAMP
+
+Para poder realizar operaciones de suma y resta entre datos de tipo `DATE`, `DATETIME` y `TIMESTAMP` es necesario hacer uso de las funciones específicas de fecha y hora disponibles en MySQL. Si tratamos de realizar una operación de suma o resta entre valores de tipo `DATE`, `DATETIME` y `TIMESTAMP` podemos obtener un resultado incorrecto en algunas situaciones, ya que estos valores se convierten a un dato de tipo numérico y posteriormente se realiza la operación entre ellos.
+
+```sql
+-- Consulta incorrecta
+SELECT fecha_esperada, fecha_entrega,  fecha_entrega - fecha_esperada
+FROM pedido;
+
+fecha_esperada	fecha_entrega	fecha_entrega - fecha_esperada
+2021-01-31	 2021-02-01	-70
+```
+
+En este ejemplo estamos realizando una resta entre dos datos de tipo DATE utilizando el operador `-`. Lo que ocurre en este caso, es que antes de realizar la operación de resta, MySQL convierte los datos de tipo `DATE` a datos de tipo entero. De forma que la fecha 2008-08-31 la convierte en el número entero 20080831 y la fecha 2008-09-01 en el número entero 20080901. Por este motivo el resultado que obtenemos a realizar la resta es -70.
+
+```sql
+--Consulta correcta
+SELECT fecha_esperada, fecha_entrega,  DATEDIFF(fecha_entrega, fecha_esperada)
+FROM pedido;
+
+fecha_esperada	fecha_entrega	DATEDIFF(fecha_entrega, fecha_esperada)
+2021-01-31	 2021-02-01	-1
+```
+
+En este caso se está utilizando la función `DATEDIFF` en lugar del operador de resta `-`p. Al ser una función específica para trabajar con este tipo de dato obtenemos el resultado esperado.
 
 [01]: ../img/ut05/consultas-sql-una-tabla/01.png "01"
 [02]: ../img/ut05/consultas-sql-una-tabla/02.png "02"
