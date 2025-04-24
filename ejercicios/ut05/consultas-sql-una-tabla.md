@@ -2,7 +2,7 @@
 
 ## Ejercicio 1. Tienda de informática
 
-Modelo entidad/relación:
+Modelo Entidad/Relación:
 
 ![][01]
 
@@ -90,7 +90,7 @@ INSERT INTO producto VALUES(11, 'Impresora HP Laserjet Pro M26nw', 180, 3);
 
 ## Ejercicio 2. Gestión de empleados
 
-Modelo entidad/relación:
+Modelo Entidad/Relación:
 
 ![][02]
 
