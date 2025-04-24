@@ -1726,8 +1726,10 @@ SELECT CAST('2021-01-31' AS DATE) - CAST('2021-02-01' AS DATE);
 
 En este ejemplo resta entre dos valores de tipo INT
 
+```sql
 SELECT 20210131 - 20210201;
  -> -70
+```
 
 ### Error al utilizar los operadores de suma y resta entre datos de tipo DATE, DATETIME y TIMESTAMP
 
