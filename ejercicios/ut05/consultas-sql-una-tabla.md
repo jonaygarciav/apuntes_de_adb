@@ -52,8 +52,8 @@ INSERT INTO producto VALUES(11, 'Impresora HP Laserjet Pro M26nw', 180, 3);
 1. Lista el nombre de todos los productos que hay en la tabla producto.
 2. Lista los nombres y los precios de todos los productos de la tabla producto.
 3. Lista todas las columnas de la tabla producto.
-4. Lista el nombre de los productos, el precio en euros y el precio en dólares estadounidenses (USD).
-5. Lista el nombre de los productos, el precio en euros y el precio en dólares estadounidenses (USD). Utiliza los siguientes alias para las columnas: nombre de producto, euros, dólares.
+4. Lista el nombre de los productos, el precio en euros (EUR) y el precio en dólares estadounidenses (USD) si el cambio está a 1 EUR = 1.14 USD.
+5. Lista el nombre de los productos, el precio en euros (EUR) y el precio en dólares estadounidenses (USD) si el cambio está a 1 EUR = 1.14 USD. Utiliza los siguientes alias para las columnas: nombre de producto, euros, dólares.
 6. Lista los nombres y los precios de todos los productos de la tabla producto, convirtiendo los nombres a mayúscula.
 7. Lista los nombres y los precios de todos los productos de la tabla producto, convirtiendo los nombres a minúscula.
 8. Lista el nombre de todos los fabricantes en una columna, y en otra columna obtenga en mayúsculas los dos primeros caracteres del nombre del fabricante.
