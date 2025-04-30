@@ -213,5 +213,259 @@ INSERT INTO empleado VALUES(13, '82635162B', 'Juan Antonio','Sáez', 'Guerrero',
 
 36. Lista los nombres, apellidos y nif de los empleados que trabajan en los departamentos 2, 4 o 5.
 
+## Ejercicio 3. Gestión de ventas
+
+Modelo Entidad/Relación:
+
+![][03]
+
+Creación de la Base de Datos:
+
+```sql
+DROP DATABASE IF EXISTS ventas;
+CREATE DATABASE ventas CHARACTER SET utf8mb4;
+USE ventas;
+
+CREATE TABLE cliente (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  nombre VARCHAR(100) NOT NULL,
+  apellido1 VARCHAR(100) NOT NULL,
+  apellido2 VARCHAR(100),
+  ciudad VARCHAR(100),
+  categoria INT UNSIGNED
+);
+
+CREATE TABLE comercial (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  nombre VARCHAR(100) NOT NULL,
+  apellido1 VARCHAR(100) NOT NULL,
+  apellido2 VARCHAR(100),
+  comision FLOAT
+);
+
+CREATE TABLE pedido (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  total DOUBLE NOT NULL,
+  fecha DATE,
+  id_cliente INT UNSIGNED NOT NULL,
+  id_comercial INT UNSIGNED NOT NULL,
+  FOREIGN KEY (id_cliente) REFERENCES cliente(id),
+  FOREIGN KEY (id_comercial) REFERENCES comercial(id)
+);
+
+INSERT INTO cliente VALUES(1, 'Aarón', 'Rivero', 'Gómez', 'Almería', 100);
+INSERT INTO cliente VALUES(2, 'Adela', 'Salas', 'Díaz', 'Granada', 200);
+INSERT INTO cliente VALUES(3, 'Adolfo', 'Rubio', 'Flores', 'Sevilla', NULL);
+INSERT INTO cliente VALUES(4, 'Adrián', 'Suárez', NULL, 'Jaén', 300);
+INSERT INTO cliente VALUES(5, 'Marcos', 'Loyola', 'Méndez', 'Almería', 200);
+INSERT INTO cliente VALUES(6, 'María', 'Santana', 'Moreno', 'Cádiz', 100);
+INSERT INTO cliente VALUES(7, 'Pilar', 'Ruiz', NULL, 'Sevilla', 300);
+INSERT INTO cliente VALUES(8, 'Pepe', 'Ruiz', 'Santana', 'Huelva', 200);
+INSERT INTO cliente VALUES(9, 'Guillermo', 'López', 'Gómez', 'Granada', 225);
+INSERT INTO cliente VALUES(10, 'Daniel', 'Santana', 'Loyola', 'Sevilla', 125);
+
+INSERT INTO comercial VALUES(1, 'Daniel', 'Sáez', 'Vega', 0.15);
+INSERT INTO comercial VALUES(2, 'Juan', 'Gómez', 'López', 0.13);
+INSERT INTO comercial VALUES(3, 'Diego','Flores', 'Salas', 0.11);
+INSERT INTO comercial VALUES(4, 'Marta','Herrera', 'Gil', 0.14);
+INSERT INTO comercial VALUES(5, 'Antonio','Carretero', 'Ortega', 0.12);
+INSERT INTO comercial VALUES(6, 'Manuel','Domínguez', 'Hernández', 0.13);
+INSERT INTO comercial VALUES(7, 'Antonio','Vega', 'Hernández', 0.11);
+INSERT INTO comercial VALUES(8, 'Alfredo','Ruiz', 'Flores', 0.05);
+
+INSERT INTO pedido VALUES(1, 150.5, '2017-10-05', 5, 2);
+INSERT INTO pedido VALUES(2, 270.65, '2016-09-10', 1, 5);
+INSERT INTO pedido VALUES(3, 65.26, '2017-10-05', 2, 1);
+INSERT INTO pedido VALUES(4, 110.5, '2016-08-17', 8, 3);
+INSERT INTO pedido VALUES(5, 948.5, '2017-09-10', 5, 2);
+INSERT INTO pedido VALUES(6, 2400.6, '2016-07-27', 7, 1);
+INSERT INTO pedido VALUES(7, 5760, '2015-09-10', 2, 1);
+INSERT INTO pedido VALUES(8, 1983.43, '2017-10-10', 4, 6);
+INSERT INTO pedido VALUES(9, 2480.4, '2016-10-10', 8, 3);
+INSERT INTO pedido VALUES(10, 250.45, '2015-06-27', 8, 2);
+INSERT INTO pedido VALUES(11, 75.29, '2016-08-17', 3, 7);
+INSERT INTO pedido VALUES(12, 3045.6, '2017-04-25', 2, 1);
+INSERT INTO pedido VALUES(13, 545.75, '2019-01-25', 6, 1);
+INSERT INTO pedido VALUES(14, 145.82, '2017-02-02', 6, 1);
+INSERT INTO pedido VALUES(15, 370.85, '2019-03-11', 1, 5);
+INSERT INTO pedido VALUES(16, 2389.23, '2019-03-11', 1, 5);
+```
+
+1. Devuelve un listado con todos los pedidos que se han realizado. Los pedidos deben estar ordenados por la fecha de realización, mostrando en primer lugar los pedidos más recientes.
+
+2. Devuelve todos los datos de los dos pedidos de mayor valor.
+
+3. Devuelve un listado con los identificadores de los clientes que han realizado algún pedido. Tenga en cuenta que no debe mostrar identificadores que estén repetidos.
+
+4. Devuelve un listado de todos los pedidos que se realizaron durante el año 2017, cuya cantidad total sea superior a 500€.
+
+5. Devuelve un listado con el nombre y los apellidos de los comerciales que tienen una comisión entre 0.05 y 0.11.
+
+6. Devuelve el valor de la comisión de mayor valor que existe en la tabla comercial.
+
+7. Devuelve el identificador, nombre y primer apellido de aquellos clientes cuyo segundo apellido no es NULL. El listado deberá estar ordenado alfabéticamente por apellidos y nombre.
+
+8. Devuelve un listado de los nombres de los clientes que empiezan por A y terminan por n y también los nombres que empiezan por P. El listado deberá estar ordenado alfabéticamente.
+
+9. Devuelve un listado de los nombres de los clientes que no empiezan por A. El listado deberá estar ordenado alfabéticamente.
+
+10. Devuelve un listado con los nombres de los comerciales que terminan por el o o. Tenga en cuenta que se deberán eliminar los nombres repetidos.
+
+## Ejercicio 4. Jardinería
+
+Modelo Entidad/Relación:
+
+![][04]
+
+Creación de la Base de Datos:
+
+```sql
+DROP DATABASE IF EXISTS jardineria;
+CREATE DATABASE jardineria CHARACTER SET utf8mb4;
+USE jardineria;
+
+CREATE TABLE oficina (
+  codigo_oficina VARCHAR(10) NOT NULL,
+  ciudad VARCHAR(30) NOT NULL,
+  pais VARCHAR(50) NOT NULL,
+  region VARCHAR(50) DEFAULT NULL,
+  codigo_postal VARCHAR(10) NOT NULL,
+  telefono VARCHAR(20) NOT NULL,
+  linea_direccion1 VARCHAR(50) NOT NULL,
+  linea_direccion2 VARCHAR(50) DEFAULT NULL,
+  PRIMARY KEY (codigo_oficina)
+);
+
+CREATE TABLE empleado (
+  codigo_empleado INTEGER NOT NULL,
+  nombre VARCHAR(50) NOT NULL,
+  apellido1 VARCHAR(50) NOT NULL,
+  apellido2 VARCHAR(50) DEFAULT NULL,
+  extension VARCHAR(10) NOT NULL,
+  email VARCHAR(100) NOT NULL,
+  codigo_oficina VARCHAR(10) NOT NULL,
+  codigo_jefe INTEGER DEFAULT NULL,
+  puesto VARCHAR(50) DEFAULT NULL,
+  PRIMARY KEY (codigo_empleado),
+  FOREIGN KEY (codigo_oficina) REFERENCES oficina (codigo_oficina),
+  FOREIGN KEY (codigo_jefe) REFERENCES empleado (codigo_empleado)
+);
+
+CREATE TABLE gama_producto (
+  gama VARCHAR(50) NOT NULL,
+  descripcion_texto TEXT,
+  descripcion_html TEXT,
+  imagen VARCHAR(256),
+  PRIMARY KEY (gama)
+);
+
+CREATE TABLE cliente (
+  codigo_cliente INTEGER NOT NULL,
+  nombre_cliente VARCHAR(50) NOT NULL,
+  nombre_contacto VARCHAR(30) DEFAULT NULL,
+  apellido_contacto VARCHAR(30) DEFAULT NULL,
+  telefono VARCHAR(15) NOT NULL,
+  fax VARCHAR(15) NOT NULL,
+  linea_direccion1 VARCHAR(50) NOT NULL,
+  linea_direccion2 VARCHAR(50) DEFAULT NULL,
+  ciudad VARCHAR(50) NOT NULL,
+  region VARCHAR(50) DEFAULT NULL,
+  pais VARCHAR(50) DEFAULT NULL,
+  codigo_postal VARCHAR(10) DEFAULT NULL,
+  codigo_empleado_rep_ventas INTEGER DEFAULT NULL,
+  limite_credito NUMERIC(15,2) DEFAULT NULL,
+  PRIMARY KEY (codigo_cliente),
+  FOREIGN KEY (codigo_empleado_rep_ventas) REFERENCES empleado (codigo_empleado)
+);
+
+CREATE TABLE pedido (
+  codigo_pedido INTEGER NOT NULL,
+  fecha_pedido date NOT NULL,
+  fecha_esperada date NOT NULL,
+  fecha_entrega date DEFAULT NULL,
+  estado VARCHAR(15) NOT NULL,
+  comentarios TEXT,
+  codigo_cliente INTEGER NOT NULL,
+  PRIMARY KEY (codigo_pedido),
+  FOREIGN KEY (codigo_cliente) REFERENCES cliente (codigo_cliente)
+);
+
+CREATE TABLE producto (
+  codigo_producto VARCHAR(15) NOT NULL,
+  nombre VARCHAR(70) NOT NULL,
+  gama VARCHAR(50) NOT NULL,
+  dimensiones VARCHAR(25) NULL,
+  proveedor VARCHAR(50) DEFAULT NULL,
+  descripcion text NULL,
+  cantidad_en_stock SMALLINT NOT NULL,
+  precio_venta NUMERIC(15,2) NOT NULL,
+  precio_proveedor NUMERIC(15,2) DEFAULT NULL,
+  PRIMARY KEY (codigo_producto),
+  FOREIGN KEY (gama) REFERENCES gama_producto (gama)
+);
+
+CREATE TABLE detalle_pedido (
+  codigo_pedido INTEGER NOT NULL,
+  codigo_producto VARCHAR(15) NOT NULL,
+  cantidad INTEGER NOT NULL,
+  precio_unidad NUMERIC(15,2) NOT NULL,
+  numero_linea SMALLINT NOT NULL,
+  PRIMARY KEY (codigo_pedido, codigo_producto),
+  FOREIGN KEY (codigo_pedido) REFERENCES pedido (codigo_pedido),
+  FOREIGN KEY (codigo_producto) REFERENCES producto (codigo_producto)
+);
+
+CREATE TABLE pago (
+  codigo_cliente INTEGER NOT NULL,
+  forma_pago VARCHAR(40) NOT NULL,
+  id_transaccion VARCHAR(50) NOT NULL,
+  fecha_pago date NOT NULL,
+  total NUMERIC(15,2) NOT NULL,
+  PRIMARY KEY (codigo_cliente, id_transaccion),
+  FOREIGN KEY (codigo_cliente) REFERENCES cliente (codigo_cliente)
+);
+```
+
+1. Devuelve un listado con el código de oficina y la ciudad donde hay oficinas.
+
+2. Devuelve un listado con la ciudad y el teléfono de las oficinas de España.
+
+3. Devuelve un listado con el nombre, apellidos y email de los empleados cuyo jefe tiene un código de jefe igual a 7.
+
+4. Devuelve el nombre del puesto, nombre, apellidos y email del jefe de la empresa.
+
+5. Devuelve un listado con el nombre, apellidos y puesto de aquellos empleados que no sean representantes de ventas.
+
+6. Devuelve un listado con el nombre de los todos los clientes españoles.
+
+7. Devuelve un listado con los distintos estados por los que puede pasar un pedido.
+
+8. Devuelve un listado con el código de cliente de aquellos clientes que realizaron algún pago en 2008. Tenga en cuenta que deberá eliminar aquellos códigos de cliente que aparezcan repetidos. Resuelva la consulta:
+
+* Utilizando la función YEAR de MySQL.
+* Utilizando la función DATE_FORMAT de MySQL.
+* Sin utilizar ninguna de las funciones anteriores.
+
+9. Devuelve un listado con el código de pedido, código de cliente, fecha esperada y fecha de entrega de los pedidos que no han sido entregados a tiempo.
+
+10. Devuelve un listado con el código de pedido, código de cliente, fecha esperada y fecha de entrega de los pedidos cuya fecha de entrega ha sido al menos dos días antes de la fecha esperada.
+
+* Utilizando la función ADDDATE de MySQL.
+* Utilizando la función DATEDIFF de MySQL.
+
+11. Devuelve un listado de todos los pedidos que fueron rechazados en 2009.
+
+12. Devuelve un listado de todos los pedidos que han sido entregados en el mes de enero de cualquier año.
+
+13. Devuelve un listado con todos los pagos que se realizaron en el año 2008 mediante Paypal. Ordene el resultado de mayor a menor.
+
+14. Devuelve un listado con todas las formas de pago que aparecen en la tabla pago. Tenga en cuenta que no deben aparecer formas de pago repetidas.
+
+15. Devuelve un listado con todos los productos que pertenecen a la gama Ornamentales y que tienen más de 100 unidades en stock. El listado deberá estar ordenado por su precio de venta, mostrando en primer lugar los de mayor precio.
+
+16. Devuelve un listado con todos los clientes que sean de la ciudad de Madrid y cuyo representante de ventas tenga el código de empleado 11 o 30.
+
 [01]: ./01.png "01"
-[02]: ./02.png "01"
+[02]: ./02.png "02"
+[03]: ./03.png "03"
+[04]: ./04.png "04"
