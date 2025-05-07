@@ -1311,6 +1311,56 @@ Creación de la Base de Datos:
 
 5. Devuelve el listado de las asignaturas que se imparten en el primer cuatrimestre, en el tercer curso del grado que tiene el identificador 7.
 
+6. Lista los nombres de todos los alumnos.
+
+7. Lista los alumnos que viven en “Madrid”.
+
+8. Lista los alumnos cuya ciudad comience por “S”.
+
+9. Lista los alumnos que no viven en “Madrid”.
+
+10. Muestra cuántos alumnos hay en total.
+
+11. Muestra cuántas ciudades diferentes hay entre los alumnos.
+
+12. Muestra los nombres y ciudades de los alumnos ordenados alfabéticamente por ciudad.
+
+13. Muestra el número de alumnos por ciudad.
+
+14. Muestra los alumnos cuyo nombre contenga la letra “a”.
+
+15. Muestra los alumnos cuya ciudad tenga exactamente 5 caracteres.
+
+16. Lista el nombre de todos los profesores.
+
+17. Muestra los profesores que pertenecen al departamento 10.
+
+18. Muestra los profesores cuyo nombre empiece por “M”.
+
+19. Muestra cuántos profesores hay por cada departamento.
+
+20. Muestra el nombre del profesor que tiene el código más alto.
+
+21. Muestra cuántos profesores hay en total.
+
+22. Muestra los códigos de departamento distintos de los profesores.
+
+23. Muestra el nombre de todas las asignaturas de 1er curso.
+
+24. Muestra las asignaturas del primer cuatrimestre.
+
+25. Muestra las asignaturas que tengan más de 6 créditos.
+
+26. Muestra cuántas asignaturas hay por cada curso.
+
+27. Muestra las asignaturas ordenadas por número de créditos (descendente).
+
+28. Muestra los nombres de asignaturas que tengan la palabra "Programación".
+
+29. Muestra cuántas asignaturas hay en total.
+
+30. Muestra cuántas matrículas hay registradas.
+
 ## Ejercicio 6. Shakila (Español)
 
 Modelo Entidad/Relación:
