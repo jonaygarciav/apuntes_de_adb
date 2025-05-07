@@ -1290,7 +1290,100 @@ INSERT INTO pago VALUES (38,'PayPal','ak-std-000026','2006-05-26',1171);
 
 16. Devuelve un listado con todos los clientes que sean de la ciudad de Madrid y cuyo representante de ventas tenga el código de empleado 11 o 30.
 
+## Ejercicio 5. Universidad
+
+Modelo Entidad/Relación:
+
+![][05]
+
+Creación de la Base de Datos:
+
+* __Esquema__: [universidad-schema.sql](./universidad-schema.sql)
+* __Datos__: [universidad-data.sql](./universidad-data.sql)
+
+1. Devuelve un listado con el primer apellido, segundo apellido y el nombre de todos los alumnos. El listado deberá estar ordenado alfabéticamente de menor a mayor por el primer apellido, segundo apellido y nombre.
+
+2. Averigua el nombre y los dos apellidos de los alumnos que no han dado de alta su número de teléfono en la base de datos.
+
+3. Devuelve el listado de los alumnos que nacieron en 1999.
+
+4. Devuelve el listado de profesores que no han dado de alta su número de teléfono en la base de datos y además su nif termina en K.
+
+5. Devuelve el listado de las asignaturas que se imparten en el primer cuatrimestre, en el tercer curso del grado que tiene el identificador 7.
+
+## Ejercicio 6. Shakila (Español)
+
+Modelo Entidad/Relación:
+
+![][06]
+
+Creación de la Base de Datos:
+
+* __Esquema__: [shakila-es-schema.sql](./shakila-es-schema.sql)
+* __Datos__: [shakila-es-data.sql](./shakila-es-data.sql)
+
+1. ¿Cuál es el título de la película con el ID 10?
+
+2. ¿Cuántas películas hay en total en la tabla film?
+
+3. ¿Cuál es el ID de la película más cara?
+
+4. ¿Cuántos actores están asociados con la película cuyo título es "ACADEMY DINOSAUR"?
+
+5. ¿Cuáles son los primeros 5 títulos de películas con una clasificación de "PG"?
+
+6. ¿Qué director tiene más películas en la base de datos?
+
+7. ¿Cuántas películas tienen un alquiler con un costo superior a 3.50?
+
+8. ¿Cuál es el título de la película con el ID más bajo?
+
+9. ¿Cuántas películas en total están disponibles para alquilar en la tienda?
+
+10. ¿Cuál es la duración promedio de las películas en la tabla film?
+
+11. ¿Qué actor tiene más películas asociadas a él en la tabla film_actor?
+
+12. ¿Cuáles son los 10 títulos de películas con la mayor duración?
+
+13. ¿Cuál es la clasificación más común entre las películas?
+
+14. ¿Qué idioma se utiliza con mayor frecuencia en las películas?
+
+15. ¿Cuántas películas fueron estrenadas en el año 2005?
+
+16. ¿Cuántas películas tienen una clasificación de "R" y un costo de alquiler superior a 4.00?
+
+17. ¿Qué película tiene el precio de alquiler más bajo?
+
+18. ¿Cuál es el actor con más películas en la tabla film_actor?
+
+19. ¿Cuáles son los 3 títulos de películas que tienen la mayor cantidad de copias disponibles en inventario?
+
+20. ¿Cuáles son los 5 actores más comunes en las películas de la categoría "Action"?
+
+21. ¿Cuántas películas están catalogadas como "Drama" y tienen una duración superior a 120 minutos?
+
+22. ¿Cuántas películas fueron estrenadas antes del 1 de enero de 2000?
+
+23. ¿Cuál es el costo promedio de alquiler de todas las películas?
+
+24. ¿Qué película tiene el mayor precio de compra?
+
+25. ¿Cuántos actores participaron en la película con el título "CHAMPION"?
+
+26. ¿Cuál es la película más reciente en la base de datos?
+
+27. ¿Cuál es el precio promedio de las películas en la categoría "Action"?
+
+28. ¿Cuáles son los 10 primeros títulos de películas cuyo título empieza con la letra "S"?
+
+29. ¿Cuáles son las 5 películas que tienen la menor duración y están disponibles para alquilar?
+
+30. ¿Cuál es la película con más copias en inventario?
+
 [01]: ./01.png "01"
 [02]: ./02.png "02"
 [03]: ./03.png "03"
 [04]: ./04.png "04"
+[06]: ./06.png "06"
