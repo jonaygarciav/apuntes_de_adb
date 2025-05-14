@@ -50,3 +50,4 @@ UT00:
 
 ## UT05: Data Manipulation Language (DML)
 * Consultas SQL de una tabla ([Apuntes](./apuntes/ut05/consultas-sql-una-tabla.md) | [Ejercicios](./ejercicios/ut05/consultas-sql-una-tabla.md))
+* Consultas SQL de varias tablas (composición interna) ([Apuntes](./apuntes/ut05/consultas-sql-varias-tablas-composicion-interna.md) | [Ejercicios](./ejercicios/ut05/consultas-sql-varias-tablas-composicion-interna.md))
