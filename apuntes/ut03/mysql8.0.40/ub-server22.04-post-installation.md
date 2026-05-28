@@ -8,7 +8,7 @@
 
 ```sql
 -- Crear usuario admin con password admin
-mysql> CREATE USER 'admin'@'%' IDENTIFIED WITH mysql_native_password BY 'admin';
+mysql> CREATE USER 'admin'@'%' IDENTIFIED BY 'admin';
 Query OK, 0 rows affected (0.03 sec)
 
 -- Dar todos los permisos al usuario admin sobre todas las bases de datos
