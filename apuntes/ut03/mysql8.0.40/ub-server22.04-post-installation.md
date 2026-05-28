@@ -62,7 +62,7 @@ CREATE DATABASE testdb;
 Query OK, 1 row affected (0,03 sec)
 
 -- Crear usuario test con password test
-CREATE USER 'test'@'%' IDENTIFIED WITH 'mysql_native_password' BY 'test';
+CREATE USER 'test'@'%' IDENTIFIED BY 'test';
 Query OK, 1 row affected (0,03 sec)
 
 -- Dar todos los permisos al usuario test sobre la base de datos testdb
